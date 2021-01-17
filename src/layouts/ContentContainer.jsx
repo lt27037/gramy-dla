@@ -4,8 +4,8 @@ import '../styles/ContentContainer.scss'
 
 const ContentContainer = () => {
    return(
-      <div>
-         Content
+      <div className="container">
+         Content 
       </div>
    );
 };

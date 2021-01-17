@@ -1,0 +1,16 @@
+@mixin flexCenter($direction){
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: $direction;
+}
+
+
+$mainColor: #FFD74A;
+$secondColor: #000000;
+$mainBgc: #f5f5f5;
+$mainFontColor: #000000;
+$secondFontColor: #ffffff;
+$sideColor: #616161;
+
+$mainFont: 'Montserrat', sans-serif;
