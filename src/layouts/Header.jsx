@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 
-import logo from '../images/logo.png';
+import logo from '../images/logo@inne.png';
 
 import '../styles/Header.scss'
 

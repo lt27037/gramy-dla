@@ -20,6 +20,10 @@ const PhotoCarousel = ({items}) => {
             onDragStart={handleDragStart}
             src={`https://picsum.photos/id/${item.id}/${photoWidth}/${photoHeight}.webp`}
          />
+         <div className="photoSlider__content">
+            <h3 className="photoSlider__content__discription">Kliknij po więcej szczegółów</h3>
+            <h2 className="photoSlider__content__title">Baner Powitalny</h2>
+         </div>
       </div>
    ))
 

@@ -12,6 +12,8 @@
    &__logo{
       align-self: center;
       justify-self: start;
+      width: auto;
+      height: 50px;
    }
    &__menuBtn{
       display: none;
@@ -64,13 +66,11 @@
                cursor: pointer;
                text-decoration: none;
                color: $mainFontColor;
-               font-weight: 500;
                font-size: 2rem;
-               letter-spacing: -1px;
-               font-weight: 550;
+               font-weight: 600;
                padding: 0 18px;
                height: 100%;
-               border-bottom: 4px solid transparent;
+               border-bottom: 5px solid transparent;
             }
             a.option--active{
                border-bottom: 4px solid $mainColor;
@@ -87,7 +87,7 @@
       padding: 0 5%;
       width: 100%;
       display: flex;
-      height: 60px;
+      height: 70px;
       justify-content: space-between;
       align-items: center;
       &__button{

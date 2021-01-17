@@ -2,8 +2,32 @@
 
 .photoSlider{
    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
    .alice-carousel{
       margin: 0;
+   }
+   &__content{
+      position: absolute;
+      width: 750px;
+      height: 250px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: #000000aa;
+      color: #ffffff;
+      @include flexCenter(column);
+      &__discription{
+         font-size: 2.5rem;
+         font-weight: 400;
+         letter-spacing: -1px;
+      }
+      &__title{
+         font-size: 3.5rem;
+         letter-spacing: 1px;
+      }
    }
 }
 
@@ -73,6 +97,31 @@
       &::before{
          left: 40%;
          transform: rotate(45deg) translateY(6px);
+      }
+   }
+}
+
+@media(max-width: 786px){
+   .photoSlider__content{
+      position: absolute;
+      width: 250px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: #000000aa;
+      color: #ffffff;
+      @include flexCenter(column);
+      &__discription{
+         font-size: 2.5rem;
+         font-weight: 400;
+         letter-spacing: -1px;
+         text-align: center;
+      }
+      &__title{
+         font-size: 3.5rem;
+         text-align: center;
+         letter-spacing: 1px;
       }
    }
 }
