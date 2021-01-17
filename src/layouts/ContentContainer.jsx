@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage'
@@ -12,104 +12,56 @@ import Volunteer from '../pages/Volunteer'
 import '../styles/ContentContainer.scss'
 
 
-const sponsorsList = [
-   {
-      id: 1,
-      link: 'https://picsum.photos/id/453/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 2,
-      link: 'https://picsum.photos/id/234/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 3,
-      link: 'https://picsum.photos/id/132/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 4,
-      link: 'https://picsum.photos/id/342/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 5,
-      link: 'https://picsum.photos/id/119/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 6,
-      link: 'https://picsum.photos/id/230/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 7,
-      link: 'https://picsum.photos/id/430/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 8,
-      link: 'https://picsum.photos/id/100/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 9,
-      link: 'https://picsum.photos/id/331/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 10,
-      link: 'https://picsum.photos/id/213/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 11,
-      link: 'https://picsum.photos/id/297/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-   {
-      id: 12,
-      link: 'https://picsum.photos/id/198/150/100.webp',
-      name: 'Lorem ipsum'
-   },
-]
-
-
 const ContentContainer = () => {
 
-   
+   const [sponsors, setSponsors] = useState([]);
 
+   const getSponsors = async (url) => {
+      try{
+         const respons = await fetch(url);
+         const data = await respons.json();
+         return data;
+      }catch(err){
+         console.error('Błąd łączenia z serwerem! ' + err);
+      }
+   }
+
+   useEffect(
+      () => {
+         const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
+         getSponsors(sponsorsUrl).then(data => setSponsors(data));
+      }, []
+   )
 
    return(
       <div className="container">
          <Switch>
             <Route path="/" exact >
-               <HomePage sponsors={sponsorsList}/>
+               <HomePage sponsors={sponsors}/>
             </Route>
 
             <Route path="/aktualnosci">
-               <News sponsors={sponsorsList}/>
+               <News sponsors={sponsors}/>
             </Route>
 
             <Route path="/galeria">
-               <Gallery sponsors={sponsorsList}/>
+               <Gallery sponsors={sponsors}/>
             </Route>
 
             <Route path="/onas">
-               <About sponsors={sponsorsList}/>
+               <About sponsors={sponsors}/>
             </Route>
 
             <Route path="/sponsorzy">
-               <Sponsors sponsors={sponsorsList}/>
+               <Sponsors sponsors={sponsors}/>
             </Route>
 
             <Route path="/wydarzenia">
-               <Events sponsors={sponsorsList}/>
+               <Events sponsors={sponsors}/>
             </Route>
 
             <Route path="/zostan-wolontariuszem">
-               <Volunteer sponsors={sponsorsList}/>
+               <Volunteer sponsors={sponsors}/>
             </Route>
          </Switch>
       </div>

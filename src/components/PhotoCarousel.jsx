@@ -8,14 +8,17 @@ const handleDragStart = (e) => e.preventDefault();
 
 const PhotoCarousel = ({items}) => {
 
+   const photoHeight = 100;
+   const photoWidth = 150;
+
    const photoList = items.map(item => (
       <div className="photoCarousel__item">
          <img
-            alt={item.name}
+            alt={item.author}
             className='photoCarousel__img'
             key={item.id}
             onDragStart={handleDragStart}
-            src={item.link}
+            src={`https://picsum.photos/id/${item.id}/${photoWidth}/${photoHeight}.webp`}
          />
       </div>
    ))
