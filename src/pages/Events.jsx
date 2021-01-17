@@ -1,10 +1,14 @@
 import React from 'react'
 
+import PhotoCarousel from '../components/PhotoCarousel';
+
 import '../styles/Events.scss'
 
 const Events = ({sponsors}) => {
    return(
-      <div>Wydarzenia</div>
+      <>
+         <PhotoCarousel items={sponsors} /> 
+      </>
    );
 };
 
