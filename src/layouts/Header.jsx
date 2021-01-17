@@ -64,13 +64,27 @@ const Header = () => {
       sponsorBtn.classList.toggle('button--active');
    }
 
+   const handleLinkClick = ({target}) => {
+      if(target.nodeName === 'A'){
+         let menu = target.parentNode.parentNode.parentNode;
+         let button = menu.previousElementSibling;
+         let sponsorBtn = menu.nextElementSibling;
+         button.classList.remove('btn--active');
+         menu.classList.remove('menu--active');
+         sponsorBtn.classList.remove('button--active');
+      }
+   }
+
    useEffect(
       () => {
          let btn = document.querySelector('.header__menuBtn__btn');
-         btn !== null ? btn.addEventListener('click', handleMenuClick) : console.log('blad');
+         let headerMenu = document.querySelector('.header__menu__list');
+         btn !== null ? btn.addEventListener('click', handleMenuClick) : console.error('Menu error!');
+         headerMenu !== null ? headerMenu.addEventListener('click', handleLinkClick) : console.error('Menu error!');
 
          return () => {
             btn?.removeEventListener('click', handleMenuClick);
+            headerMenu?.removeEventListener('click', handleLinkClick);
          }
       },
       []

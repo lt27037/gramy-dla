@@ -91,15 +91,14 @@
          &__list{
             flex-direction: column;
             justify-content: space-around;
-            padding: 15vh 0 30vh 0;
+            height: 100%;
+            padding: 12vh 0 25vh 0;
             width: 80%;
             &__option{
-               height: auto;
+               height: 75px;
                width: auto;
-               // justify-content: flex-start;
                a{
-                  height: 80px;
-                  // justify-content: flex-start;
+                  height: 55px;
                   font-size: 3.5rem;
                   font-weight: 500;
                   padding: 0;
