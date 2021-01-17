@@ -5,7 +5,7 @@ import '../styles/ContentContainer.scss'
 const ContentContainer = () => {
    return(
       <div className="container">
-         Content 
+         Content
       </div>
    );
 };

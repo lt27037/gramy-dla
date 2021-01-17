@@ -1,11 +1,19 @@
 @import 'variables';
 
+.container{
+   font-size: 2rem;
+   background-color: $mainBgc;
+   grid-row: 2;
+   @include flexCenter(column)
+}
+
 @media(max-width: 786px){
    .container{
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       font-size: 3rem;
+      grid-row: 2;
    }
 }

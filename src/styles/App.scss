@@ -1,9 +1,17 @@
 @import 'variables';
 
+#main{
+  width: 100%;
+  min-height: 110vh;
+  display: grid;
+  grid-template-rows: 60px 1fr 130px;
+  background: $mainBgc;
+}
+
 @media(max-width: 786px){
   #main{
     width: 100%;
-    min-height: 130vh;
+    min-height: 150vh;
     display: grid;
     grid-template-rows: 70px 1fr 60vh;
     background: $mainBgc;
