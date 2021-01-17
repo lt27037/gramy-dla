@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/News.scss'
 
-const News = () => {
+const News = ({sponsors}) => {
    return(
       <div>Aktualności</div>
    );

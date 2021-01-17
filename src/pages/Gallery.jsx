@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Gallery.scss'
 
-const Gallery = () => {
+const Gallery = ({sponsors}) => {
    return(
       <div>Galeria</div>
    );

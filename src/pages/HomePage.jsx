@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/HomePage.scss'
 
-const HomePage = () => {
+const HomePage = ({sponsors}) => {
    return(
       <div>Strona Główna</div>
    );

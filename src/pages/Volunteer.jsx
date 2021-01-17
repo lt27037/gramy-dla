@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Volunteer.scss'
 
-const Volunteer = () => {
+const Volunteer = ({sponsors}) => {
    return(
       <div>Zostań wolontariuszem!</div>
    );

@@ -118,7 +118,12 @@ const Header = () => {
                {menuItems}
             </ul>
          </nav>
-         <button className="header__button" onClick={handleBtnClick}>Zostań wolontariuszem</button>
+         <button
+            className="header__button"
+            onClick={handleBtnClick}
+         >
+            Zostań wolontariuszem
+         </button>
       </header>
    );
 };

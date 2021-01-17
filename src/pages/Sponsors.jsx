@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Sponsors.scss'
 
-const Sponsors = () => {
+const Sponsors = ({sponsors}) => {
    return(
       <div>Sponsorzy</div>
    );
