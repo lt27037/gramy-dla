@@ -17,17 +17,7 @@ const ContentContainer = () => {
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
 
-   const getSponsors = async (url) => {
-      try{
-         const response = await fetch(url);
-         const data = await response.json();
-         return data;
-      }catch(err){
-         console.error('Błąd łączenia z serwerem! ' + err);
-      }
-   }
-
-   const getSliders = async (url) => {
+   const getApiData = async (url) => {
       try{
          const response = await fetch(url);
          const data = await response.json();
@@ -41,8 +31,8 @@ const ContentContainer = () => {
       () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
          const slidersUrl = 'https://picsum.photos/v2/list?page=3&limit=3';
-         getSponsors(sponsorsUrl).then(data => setSponsors(data));
-         getSliders(slidersUrl).then(data => setSliders(data));
+         getApiData(sponsorsUrl).then(data => setSponsors(data));
+         getApiData(slidersUrl).then(data => setSliders(data));
       }, []
    )
 
