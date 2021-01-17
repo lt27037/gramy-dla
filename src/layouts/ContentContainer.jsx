@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage'
@@ -15,68 +15,70 @@ import '../styles/ContentContainer.scss'
 const sponsorsList = [
    {
       id: 1,
-      link: 'https://picsum.photos/id/453/150',
+      link: 'https://picsum.photos/id/453/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 2,
-      link: 'https://picsum.photos/id/234/150',
+      link: 'https://picsum.photos/id/234/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 3,
-      link: 'https://picsum.photos/id/132/150',
+      link: 'https://picsum.photos/id/132/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 4,
-      link: 'https://picsum.photos/id/342/150',
+      link: 'https://picsum.photos/id/342/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 5,
-      link: 'https://picsum.photos/id/119/150',
+      link: 'https://picsum.photos/id/119/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 6,
-      link: 'https://picsum.photos/id/230/150',
+      link: 'https://picsum.photos/id/230/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 7,
-      link: 'https://picsum.photos/id/430/150',
+      link: 'https://picsum.photos/id/430/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 8,
-      link: 'https://picsum.photos/id/100/150',
+      link: 'https://picsum.photos/id/100/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 9,
-      link: 'https://picsum.photos/id/331/150',
+      link: 'https://picsum.photos/id/331/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 10,
-      link: 'https://picsum.photos/id/213/150',
+      link: 'https://picsum.photos/id/213/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 11,
-      link: 'https://picsum.photos/id/297/150',
+      link: 'https://picsum.photos/id/297/150/100.webp',
       name: 'Lorem ipsum'
    },
    {
       id: 12,
-      link: 'https://picsum.photos/id/198/150',
+      link: 'https://picsum.photos/id/198/150/100.webp',
       name: 'Lorem ipsum'
    },
 ]
 
 
 const ContentContainer = () => {
+
+   
 
 
    return(
