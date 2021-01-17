@@ -1,10 +1,14 @@
 import React from 'react'
 
+import PhotoCarousel from '../components/PhotoCarousel';
+
 import '../styles/News.scss'
 
 const News = ({sponsors}) => {
    return(
-      <div>Aktualności</div>
+      <>
+         <PhotoCarousel items={sponsors} /> 
+      </>
    );
 };
 

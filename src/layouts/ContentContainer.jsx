@@ -15,62 +15,62 @@ import '../styles/ContentContainer.scss'
 const sponsorsList = [
    {
       id: 1,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/453/150',
       name: 'Lorem ipsum'
    },
    {
       id: 2,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/234/150',
       name: 'Lorem ipsum'
    },
    {
       id: 3,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/132/150',
       name: 'Lorem ipsum'
    },
    {
       id: 4,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/342/150',
       name: 'Lorem ipsum'
    },
    {
       id: 5,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/119/150',
       name: 'Lorem ipsum'
    },
    {
       id: 6,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/230/150',
       name: 'Lorem ipsum'
    },
    {
       id: 7,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/430/150',
       name: 'Lorem ipsum'
    },
    {
       id: 8,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/100/150',
       name: 'Lorem ipsum'
    },
    {
       id: 9,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/331/150',
       name: 'Lorem ipsum'
    },
    {
       id: 10,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/213/150',
       name: 'Lorem ipsum'
    },
    {
       id: 11,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/297/150',
       name: 'Lorem ipsum'
    },
    {
       id: 12,
-      link: 'https://picsum.photos/300',
+      link: 'https://picsum.photos/id/198/150',
       name: 'Lorem ipsum'
    },
 ]

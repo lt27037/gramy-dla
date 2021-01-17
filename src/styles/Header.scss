@@ -8,6 +8,7 @@
    display: grid;
    grid-template-columns: 15% 1fr 15%;
    background-color: $headerBgc;
+   z-index: 100;
    &__logo{
       align-self: center;
       justify-self: start;

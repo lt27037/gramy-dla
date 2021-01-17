@@ -4,14 +4,16 @@
    font-size: 2rem;
    background-color: $mainBgc;
    grid-row: 2;
-   @include flexCenter(column)
+   @include flexCenter(column);
+   justify-content: flex-start;
+   overflow-x: hidden;
 }
 
 @media(max-width: 786px){
    .container{
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       font-size: 3rem;
       grid-row: 2;
