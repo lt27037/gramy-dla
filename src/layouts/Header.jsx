@@ -67,7 +67,7 @@ const Header = () => {
    const handleLinkClick = ({target}) => {
       if(target.nodeName === 'A'){
          let menu = target.parentNode.parentNode.parentNode;
-         let button = menu.previousElementSibling;
+         let button = menu.previousElementSibling.firstChild;
          let sponsorBtn = menu.nextElementSibling;
          button.classList.remove('btn--active');
          menu.classList.remove('menu--active');
