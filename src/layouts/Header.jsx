@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import logo from '../images/logo.png';
 
@@ -40,6 +40,8 @@ const menuNames = [
 
 const Header = () => {
 
+   const history = useHistory();
+
    const menuItems = menuNames.map(name => (
       <li
          className="header__menu__list__option"
@@ -75,6 +77,14 @@ const Header = () => {
       }
    }
 
+   const handleBtnClick = () => {
+      const moveTo = {
+         pathname: '/zostan-wolontariuszem',
+      }
+
+      history.push(moveTo);
+   }
+
    useEffect(
       () => {
          let btn = document.querySelector('.header__menuBtn__btn');
@@ -108,7 +118,7 @@ const Header = () => {
                {menuItems}
             </ul>
          </nav>
-         <button className="header__button">Zostań wolontariuszem</button>
+         <button className="header__button" onClick={handleBtnClick}>Zostań wolontariuszem</button>
       </header>
    );
 };

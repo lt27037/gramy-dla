@@ -7,6 +7,7 @@ import Gallery from '../pages/Gallery'
 import About from '../pages/About'
 import Sponsors from '../pages/Sponsors'
 import Events from '../pages/Events'
+import Volunteer from '../pages/Volunteer'
 
 import '../styles/ContentContainer.scss'
 
@@ -22,6 +23,7 @@ const ContentContainer = () => {
             <Route path="/onas" component={About} />
             <Route path="/sponsorzy" component={Sponsors} />
             <Route path="/wydarzenia" component={Events} />
+            <Route path="/zostan-wolontariuszem" component={Volunteer} />
          </Switch>
       </div>
    );
