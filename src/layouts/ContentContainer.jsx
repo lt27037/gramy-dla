@@ -15,11 +15,22 @@ import '../styles/ContentContainer.scss'
 const ContentContainer = () => {
 
    const [sponsors, setSponsors] = useState([]);
+   const [sliders, setSliders] = useState([]);
 
    const getSponsors = async (url) => {
       try{
-         const respons = await fetch(url);
-         const data = await respons.json();
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error('Błąd łączenia z serwerem! ' + err);
+      }
+   }
+
+   const getSliders = async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
          return data;
       }catch(err){
          console.error('Błąd łączenia z serwerem! ' + err);
@@ -29,7 +40,9 @@ const ContentContainer = () => {
    useEffect(
       () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
+         const slidersUrl = 'https://picsum.photos/v2/list?page=3&limit=3';
          getSponsors(sponsorsUrl).then(data => setSponsors(data));
+         getSliders(slidersUrl).then(data => setSliders(data));
       }, []
    )
 
@@ -37,7 +50,7 @@ const ContentContainer = () => {
       <div className="container">
          <Switch>
             <Route path="/" exact >
-               <HomePage sponsors={sponsors}/>
+               <HomePage sponsors={sponsors} sliders={sliders}/>
             </Route>
 
             <Route path="/aktualnosci">

@@ -12,12 +12,12 @@
       justify-self: center;
       align-self: center;
    }
+   .alice-carousel{
+      margin: 20px 0;
+      z-index: 0;
+   }
 }
 
-.alice-carousel{
-   margin: 20px 0;
-   z-index: 0;
-}
 
 @media(max-width: 786px){
    .photoCarousel{

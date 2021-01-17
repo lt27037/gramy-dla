@@ -1,21 +1,21 @@
 import React from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import '../styles/PhotoCarousel.scss';
+import '../styles/PhotoSlider.scss';
 
 const handleDragStart = (e) => e.preventDefault();
 
 
 const PhotoCarousel = ({items}) => {
 
-   const photoHeight = 150;
-   const photoWidth = 150;
+   const photoHeight = 500;
+   const photoWidth = 1900;
 
    const photoList = items.map(item => (
-      <div className="photoCarousel__item">
+      <div className="photoSlider__item">
          <img
             alt={item.author}
-            className='photoCarousel__img'
+            className='photoSlider__img'
             key={item.id}
             onDragStart={handleDragStart}
             src={`https://picsum.photos/id/${item.id}/${photoWidth}/${photoHeight}.webp`}
@@ -23,33 +23,16 @@ const PhotoCarousel = ({items}) => {
       </div>
    ))
 
-   const responsiveObj = {
-      0: {
-         items: 3,
-      },
-      786: {
-         items: 4,
-      },
-      1200: {
-         items: 7,
-      },
-      1800: {
-         items: 8,
-      }
-   }
-
    return (
-      <div className="photoCarousel">
+      <div className="photoSlider">
          <AliceCarousel 
             mouseTracking 
             items={photoList} 
             autoHeight={false} 
-            responsive={responsiveObj}
             autoPlay={true}
-            disableButtonsControls={true}
             disableDotsControls={true}
             infinite={true}
-            autoPlayInterval={3000}
+            autoPlayInterval={5000}
          />
       </div>
    );

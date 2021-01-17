@@ -1,10 +1,16 @@
 import React from 'react'
 
+import PhotoCarousel from '../components/PhotoCarousel';
+import PhotoSlider from '../components/PhotoSlider';
+
 import '../styles/HomePage.scss'
 
-const HomePage = ({sponsors}) => {
+const HomePage = ({sponsors, sliders}) => {
    return(
-      <div>Strona Główna</div>
+      <>
+         <PhotoSlider items={sliders}/>
+         <PhotoCarousel items={sponsors}/>
+      </>
    );
 };
 

@@ -1,0 +1,78 @@
+@import 'variables';
+
+.photoSlider{
+   width: 100%;
+   .alice-carousel{
+      margin: 0;
+   }
+}
+
+.alice-carousel{
+   z-index: 0;
+   position: relative;
+   &__prev-btn,
+   &__next-btn{
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+   }
+   &__prev-btn{
+      left: 5%;
+   }
+   &__next-btn{
+      right: 5%;
+   }
+   &__next-btn-wrapper,
+   &__prev-btn-wrapper{
+      background-color: #000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+   }
+   &__next-btn-item,
+   &__prev-btn-item{
+      width: 40px;
+      height: 40px;
+      @include flexCenter(row);
+      position: relative;
+      span{
+         display: none;
+      }
+      &::after,
+      &::before{
+         content: '';
+         position: absolute;
+         width: 15px;
+         height: 3px;
+         border-radius: 1.5px;
+         background-color: #ffffff;
+      }
+      &:hover::before,
+      &:hover::after{
+         background: $mainColor;
+      }
+      
+   }
+   &__next-btn-item{
+      &::after{
+         right: 40%;
+         transform: rotate(45deg) translateY(-6px);
+      }
+      &::before{
+         right: 40%;
+         transform: rotate(-45deg) translateY(6px);
+      }
+   }
+   &__prev-btn-item{
+      &::after{
+         left: 40%;
+         transform: rotate(-45deg) translateY(-6px);
+      }
+      &::before{
+         left: 40%;
+         transform: rotate(45deg) translateY(6px);
+      }
+   }
+}
