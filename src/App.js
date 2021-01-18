@@ -9,7 +9,7 @@ import './styles/App.scss';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div id="main">
         <Header />
         <ContentContainer />
