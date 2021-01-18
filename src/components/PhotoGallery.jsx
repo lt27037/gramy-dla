@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect} from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
 import ImageMasonry from 'react-image-masonry';
 
@@ -12,6 +12,7 @@ const PhotoGallery = ({photos}) => {
    const [photoOpened, setPhotoOpened] = useState('');
    const [columnsQuantity, setColumnsQuantity] = useState(4);
    const [containerWidth, setContainerWidth] = useState('80%');
+   const [photoArr, setPhotoArr] = useState([]);
 
    const toggleGallery = () => setGalleryOpened(!galleryOpened);
 
@@ -26,7 +27,7 @@ const PhotoGallery = ({photos}) => {
       }
    }
 
-   const handleResize = () => {
+   const handleReload = () => {
       let width = window.innerWidth;
       if(width <= 786){
          setColumnsQuantity(1);
@@ -47,11 +48,11 @@ const PhotoGallery = ({photos}) => {
       () => {
          const galleryBox = document.querySelector('.galleryWrapper');
          galleryBox?.addEventListener('click', handlePhotoClick );
-         window.addEventListener('resize', handleResize);
+         window.addEventListener('resize', handleReload);
 
          return () => {
             galleryBox?.removeEventListener('click', handlePhotoClick );
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', handleReload);
          }
       },
       []
@@ -59,10 +60,22 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
-         handleResize()
+         const wrapper = document.querySelector('.galleryWrapper');
+         const photos = wrapper?.querySelectorAll('img')
+         if(photos !== undefined && photos.length > photosList.length - 5){
+            handleReload()
+         }
+      }
+   )
+
+   useEffect(
+      () => {
+         handleReload()
       },
       [window.innerWidth]
    )
+
+   console.log(photosList.length);
 
    return(
       <>
@@ -71,6 +84,7 @@ const PhotoGallery = ({photos}) => {
             containerWidth={containerWidth}
             className={'galleryWrapper'}
             animate={true}
+            forceOrder={false}
             imageUrls={photosList}
          />
          <ReactBnbGallery

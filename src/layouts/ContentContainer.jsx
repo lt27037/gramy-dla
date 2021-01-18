@@ -8,6 +8,7 @@ import About from '../pages/About'
 import Sponsors from '../pages/Sponsors'
 import Events from '../pages/Events'
 import Volunteer from '../pages/Volunteer'
+import BecomSponsor from '../pages/BecomSponsor';
 
 import '../styles/ContentContainer.scss'
 
@@ -68,6 +69,10 @@ const ContentContainer = () => {
 
             <Route path="/zostan-wolontariuszem">
                <Volunteer sponsors={sponsors}/>
+            </Route>
+
+            <Route path="/zostan-sponsorem">
+               <BecomSponsor sponsors={sponsors}/>
             </Route>
          </Switch>
       </div>
