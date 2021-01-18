@@ -32,7 +32,7 @@ const ContentContainer = () => {
       () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
          const slidersUrl = 'https://picsum.photos/v2/list?page=3&limit=3';
-         const galleryUrl ='https://picsum.photos/v2/list?page=1&limit=50';
+         const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(galleryUrl).then(data => setGallery(data));

@@ -82,6 +82,15 @@
       
 }
 
+@media(max-width: 1550px){
+   :root{
+      font-size: 10px;
+   }
+   .header__button{
+      font-size: 1.5rem;
+   }
+}
+
 @media(max-width: 768px){
    .header{
       padding: 0 5%;
