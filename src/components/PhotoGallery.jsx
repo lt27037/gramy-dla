@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useLayoutEffect} from 'react';
+// @ts-nocheck
+import React, { useState, useEffect } from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
 import ImageMasonry from 'react-image-masonry';
 
@@ -12,7 +13,7 @@ const PhotoGallery = ({photos}) => {
    const [photoOpened, setPhotoOpened] = useState('');
    const [columnsQuantity, setColumnsQuantity] = useState(4);
    const [containerWidth, setContainerWidth] = useState('80%');
-   const [photoArr, setPhotoArr] = useState([]);
+   // const [windowWidth, setWindowWidth] = useState(null);
 
    const toggleGallery = () => setGalleryOpened(!galleryOpened);
 
@@ -62,20 +63,11 @@ const PhotoGallery = ({photos}) => {
       () => {
          const wrapper = document.querySelector('.galleryWrapper');
          const photos = wrapper?.querySelectorAll('img')
-         if(photos !== undefined && photos.length > photosList.length - 5){
+         if(photos !== undefined && photos.length > photosList.length){
             handleReload()
          }
       }
    )
-
-   useEffect(
-      () => {
-         handleReload()
-      },
-      [window.innerWidth]
-   )
-
-   console.log(photosList.length);
 
    return(
       <>
