@@ -1,0 +1,64 @@
+@import 'variables';
+
+.become{
+   &__title{
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 3rem;
+      font-size: 3rem;
+      font-weight: 600;
+   }
+   &__wrapper{
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      width: 100%;
+      &__leftBar{
+         @include flexCenter(column);
+         justify-content: flex-start;
+         padding: 10rem 10%;
+         &__titleA{
+            font-size: 3rem;
+         }
+         &__titleB{
+            font-size: 5rem;
+         }
+         &__text{
+            padding: 2rem 0;
+            font-size: 2.3rem;
+            text-indent: 2rem;
+         }
+      }
+      &__rightBar{
+         @include flexCenter(column);
+         margin-top: 10rem;
+         padding-bottom: 10rem;
+         justify-content: flex-start;
+         background-color: $headerBgc;
+         &__title{
+            width: 100%;
+            background-color: $mainColor;
+            padding: 3rem;
+            text-align: center;
+         }
+         &__data{
+            height: 100%;
+            @include flexCenter(column)
+            .data__text{
+               padding: 5rem 0 0 0;
+               font-style: 2.5rem;
+            }
+            .data__accontNumber{
+               font-size: 3rem;
+               font-weight: 600;
+               padding-top: 5rem;
+            }
+            .data__info{
+               padding: 3rem 15%;
+               text-align: center;
+            }
+         }
+      }
+   }
+}

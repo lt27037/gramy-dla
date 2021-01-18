@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 
 import SponsorProfile from '../components/SponsorProfile';
 
@@ -12,6 +13,15 @@ const Sponsors = ({sponsors}) => {
       <SponsorProfile src={`${sponsorLink}${id}/300.webp`} alt={`Zdjęcie profilowe sponsora ${author}.`} name={author} key={id}  />
    ))
 
+   const history = useHistory();
+
+   const handleClick = () => {
+      const pathObj = {
+         pathname: '/zostan-sponsorem',
+      }
+      history.push(pathObj);
+   }
+
    return(
       <div className="sponsors">
          <h2 className="sponsors__title"> Serdecznie dziękujemy wszystkim którzy wspierają nasze działania!</h2>
@@ -19,7 +29,7 @@ const Sponsors = ({sponsors}) => {
          <div className="sponsors__profilesWrapper">
             {sponsorsList}
          </div>
-         <button className="button">Zostań Sponsorem</button>
+         <button className="button" onClick={handleClick}>Zostań Sponsorem</button>
       </div>
    );
 };
