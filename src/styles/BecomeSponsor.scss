@@ -44,7 +44,7 @@
          }
          &__data{
             height: 100%;
-            @include flexCenter(column)
+            @include flexCenter(column);
             .data__text{
                padding: 5rem 0 0 0;
                font-style: 2.5rem;
