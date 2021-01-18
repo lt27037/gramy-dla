@@ -1,0 +1,17 @@
+.sponsorProfile{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   padding-bottom: 3rem;
+   &__photo{
+      
+   }
+   &__name{
+      font-size: 2rem;
+      display: block;
+      font-weight: 600;
+      padding: 2rem 0;
+      text-align: center;
+   }
+}
