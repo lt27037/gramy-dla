@@ -1,13 +1,15 @@
 import React from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
+import PhotoGallery from '../components/PhotoGallery';
 
 import '../styles/Gallery.scss'
 
-const Gallery = ({sponsors}) => {
+const Gallery = ({sponsors, photos}) => {
    return(
       <>
-         <PhotoCarousel items={sponsors} /> 
+         <PhotoCarousel items={sponsors} />
+         <PhotoGallery photos={photos}/>
       </>
    );
 };

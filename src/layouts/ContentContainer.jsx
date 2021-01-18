@@ -16,6 +16,7 @@ const ContentContainer = () => {
 
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
+   const [gallery, setGallery] = useState([]);
 
    const getApiData = async (url) => {
       try{
@@ -31,8 +32,10 @@ const ContentContainer = () => {
       () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
          const slidersUrl = 'https://picsum.photos/v2/list?page=3&limit=3';
+         const galleryUrl ='https://picsum.photos/v2/list?page=1&limit=50';
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
+         getApiData(galleryUrl).then(data => setGallery(data));
       }, []
    )
 
@@ -48,7 +51,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/galeria">
-               <Gallery sponsors={sponsors}/>
+               <Gallery sponsors={sponsors} photos={gallery}/>
             </Route>
 
             <Route path="/onas">
