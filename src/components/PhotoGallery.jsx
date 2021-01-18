@@ -36,10 +36,10 @@ const PhotoGallery = ({photos}) => {
          setContainerWidth('90%')
       }else if(width > 1201 && width <= 1550){
          setColumnsQuantity(3);
-         setContainerWidth('85%')
+         setContainerWidth('90%')
       }else if(width >= 1551){
-         setColumnsQuantity(4);
-         setContainerWidth('80%')
+         setColumnsQuantity(5);
+         setContainerWidth('100%')
       }
    }
 

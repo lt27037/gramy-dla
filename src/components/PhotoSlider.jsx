@@ -8,7 +8,7 @@ const handleDragStart = (e) => e.preventDefault();
 
 const PhotoCarousel = ({items}) => {
 
-   const photoHeight = 500;
+   const photoHeight = 600;
    const photoWidth = 1900;
 
    const photoList = items.map(item => (

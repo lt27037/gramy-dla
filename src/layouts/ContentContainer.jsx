@@ -31,7 +31,7 @@ const ContentContainer = () => {
    useEffect(
       () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
-         const slidersUrl = 'https://picsum.photos/v2/list?page=3&limit=3';
+         const slidersUrl = 'https://picsum.photos/v2/list?page=6&limit=3';
          const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));

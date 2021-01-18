@@ -33,8 +33,11 @@ const PhotoCarousel = ({items}) => {
       1200: {
          items: 7,
       },
+      1550: {
+         items: 9
+      },
       1800: {
-         items: 8,
+         items: 9,
       }
    }
 
