@@ -56,7 +56,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/onas">
-               <About sponsors={sponsors}/>
+               <About />
             </Route>
 
             <Route path="/sponsorzy">
