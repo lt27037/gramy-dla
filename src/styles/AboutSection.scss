@@ -9,7 +9,9 @@
    height: 100%;
    grid-template-columns: 1fr 1fr;
    z-index: 10;
+   background-color: #161616;
    &__photo{
+      width: 70%;
       z-index: 10;
       justify-self: center;
       align-self: center;
@@ -55,6 +57,14 @@
    .aboutSection__text{
       grid-column: 1;
       grid-row: 1;
+   }
+}
+
+@media(max-width: 1550px){
+   .aboutSection{
+      &__photo{
+         width: 70%;
+      }
    }
 }
 

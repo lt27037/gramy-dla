@@ -62,3 +62,41 @@
       }
    }
 }
+
+@media(max-width: 786px){
+   .become{
+      &__title{
+         padding: 3rem 1rem;
+         font-size: 2.8rem;
+      }
+      &__wrapper{
+         grid-template-columns: 100%;
+         grid-template-rows: auto auto;
+         &__leftBar{
+            padding: 5rem 1rem 1rem 1rem;
+            &__titleA{
+               text-align: center;
+            }
+            &__text{
+               padding: 3rem 2%;
+               text-align: justify;
+               line-height: 3rem;
+            }
+         }
+         &__rightBar{
+            margin: 0;
+            &__title{
+               padding: 3rem 0;
+               font-size: 3.5rem;
+            }
+            .data__accontNumber{
+               font-size: 2.5rem;
+               letter-spacing: -0.5px;
+            }
+            .data__info{
+               padding: 3rem 1rem;
+            }
+         }
+      }
+   }
+}

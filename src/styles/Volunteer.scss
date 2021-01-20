@@ -1,0 +1,36 @@
+.volunteer{
+   &__title{
+      font-size: 3.5rem;
+      padding: 3rem;
+      width: 100%;
+      text-align: center;
+   }
+   &__text{
+      width: 50%;
+      text-align: justify;
+      font-size: 2rem;
+      text-indent: 2rem;
+      line-height: 3rem;
+   }
+   &__photo{
+      padding: 5rem 0;
+   }
+}
+
+@media(max-width: 786px){
+   .volunteer{
+      &__title{
+         padding: 3rem 0;
+         font-size: 3rem;
+      }
+      &__text{
+         width: 100%;
+         padding: 0 1rem;
+         line-height: 2.7rem;
+      }
+      &__photo{
+         width: 100%;
+      }
+   }
+   
+}

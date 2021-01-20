@@ -27,6 +27,7 @@ const PhotoCarousel = ({items}) => {
       </div>
    ))
 
+
    return (
       <div className="photoSlider">
          <AliceCarousel 

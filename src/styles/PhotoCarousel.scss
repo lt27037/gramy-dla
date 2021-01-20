@@ -13,11 +13,19 @@
       align-self: center;
    }
    .alice-carousel{
-      margin: 20px 0;
+      margin: 10px 0;
       z-index: 0;
    }
 }
 
+@media(max-width: 1550px){
+   .photoCarousel{
+      &__item{
+         height: 120px;
+         @include flexCenter(row);
+      }
+   }
+}
 
 @media(max-width: 786px){
    .photoCarousel{

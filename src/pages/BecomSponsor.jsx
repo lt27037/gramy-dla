@@ -32,7 +32,7 @@ const BecomSponsor = ({sponsors}) => {
                   <span className="data__info">
                      W tytule przelewu podaj Nazwę firmy / imię i nazwisko oraz adress email lub numer telefonu
                   </span>
-                  <span className="data_info">DO DOKOŃCZENIA I KONSULTACJI</span>
+                  <span className="data__info">* DO DOKOŃCZENIA I KONSULTACJI *</span>
                </div>
             </div>
          </div>
