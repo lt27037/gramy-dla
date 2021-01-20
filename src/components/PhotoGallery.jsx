@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
 import ImageMasonry from 'react-image-masonry';
 
@@ -67,6 +67,13 @@ const PhotoGallery = ({photos}) => {
             handleReload()
          }
       }
+   )
+
+   useLayoutEffect(
+      () => {
+         handleReload()
+      },
+      []
    )
 
    return(

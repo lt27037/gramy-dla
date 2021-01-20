@@ -48,8 +48,23 @@
 
 @media(max-width: 786px){
    .sponsors{
+      margin: 0;
       &__profilesWrapper{
          grid-template-columns: 1fr;
+      }
+      &__title{
+         width: 90%;
+         font-size: 2.5rem;
+         padding: 4rem 0 2rem 0;
+      }
+      &__italic{
+         width: 100%;
+         padding: 2rem 5%;
+         font-size: 2.3rem;
+         line-height: 3.5rem;
+      }
+      &__profilesWrapper{
+         width: 100%;
       }
    }
 }
