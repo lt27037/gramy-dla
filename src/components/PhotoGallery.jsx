@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
 import ImageMasonry from 'react-image-masonry';
 
@@ -13,7 +13,7 @@ const PhotoGallery = ({photos}) => {
    const [photoOpened, setPhotoOpened] = useState('');
    const [columnsQuantity, setColumnsQuantity] = useState(4);
    const [containerWidth, setContainerWidth] = useState('80%');
-   // const [windowWidth, setWindowWidth] = useState(null);
+   const wrapper = useRef(null);
 
    const toggleGallery = () => setGalleryOpened(!galleryOpened);
 
@@ -47,12 +47,12 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
-         const galleryBox = document.querySelector('.galleryWrapper');
-         galleryBox?.addEventListener('click', handlePhotoClick );
+         const galleryBox = wrapper.current.querySelector('.galleryWrapper');
+         galleryBox.addEventListener('click', handlePhotoClick );
          window.addEventListener('resize', handleReload);
 
          return () => {
-            galleryBox?.removeEventListener('click', handlePhotoClick );
+            galleryBox.removeEventListener('click', handlePhotoClick );
             window.removeEventListener('resize', handleReload);
          }
       },
@@ -61,8 +61,8 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
-         const wrapper = document.querySelector('.galleryWrapper');
-         const photos = wrapper?.querySelectorAll('img')
+         const box = wrapper.current.querySelector('.galleryWrapper');
+         const photos = box.querySelectorAll('img')
          if(photos !== undefined && photos.length > photosList.length){
             handleReload()
          }
@@ -70,7 +70,7 @@ const PhotoGallery = ({photos}) => {
    )
 
    return(
-      <>
+      <div className="galleryBox" ref={wrapper}>
          <ImageMasonry
             numCols={columnsQuantity}
             containerWidth={containerWidth}
@@ -84,7 +84,7 @@ const PhotoGallery = ({photos}) => {
             photos={[photoOpened]}
             onClose={toggleGallery}
          />
-      </>
+      </div>
    )
 }
 

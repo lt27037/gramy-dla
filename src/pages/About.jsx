@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import '../styles/About.scss'
 import AboutSection from '../components/AboutSection';
@@ -16,6 +16,14 @@ const photo4 = 'https://picsum.photos/id/866/750/500.webp';
 const photo5 = 'https://picsum.photos/id/1005/750/500.webp';
 
 const About = () => {
+
+   useEffect(
+      () => {
+         window.scrollTo(0, 0);
+      },
+      []
+   )
+
    return(
       <div className="aboutWrapper">
          <AboutSection photo={photo1} text={text1} />

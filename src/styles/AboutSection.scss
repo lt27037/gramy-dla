@@ -47,7 +47,7 @@
    }
 }
 
-.aboutSection:nth-of-type(even){
+.aboutSection:nth-of-type(even){ 
    .aboutSection__photo{
       grid-column: 2;
       grid-row: 1;

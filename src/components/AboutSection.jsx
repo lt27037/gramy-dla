@@ -4,8 +4,6 @@ import '../styles/AboutSection.scss';
 
 const AboutSection = ({photo, text}) => {
 
-
-
    return(
       <section className="aboutSection">
          <img src={photo} alt="Zdjęcie w sekcji o nas" className="aboutSection__photo"/>

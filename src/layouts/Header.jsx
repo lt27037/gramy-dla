@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+// @ts-nocheck
+import React, { useEffect, useRef } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 
 import logo from '../images/logo@inne.png';
@@ -41,6 +42,7 @@ const menuNames = [
 const Header = () => {
 
    const history = useHistory();
+   const header = useRef(null);
 
    const menuItems = menuNames.map(name => (
       <li
@@ -81,27 +83,27 @@ const Header = () => {
       const moveTo = {
          pathname: '/zostan-wolontariuszem',
       }
-
+      
       history.push(moveTo);
    }
 
    useEffect(
       () => {
-         let btn = document.querySelector('.header__menuBtn__btn');
-         let headerMenu = document.querySelector('.header__menu__list');
-         btn !== null ? btn.addEventListener('click', handleMenuClick) : console.error('Menu error!');
-         headerMenu !== null ? headerMenu.addEventListener('click', handleLinkClick) : console.error('Menu error!');
+         let btn = header.current.querySelector('.header__menuBtn__btn');
+         let headerMenu = header.current.querySelector('.header__menu__list');
+         btn.addEventListener('click', handleMenuClick);
+         headerMenu.addEventListener('click', handleLinkClick);
 
          return () => {
-            btn?.removeEventListener('click', handleMenuClick);
-            headerMenu?.removeEventListener('click', handleLinkClick);
+            btn.removeEventListener('click', handleMenuClick);
+            headerMenu.removeEventListener('click', handleLinkClick);
          }
       },
       []
    )
       
    return(
-      <header className="header">
+      <header className="header" ref={header}>
          <img
             src={logo}
             alt="Logo stoważyszenia"
