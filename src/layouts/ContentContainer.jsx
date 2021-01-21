@@ -32,14 +32,15 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const sponsorsUrl = 'https://gora1234.webd.pro/wp-json/acf/v3/posts?categories=2';
-         const slidersUrl = 'https://picsum.photos/v2/list?page=6&limit=3';
+         const endPoint = "https://gora1234.webd.pro/wp-json/acf/v3/posts?categories"
+         const sponsorsUrl = `${endPoint}=2`;
+         const slidersUrl = `${endPoint}=3`;
+         const postsUrl = `${endPoint}=4`;
          const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
-         const postsUrl = "https://jsonplaceholder.typicode.com/posts";
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
-         getApiData(galleryUrl).then(data => setGallery(data));
          getApiData(postsUrl).then(data => setPosts(data));
+         getApiData(galleryUrl).then(data => setGallery(data));
       }, []
    )
 

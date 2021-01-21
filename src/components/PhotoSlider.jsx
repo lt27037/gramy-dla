@@ -1,31 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../styles/PhotoSlider.scss';
 
 const handleDragStart = (e) => e.preventDefault();
 
+const defaultPost = {
+   acf:{
+      tytul : '',
+      zajawka : '',
+      datadodania : '',
+      zdjecie : '',
+   },
+   id: '0000000'
+}
 
-const PhotoCarousel = ({items}) => {
+const PhotoCarousel = ({items = [defaultPost]}) => {
 
-   const photoHeight = 600;
-   const photoWidth = 1900;
+   const [screenWidth, setScreenWidth] = useState(1900);
 
-   const photoList = items.map(item => (
-      <div className="photoSlider__item">
+   const photoList = items.map(({id, acf}) => {
+
+      
+
+      return(
+         <div className="photoSlider__item">
          <img
-            alt={item.author}
+            alt={acf.title}
             className='photoSlider__img'
-            key={item.id}
+            key={id}
             onDragStart={handleDragStart}
-            src={`https://picsum.photos/id/${item.id}/${photoWidth}/${photoHeight}.webp`}
+            src={screenWidth >= 786 ? acf.zdjecie : acf.zdjeciemini}
          />
          <div className="photoSlider__content">
-            <h3 className="photoSlider__content__discription">Kliknij po więcej szczegółów</h3>
-            <h2 className="photoSlider__content__title">Baner Powitalny</h2>
+            <h3 className="photoSlider__content__discription">{acf.content}</h3>
+            <h2 className="photoSlider__content__title">{acf.title}</h2>
          </div>
       </div>
-   ))
+      )
+   })
+
+   const resizeCheck = () => {
+      setScreenWidth(Number(window.innerWidth));
+   }
+
+   useEffect(
+      () => {
+         setScreenWidth(Number(window.innerWidth));
+         window.addEventListener('resize', resizeCheck);
+
+         return(
+            () => {
+               window.removeEventListener('resize', resizeCheck);
+            }
+         )
+      },
+      []
+   )
 
 
    return (

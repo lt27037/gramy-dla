@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import PhotoSlider from '../components/PhotoSlider';
@@ -10,9 +10,14 @@ import '../styles/HomePage.scss'
 
 const HomePage = ({sponsors, sliders, posts}) => {
 
+   const [postElements, setPostElement] = useState([]);
+
    useEffect(
       () => {
          window.scrollTo(0, 0);
+         const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post}/>);
+         const lastestPosts = [postsArr[0], postsArr[1], postsArr[2], postsArr[3], postsArr[4]];
+         setPostElement(lastestPosts);
       },
       []
    )
@@ -29,11 +34,7 @@ const HomePage = ({sponsors, sliders, posts}) => {
             </div>
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>
-               <PostShortcut post={posts[1]}/>
-               <PostShortcut post={posts[2]}/>
-               <PostShortcut post={posts[3]}/>
-               <PostShortcut post={posts[4]}/>
-               <PostShortcut post={posts[5]}/>
+               {postElements.length !== 0 ? postElements : null}
                <button className="button">Zobacz więcej</button>
             </div>
          </div>

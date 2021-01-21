@@ -5,11 +5,20 @@ import '../styles/PhotoCarousel.scss';
 
 const handleDragStart = (e) => e.preventDefault();
 
+const defaultPost = {
+   acf:{
+      tytul : '',
+      zajawka : '',
+      datadodania : '',
+      zdjecie : '',
+   },
+   id: '0000000'
+}
 
-const PhotoCarousel = ({items}) => {
+const PhotoCarousel = ({items = [defaultPost]}) => {
 
 
-   const photoList = items.map(item => (
+   const photoList = items?.map(item => (
       <div className="photoCarousel__item">
          <img
             alt={item.acf.name}
