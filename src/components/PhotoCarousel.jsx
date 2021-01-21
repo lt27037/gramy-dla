@@ -8,17 +8,15 @@ const handleDragStart = (e) => e.preventDefault();
 
 const PhotoCarousel = ({items}) => {
 
-   const photoHeight = 150;
-   const photoWidth = 150;
 
    const photoList = items.map(item => (
       <div className="photoCarousel__item">
          <img
-            alt={item.author}
+            alt={item.acf.name}
             className='photoCarousel__img'
             key={item.id}
             onDragStart={handleDragStart}
-            src={`https://picsum.photos/id/${item.id}/${photoWidth}/${photoHeight}.webp`}
+            src={item.acf.miniurl}
          />
       </div>
    ))

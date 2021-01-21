@@ -32,7 +32,7 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
+         const sponsorsUrl = 'https://gora1234.webd.pro/wp-json/acf/v3/posts?categories=2';
          const slidersUrl = 'https://picsum.photos/v2/list?page=6&limit=3';
          const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
          const postsUrl = "https://jsonplaceholder.typicode.com/posts";
@@ -42,6 +42,8 @@ const ContentContainer = () => {
          getApiData(postsUrl).then(data => setPosts(data));
       }, []
    )
+
+   console.log(sponsors);
 
    return(
       <div className="container">

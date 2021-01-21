@@ -7,10 +7,8 @@ import '../styles/Sponsors.scss'
 
 const Sponsors = ({sponsors}) => {
 
-   const sponsorLink = `https://picsum.photos/id/`;
-
-   const sponsorsList = sponsors.map(({author, id}) => (
-      <SponsorProfile src={`${sponsorLink}${id}/300.webp`} alt={`Zdjęcie profilowe sponsora ${author}.`} name={author} key={id}  />
+   const sponsorsList = sponsors.map(({id, acf}) => (
+      <SponsorProfile src={acf.url} alt={`Zdjęcie profilowe sponsora ${acf.name}.`} name={acf.name} key={id}  />
    ))
 
    const history = useHistory();
