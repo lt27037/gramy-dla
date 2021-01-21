@@ -13,7 +13,7 @@
    }
    .alice-carousel{
       margin: 0;
-      min-height: 400px;
+      min-height: 500px;
    }
    &__content{
       position: absolute;
@@ -113,6 +113,10 @@
       &__item{
          min-height: 400px;
       }
+      .alice-carousel{
+         margin: 0;
+         min-height: 400px;
+      }
    }
 }
 
@@ -122,6 +126,10 @@
       &__img{
          height: 65vh;
          object-fit: cover;
+      }
+      .alice-carousel{
+         margin: 0;
+         min-height: 65vh;
       }
    }
    .photoSlider__content{

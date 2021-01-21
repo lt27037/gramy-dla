@@ -4,7 +4,6 @@ import '../styles/SponsorProfile.scss';
 
 const SponsorProfile = ({src, alt, name}) => {
 
-   console.log(name);
    return(
       <div className="sponsorProfile">
          <img src={src} alt={alt} className="sponsorProfile__photo"/>

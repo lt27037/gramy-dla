@@ -43,6 +43,7 @@ const Header = () => {
 
    const history = useHistory();
    const header = useRef(null);
+   const volunteerBtn = useRef(null);
 
    const menuItems = menuNames.map(name => (
       <li
@@ -79,10 +80,18 @@ const Header = () => {
       }
    }
 
-   const handleBtnClick = () => {
+   const handleBtnClick = ({target}) => {
       const moveTo = {
          pathname: '/zostan-wolontariuszem',
       }
+
+      let menu = target.previousElementSibling;
+      let button = menu.previousElementSibling.firstChild;
+      let sponsorBtn = target;
+      button.classList.remove('btn--active');
+      menu.classList.remove('menu--active');
+      sponsorBtn.classList.remove('button--active');
+
       
       history.push(moveTo);
    }
@@ -122,6 +131,7 @@ const Header = () => {
          </nav>
          <button
             className="header__button"
+            ref={volunteerBtn}
             onClick={handleBtnClick}
          >
             Zostań wolontariuszem
