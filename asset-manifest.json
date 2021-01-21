@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/gramy-dla/static/css/main.39c4c91e.chunk.css",
-    "main.js": "/gramy-dla/static/js/main.756abf96.chunk.js",
-    "main.js.map": "/gramy-dla/static/js/main.756abf96.chunk.js.map",
+    "main.js": "/gramy-dla/static/js/main.3d8dcfb6.chunk.js",
+    "main.js.map": "/gramy-dla/static/js/main.3d8dcfb6.chunk.js.map",
     "runtime-main.js": "/gramy-dla/static/js/runtime-main.eb463fad.js",
     "runtime-main.js.map": "/gramy-dla/static/js/runtime-main.eb463fad.js.map",
     "static/css/2.d5a5d25b.chunk.css": "/gramy-dla/static/css/2.d5a5d25b.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.d5a5d25b.chunk.css",
     "static/js/2.3890ff18.chunk.js",
     "static/css/main.39c4c91e.chunk.css",
-    "static/js/main.756abf96.chunk.js"
+    "static/js/main.3d8dcfb6.chunk.js"
   ]
 }
