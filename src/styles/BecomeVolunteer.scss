@@ -1,0 +1,62 @@
+.becomeVolunteer{
+   width: 80%;
+   align-self: center;
+   justify-self: center;
+   height: 300px;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   object-fit: cover;
+   &__photo{
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: brightness(0.8);
+   }
+   &__title{
+      width: auto;
+      padding: 1rem 3rem;
+      font-size: 3rem;
+      background-color: #000000aa;
+      z-index: 3;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+   }
+   .button{
+      margin-top: 1rem;
+      width: 50%;
+      height: 4rem;
+      font-size: 2.5rem;
+   }
+}
+
+@media(max-width: 786px){
+   .becomeVolunteer{
+      width: 100%;
+      min-height: 35vh;
+      margin: 5rem 0;
+      &__photo{
+         min-height: 35vh;
+      }
+      &__title{
+         width: auto;
+         padding: 1rem 3rem;
+         font-size: 3rem;
+         background-color: #000000aa;
+         z-index: 3;
+         color: #fff;
+         text-align: center;
+         margin-bottom: 1rem;
+      }
+      .button{
+         margin-top: 1rem;
+         width: 50%;
+         height: 4rem;
+         font-size: 2.2rem;
+      }
+   }
+}

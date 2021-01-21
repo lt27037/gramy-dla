@@ -18,6 +18,7 @@ const ContentContainer = () => {
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
    const [gallery, setGallery] = useState([]);
+   const [posts, setPosts] = useState([]);
 
    const getApiData = async (url) => {
       try{
@@ -34,9 +35,11 @@ const ContentContainer = () => {
          const sponsorsUrl = 'https://picsum.photos/v2/list?page=2&limit=12';
          const slidersUrl = 'https://picsum.photos/v2/list?page=6&limit=3';
          const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
+         const postsUrl = "https://jsonplaceholder.typicode.com/posts";
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(galleryUrl).then(data => setGallery(data));
+         getApiData(postsUrl).then(data => setPosts(data));
       }, []
    )
 
@@ -44,11 +47,11 @@ const ContentContainer = () => {
       <div className="container">
          <Switch>
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
             </Route>
 
             <Route path="/aktualnosci">
-               <News sponsors={sponsors}/>
+               <News sponsors={sponsors} posts={posts}/>
             </Route>
 
             <Route path="/galeria">

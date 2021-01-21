@@ -1,0 +1,26 @@
+.closestEvent{
+   width: 100%;
+   align-self: flex-start;
+   justify-self: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   margin-top: 5rem;
+   &__title{
+      text-align: center;
+      width: 90%;
+      padding: 1rem 0;
+      font-size: 3.5rem;
+      font-weight: 600;
+   }
+}
+
+@media(max-width: 786px){
+   .closestEvent{
+      &__title{
+         font-size: 3rem;
+         width: 100%;
+      }
+   }
+}

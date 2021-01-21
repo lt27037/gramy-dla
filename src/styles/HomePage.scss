@@ -1,0 +1,82 @@
+.homeBox{
+   width: 100%;
+   display: grid;
+   grid-template-columns: 70% 30%;
+   grid-template-rows: 70vh 50vh 1fr;
+   min-height: 200vh;
+}
+
+.closestEvent{
+   grid-row: 1;
+   grid-column: 2;
+}
+
+.becomeVolunteer{
+   grid-row: 2;
+   grid-column: 2;
+}
+
+.someOvject{
+   grid-row: 3;
+   grid-column: 2;
+   text-align: center;
+   justify-self: center;
+   align-self: center;
+}
+
+.homePostWrapper{
+   grid-row: 1 / 4;
+   grid-column: 1;
+   width: 100%;
+   padding: 0 10%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   &__title{
+      font-size: 3.5rem;
+      text-align: center;
+      margin-top: 5rem;
+      padding: 1rem 0;
+      font-weight: 600;
+   }
+   .button{
+      margin-top: 7rem;
+      height: 4rem;
+      padding: 1rem 2rem;
+      width: auto;
+      font-size: 2.5rem;
+   }
+}
+
+@media(max-width: 786px){
+   .homeBox{
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+      min-height: 400vh;
+   }
+   .closestEvent{
+      grid-row: 1;
+      grid-column: 1;
+   }
+   .homePostWrapper{
+      grid-row: 2;
+      padding: 0;
+      &__title{
+         margin: 0 0 2rem 0;
+      }
+      .button{
+         margin: 0;;
+      }
+   }
+   .becomeVolunteer{
+      grid-row: 3;
+      grid-column: 1;
+   }
+   .someOvject{
+      grid-row: 4;
+      grid-column: 1;
+      min-height: 20vh;
+   }
+}

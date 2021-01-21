@@ -1,0 +1,17 @@
+.news{
+   &__postWrapper{
+      width: 55%;
+   }
+   &__title{
+      font-size: 3.5rem;
+      padding: 2rem 0;
+   }
+}
+
+@media(max-width: 786px){
+   .news{
+      &__postWrapper{
+         width: 100%;
+      }
+   }
+}
