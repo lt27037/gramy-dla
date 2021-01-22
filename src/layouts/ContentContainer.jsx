@@ -36,7 +36,7 @@ const ContentContainer = () => {
          const sponsorsUrl = `${endPoint}=2`;
          const slidersUrl = `${endPoint}=3`;
          const postsUrl = `${endPoint}=4`;
-         const galleryUrl ='https://picsum.photos/v2/list?page=4&limit=99';
+         const galleryUrl = `${endPoint}=6`;
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(postsUrl).then(data => setPosts(data));

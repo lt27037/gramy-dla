@@ -13,13 +13,12 @@ const PhotoGallery = ({photos}) => {
    const [photoOpened, setPhotoOpened] = useState('');
    const [columnsQuantity, setColumnsQuantity] = useState(4);
    const [containerWidth, setContainerWidth] = useState('80%');
+   const [photoElements, setPhotoElements] = useState([]);
    const wrapper = useRef(null);
 
    const toggleGallery = () => setGalleryOpened(!galleryOpened);
 
-   const photosList = photos.map(photo => (
-      `https://picsum.photos/id/${photo.id}/${Math.floor(photo.width / 3)}/${Math.floor(photo.height / 3)}.webp`
-   ));
+   
 
    const handlePhotoClick = e => {
       if(e.target.nodeName === 'IMG'){
@@ -47,6 +46,14 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
+         const photosList = photos.map(photo => photo.acf.zdjecie);
+         setPhotoElements(photosList);
+      },
+      [photos]
+   )
+
+   useEffect(
+      () => {
          const galleryBox = wrapper.current.querySelector('.galleryWrapper');
          galleryBox.addEventListener('click', handlePhotoClick );
          window.addEventListener('resize', handleReload);
@@ -63,7 +70,7 @@ const PhotoGallery = ({photos}) => {
       () => {
          const box = wrapper.current.querySelector('.galleryWrapper');
          const photos = box.querySelectorAll('img')
-         if(photos !== undefined && photos.length > photosList.length){
+         if(photos !== undefined && photos.length > photoElements.length){
             handleReload()
          }
       }
@@ -84,7 +91,7 @@ const PhotoGallery = ({photos}) => {
             className={'galleryWrapper'}
             animate={true}
             forceOrder={false}
-            imageUrls={photosList}
+            imageUrls={photoElements}
          />
          <ReactBnbGallery
             show={galleryOpened}
