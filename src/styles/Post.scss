@@ -42,11 +42,14 @@
       grid-row:  1 / 5;
       align-self: end;
    }
-}
-
-.button.back-button{
-   margin-bottom: 5rem;
-   font-size: 1.7rem;
+   .button--back{
+      margin: 5rem 0;
+      font-size: 1.7rem;
+      grid-column: 1;
+      grid-row: 10;
+      margin: 7rem auto;
+      height: 3.5rem;
+   }
 }
 
 @media(max-width: 786px){

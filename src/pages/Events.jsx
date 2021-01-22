@@ -45,8 +45,6 @@ const Events = ({sponsors}) => {
       []
    )
 
-   console.log();
-
    return(
       <>
          <PhotoCarousel items={sponsors} />

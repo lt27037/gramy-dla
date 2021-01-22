@@ -20,8 +20,6 @@ const Post = ({posts}) => {
       let postsQuantity = location.postsCounter;
       let postId = id;
 
-      console.log('ilosc w poscie: '+postsQuantity);
-
       const obj = {
          pathname: '/aktualnosci',
          prevPost: postId,
@@ -60,8 +58,8 @@ const Post = ({posts}) => {
          <img src={acf?.zdjecie} alt="Zdjęcie z posta 1" className="post__photo photo--second"/>
          <p className="post__content content--second">{acf?.tresc}</p>
          <BecomeVolunteer />
+         <button className="button button--back" onClick={handleBackClick}>Wróć do aktualności</button>
       </div>
-      <button className="button" onClick={handleBackClick}>Wróć do aktualności</button>
       </>
    );
 };
