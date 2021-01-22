@@ -125,11 +125,18 @@
       height: 65vh;
       &__img{
          height: 65vh;
+         width: 100%;
          object-fit: cover;
       }
       .alice-carousel{
          margin: 0;
          min-height: 65vh;
+         &__prev-btn{
+            left: 5px;
+         }
+         &__next-btn{
+            right: 5px;
+         }
       }
    }
    .photoSlider__content{
@@ -143,15 +150,17 @@
       color: #ffffff;
       @include flexCenter(column);
       &__discription{
-         font-size: 2.5rem;
+         font-size: 2rem;
          font-weight: 400;
          letter-spacing: -1px;
          text-align: center;
+         margin-bottom: 0.8rem;
       }
       &__title{
-         font-size: 3.5rem;
+         font-size: 2.5rem;
          text-align: center;
          letter-spacing: 1px;
+         margin-top: 0.8rem;
       }
    }
 }

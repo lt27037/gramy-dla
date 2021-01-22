@@ -26,7 +26,7 @@ const PostShortcut = ({post = defaultPost}) => {
          <div className="postShortcut__content"> 
             <div className="postShortcut__date">{datadodania}</div>
             <h3 className="postShortcut__title">{tytul}</h3>
-            <p className="postShortcut__text">{zajawka}. {zajawka}...</p>
+            <p className="postShortcut__text">{zajawka}...<span className="postShortcut__more">Czytaj dalej</span></p>
          </div>
       </div>
    );
