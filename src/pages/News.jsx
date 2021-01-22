@@ -9,13 +9,13 @@ import '../styles/News.scss'
 const News = ({sponsors, posts}) => {
 
    const [postElements, setPostElement] = useState([]);
-   const [postsCounter, setPostsCounter] = useState(2);
+   const [postsCounter, setPostsCounter] = useState(5);
    const [prevPost, setPrevPost] = useState(null);
    const history = useHistory();
 
 
 
-   const handlePostClick = (id, quan) => {
+   const handlePostClick = (id) => {
 
       let quantity = document.querySelectorAll('.postShortcut').length;
       let counter = Math.floor(quantity/5)*5 + (quantity % 5 === 0 ? 0 : quantity % 5);
@@ -25,19 +25,16 @@ const News = ({sponsors, posts}) => {
          postsCounter: counter,
       }
       history.push(obj);
-      console.log('ilosc w aktualnosciach: '+counter);
    }
 
-   
-
    const handleCounterIncremence = () => {
-      setPostsCounter(postsCounter + 2);
+      setPostsCounter(postsCounter + 5);
    }
 
    useEffect(
       () => {
          
-         const postsArr = posts[0]?.acf !== undefined ? posts.map(post => <PostShortcut key={post.id} post={post} quan={postsCounter} click={handlePostClick}/> ) : null ;
+         const postsArr = posts[0]?.acf !== undefined ? posts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ) : null ;
          setPostElement(postsArr) ;
 
          // @ts-ignore
