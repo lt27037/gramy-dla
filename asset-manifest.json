@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/gramy-dla/static/css/main.60249fa2.chunk.css",
-    "main.js": "/gramy-dla/static/js/main.3052a4ee.chunk.js",
-    "main.js.map": "/gramy-dla/static/js/main.3052a4ee.chunk.js.map",
+    "main.css": "/gramy-dla/static/css/main.fb04a2e8.chunk.css",
+    "main.js": "/gramy-dla/static/js/main.2bc49d37.chunk.js",
+    "main.js.map": "/gramy-dla/static/js/main.2bc49d37.chunk.js.map",
     "runtime-main.js": "/gramy-dla/static/js/runtime-main.eb463fad.js",
     "runtime-main.js.map": "/gramy-dla/static/js/runtime-main.eb463fad.js.map",
     "static/css/2.d5a5d25b.chunk.css": "/gramy-dla/static/css/2.d5a5d25b.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.f53ac1d1.chunk.js.map": "/gramy-dla/static/js/2.f53ac1d1.chunk.js.map",
     "index.html": "/gramy-dla/index.html",
     "static/css/2.d5a5d25b.chunk.css.map": "/gramy-dla/static/css/2.d5a5d25b.chunk.css.map",
-    "static/css/main.60249fa2.chunk.css.map": "/gramy-dla/static/css/main.60249fa2.chunk.css.map",
+    "static/css/main.fb04a2e8.chunk.css.map": "/gramy-dla/static/css/main.fb04a2e8.chunk.css.map",
     "static/js/2.f53ac1d1.chunk.js.LICENSE.txt": "/gramy-dla/static/js/2.f53ac1d1.chunk.js.LICENSE.txt",
     "static/media/logo@inne.815f207e.png": "/gramy-dla/static/media/logo@inne.815f207e.png"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.eb463fad.js",
     "static/css/2.d5a5d25b.chunk.css",
     "static/js/2.f53ac1d1.chunk.js",
-    "static/css/main.60249fa2.chunk.css",
-    "static/js/main.3052a4ee.chunk.js"
+    "static/css/main.fb04a2e8.chunk.css",
+    "static/js/main.2bc49d37.chunk.js"
   ]
 }
