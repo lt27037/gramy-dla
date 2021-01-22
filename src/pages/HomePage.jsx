@@ -32,6 +32,13 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
       history.push(obj);
    }
 
+   const handleNewsLinkClick = () => {
+      let obj = {
+         pathname: `/aktualnosci/`
+      }
+      history.push(obj);
+   }
+
 
    // @ts-ignore
    const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post} click={handlePostClick}/>);
@@ -57,7 +64,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>
                {lastPosts ? lastPosts : null}
-               <button className="button">Zobacz więcej</button>
+               <button className="button" onClick={handleNewsLinkClick}>Zobacz więcej</button>
             </div>
          </div>
       </>

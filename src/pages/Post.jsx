@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 
 import BecomeVolunteer from '../components/BecomeVolunteer';
 import ClosestEvent from '../components/ClosestEvent';
@@ -10,14 +10,27 @@ import '../styles/Post.scss';
 const Post = ({posts}) => {
 
    const [post, setPost] = useState({acf: undefined});
+   const location = useLocation();
    const history = useHistory();
-
-   const handleBackClick = () => {
-      history.goBack();
-   }
 
    // @ts-ignore
    let {id} = useParams();
+
+   const handleBackClick = () => {
+      let postsQuantity = location.postsCounter;
+      let postId = id;
+
+      console.log('ilosc w poscie: '+postsQuantity);
+
+      const obj = {
+         pathname: '/aktualnosci',
+         prevPost: postId,
+         prevQuantity: postsQuantity,
+      }
+
+      history.push(obj);
+   }
+
    const postArr = posts?.filter(post => post.id === Number(id));
 
    useEffect(
@@ -48,7 +61,7 @@ const Post = ({posts}) => {
          <p className="post__content content--second">{acf?.tresc}</p>
          <BecomeVolunteer />
       </div>
-      <button className="button back-button" onClick={handleBackClick}>Powrót</button>
+      <button className="button" onClick={handleBackClick}>Wróć do aktualności</button>
       </>
    );
 };

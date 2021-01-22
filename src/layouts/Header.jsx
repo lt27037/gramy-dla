@@ -92,7 +92,14 @@ const Header = () => {
       menu.classList.remove('menu--active');
       sponsorBtn.classList.remove('button--active');
 
-      
+      history.push(moveTo);
+   }
+
+   const handleLogoClick = () => {
+      const moveTo = {
+         pathname: '/',
+      }
+
       history.push(moveTo);
    }
 
@@ -117,6 +124,7 @@ const Header = () => {
             src={logo}
             alt="Logo stoważyszenia"
             className="header__logo"
+            onClick={handleLogoClick}
          />
          <div 
             className="header__menuBtn"
