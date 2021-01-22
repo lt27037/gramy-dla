@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import PhotoSlider from '../components/PhotoSlider';
@@ -22,7 +23,19 @@ const defaultPost = {
 
 const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
 
-   const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post}/>);
+   const history = useHistory();
+
+   const handlePostClick = (id) => {
+      let obj = {
+         pathname: `/aktualnosci/post/${id}`,
+      }
+      history.push(obj);
+   }
+
+
+   // @ts-ignore
+   const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post} click={handlePostClick}/>);
+   const lastPosts = postsArr.filter(post => postsArr.indexOf(post) < 5);
 
    useEffect(
       () => {
@@ -43,7 +56,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
             </div>
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>
-               {postsArr ? postsArr : null}
+               {lastPosts ? lastPosts : null}
                <button className="button">Zobacz więcej</button>
             </div>
          </div>

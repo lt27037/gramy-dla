@@ -84,15 +84,42 @@
 }
 
 @media(max-width: 1550px){
-   :root{
-      font-size: 10px;
-   }
    .header__button{
       font-size: 1.5rem;
    }
+   .header__menu__list__option{
+      a{
+         font-size: 1.8rem;
+         padding: 1.5rem;
+      }
+   }
 }
 
-@media(max-width: 768px){
+@media(max-width: 1300px){
+   .header__button{
+      font-size: 1.3rem;
+   }
+   .header__menu__list__option{
+      a{
+         font-size: 1.7rem;
+         padding: 1rem;
+      }
+   }
+}
+
+@media(max-width: 1050px){
+   .header__button{
+      font-size: 1.1rem;
+   }
+   .header__menu__list__option{
+      a{
+         font-size: 1.4rem;
+         padding: 0.4rem;
+      }
+   }
+}
+
+@media(max-width: 786px){
    .header{
       padding: 0 5%;
       width: 100%;

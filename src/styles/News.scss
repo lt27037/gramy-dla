@@ -6,6 +6,36 @@
       font-size: 3.5rem;
       padding: 2rem 0;
    }
+   
+}
+
+.button.more--btn{
+   font-size: 2.5rem;
+   margin-bottom: 5rem;
+}
+
+@media(max-width: 1600px){
+   .news{
+      &__postWrapper{
+         width: 65%;
+      }
+   }
+}
+
+@media(max-width: 1300px){
+   .news{
+      &__postWrapper{
+         width: 85%;
+      }
+   }
+}
+
+@media(max-width: 1300px){
+   .news{
+      &__postWrapper{
+         width: 100%;
+      }
+   }
 }
 
 @media(max-width: 786px){

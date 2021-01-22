@@ -12,12 +12,12 @@ const defaultPost = {
    id: '0000000'
 }
 
-const PostShortcut = ({post = defaultPost}) => {
+const PostShortcut = ({post = defaultPost, click}) => {
 
    const {tytul, zajawka, datadodania, zdjecie} = post.acf;
 
    return(
-      <div className="postShortcut" id={post.id}>
+      <div className="postShortcut" id={post.id} onClick={() => click(post.id)}>
          <img
             src={zdjecie}
             alt="Miniatura posta"

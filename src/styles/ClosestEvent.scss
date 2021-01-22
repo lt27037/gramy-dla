@@ -16,6 +16,15 @@
    }
 }
 
+@media(max-width: 1350px){
+   .closestEvent{
+      &__title{
+         width: 100%;
+         font-size: 2.8rem;
+      }
+   }
+}
+
 @media(max-width: 786px){
    .closestEvent{
       &__title{
