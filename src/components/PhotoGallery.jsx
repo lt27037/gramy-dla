@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
-import ImageMasonry from 'react-image-masonry';
+import Masonry from 'react-masonry-css';
 
 import 'react-bnb-gallery/dist/style.css'
 import '../styles/PhotoGallery.scss';
@@ -12,13 +12,10 @@ const PhotoGallery = ({photos}) => {
    const [galleryOpened, setGalleryOpened] = useState(false);
    const [photoOpened, setPhotoOpened] = useState('');
    const [columnsQuantity, setColumnsQuantity] = useState(4);
-   const [containerWidth, setContainerWidth] = useState('80%');
    const [photoElements, setPhotoElements] = useState([]);
    const wrapper = useRef(null);
 
    const toggleGallery = () => setGalleryOpened(!galleryOpened);
-
-   
 
    const handlePhotoClick = e => {
       if(e.target.nodeName === 'IMG'){
@@ -31,22 +28,20 @@ const PhotoGallery = ({photos}) => {
       let width = window.innerWidth;
       if(width <= 786){
          setColumnsQuantity(1);
-         setContainerWidth('98%');
       }else if (width > 787 && width <= 1200){
          setColumnsQuantity(2);
-         setContainerWidth('90%')
       }else if(width > 1201 && width <= 1550){
          setColumnsQuantity(3);
-         setContainerWidth('90%')
       }else if(width >= 1551){
          setColumnsQuantity(5);
-         setContainerWidth('100%')
       }
    }
 
    useEffect(
       () => {
-         const photosList = photos.map(photo => photo.acf.zdjecie);
+         const photosList = photos.map(photo => (
+            <img src={photo.acf.zdjecie} alt={photo.acf.opis} className="galleryWrapper__column__photo"/>
+         ));
          setPhotoElements(photosList);
       },
       [photos]
@@ -85,14 +80,12 @@ const PhotoGallery = ({photos}) => {
 
    return(
       <div className="galleryBox" ref={wrapper}>
-         <ImageMasonry
-            numCols={columnsQuantity}
-            containerWidth={containerWidth}
-            className={'galleryWrapper'}
-            animate={true}
-            forceOrder={false}
-            imageUrls={photoElements}
-         />
+         <Masonry
+            breakpointCols={columnsQuantity}
+            className="galleryWrapper"
+            columnClassName="galleryWrapper__column">
+            {photoElements}
+         </Masonry>
          <ReactBnbGallery
             show={galleryOpened}
             photos={[photoOpened]}
