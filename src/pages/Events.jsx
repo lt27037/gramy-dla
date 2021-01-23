@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import MonthSection from "../components/MonthSection";
