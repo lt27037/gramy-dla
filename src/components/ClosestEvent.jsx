@@ -14,13 +14,13 @@ const eventsSecond = [
    },
 ];
 
-const ClosestEvent = () => {
+const ClosestEvent = ({event}) => {
 
 
    return(
       <div className="closestEvent">
          <h3 className="closestEvent__title">Najbliższe wydażenie</h3>
-         <EventShortcut event={eventsSecond[0]}/>
+         <EventShortcut event={event}/>
 
       </div>
    );

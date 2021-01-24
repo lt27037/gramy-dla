@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import PhotoCarousel from '../components/PhotoCarousel';
@@ -21,9 +21,10 @@ const defaultPost = {
     }
 };
 
-const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
+const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
 
    const history = useHistory();
+   const [eventsArr, setEventsArr] = useState([]);
 
    const handlePostClick = (id) => {
       let obj = {
@@ -51,12 +52,58 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost] }) => {
       []
    )
 
+   useEffect(
+      () => {
+         let sortedEvents = events.sort((a, b) => {
+
+            let arrA = a.acf.date.split('-');
+            let arrB = b.acf.date.split('-');
+
+            let yearA = arrA[2];
+            let yearB = arrB[2];
+
+            let monthA = arrA[1];
+            let monthB = arrB[1];
+
+            let dayA = arrA[0];
+            let dayB = arrB[0];
+
+            if(yearA - yearB === 0){
+               if(monthA - monthB === 0){
+                  if(dayA - dayB < 0){
+                     return 1;
+                  }else if(dayA - dayB > 0){
+                     return -1
+                  }else{
+                     return 1
+                  }
+               }else if(monthA - monthB > 0){
+                  return 1;
+               }else if(monthA - monthB < 0){
+                  return -1;
+               }
+            }else if(yearA - yearB < 0){
+               return -1;
+            }else {
+               return 1;
+            }
+         })
+
+         let year = new Date().getFullYear();
+         let month = new Date().getMonth() + 1;
+         setEventsArr(sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month ))
+
+         
+      },
+      [events]
+   )
+
    return(
       <>
          <PhotoSlider items={sliders}/>
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
-            <ClosestEvent />
+            <ClosestEvent event={eventsArr[0]}/>
             <BecomeVolunteer />
             <div className="someOvject">
                *Tu będzie kalendarz lub coś innego*

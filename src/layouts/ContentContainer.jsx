@@ -64,7 +64,7 @@ const ContentContainer = () => {
       <div className="container">
          <Switch>
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events}/>
             </Route>
 
             <Route path="/aktualnosci" exact>
