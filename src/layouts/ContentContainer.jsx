@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import About from '../pages/About';
 import BecomSponsor from '../pages/BecomSponsor';
+import Event from '../pages/Event';
 import Events from '../pages/Events';
 import Gallery from '../pages/Gallery';
 import HomePage from '../pages/HomePage';
@@ -87,8 +88,12 @@ const ContentContainer = () => {
                <Sponsors sponsors={sponsors} content={sponsorsContent}/>
             </Route>
 
-            <Route path="/wydarzenia">
+            <Route path="/wydarzenia" exact>
                <Events sponsors={sponsors} events={events}/>
+            </Route>
+
+            <Route path="/wydarzenia/:id">
+               <Event events={events}/>
             </Route>
 
             <Route path="/zostan-wolontariuszem">

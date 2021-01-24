@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
 import '../styles/EventShortcut.scss';
 
@@ -33,16 +34,23 @@ const EventShortcut = ({event}) => {
       [event]
    )
 
-   
+   const history = useHistory();
+
+   const handleLinkClick = () => {
+      let obj = {
+         pathname: `wydarzenia/${event?.id}`
+      }
+      history.push(obj);
+   }
 
 
 
    return(
-      <div className="event" id={`event${event?.id}`}>
+      <div className="event">
          <div className="event__info">{`${date}, ${time}`}</div>
          <div className="event__title">{title}</div>
          <img src={photo} alt="miniatura wydarzenia" className="event__photo"/>
-         <button className="button">Zobacz szczegóły</button>
+         <button className="button" onClick={handleLinkClick}>Zobacz szczegóły</button>
       </div>
    );
 };
