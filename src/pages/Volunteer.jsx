@@ -4,7 +4,7 @@ import PhotoCarousel from '../components/PhotoCarousel';
 
 import '../styles/Volunteer.scss'
 
-const Volunteer = ({sponsors}) => {
+const Volunteer = ({sponsors, content}) => {
 
    useEffect(
       () => {

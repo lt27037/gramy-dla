@@ -39,8 +39,8 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
-         const photosList = photos.map(photo => (
-            <img src={photo.acf.zdjecie} alt={photo.acf.opis} className="galleryWrapper__column__photo"/>
+         const photosList = photos?.map(photo => (
+            <img src={photo.acf.zdjecie} alt={photo.acf.opis} key={photo.id} className="galleryWrapper__column__photo"/>
          ));
          setPhotoElements(photosList);
       },
@@ -65,8 +65,10 @@ const PhotoGallery = ({photos}) => {
       () => {
          const box = wrapper.current.querySelector('.galleryWrapper');
          const photos = box.querySelectorAll('img')
-         if(photos !== undefined && photos.length > photoElements.length){
-            handleReload()
+         if(photos){
+            if(photos?.length > photoElements.length){
+               handleReload()
+            }
          }
       }
    )

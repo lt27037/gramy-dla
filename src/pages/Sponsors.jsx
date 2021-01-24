@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import SponsorProfile from '../components/SponsorProfile';
 
 import '../styles/Sponsors.scss'
 
-const Sponsors = ({sponsors}) => {
+const Sponsors = ({sponsors, content}) => {
 
-   const sponsorsList = sponsors.map(({id, acf}) => (
-      <SponsorProfile src={acf.url} alt={`Zdjęcie profilowe sponsora ${acf.name}.`} name={acf.name} key={id}  />
-   ))
+   const [sponsorsList, setSponsorsList] = useState();
+   const [contentElements, setSContentElements] = useState({});
+
+   useEffect(
+      () => {
+         setSponsorsList(sponsors.map(({id, acf}) => (
+            <SponsorProfile src={acf.url} alt={`Zdjęcie profilowe sponsora ${acf.name}.`} name={acf.name} key={id}  />
+         )))
+
+         setSContentElements(content?.acf);
+      },
+      [sponsors, content]
+   )
 
    const history = useHistory();
 
@@ -22,8 +32,8 @@ const Sponsors = ({sponsors}) => {
 
    return(
       <div className="sponsors">
-         <h2 className="sponsors__title"> Serdecznie dziękujemy wszystkim którzy wspierają nasze działania!</h2>
-         <p className="sponsors__italic">Nie liczy się to ile posiadasz, ale ile dajesz innym i jak się z nimi dzielisz. Pomagając innym pomagasz i sobie. Starajcie się zostawić ten świat choć trochę lepszym, niż go zastaliście.</p>
+         <h2 className="sponsors__title">{contentElements?.tytul}</h2>
+         <p className="sponsors__italic">{contentElements?.cytat}</p>
          <div className="sponsors__profilesWrapper">
             {sponsorsList}
          </div>

@@ -19,6 +19,11 @@ const ContentContainer = () => {
    const [sliders, setSliders] = useState([]);
    const [gallery, setGallery] = useState([]);
    const [posts, setPosts] = useState([]);
+   const [events, setEvents] = useState([]);
+   const [sponsorsContent, setSponsorsContent] = useState([]);
+   const [becomeSponsorContent, setBecomeSponsorContent] = useState([]);
+   const [becomeVolunteerContent, setBecomeVolunteerContent] = useState([]);
+   const [aboutContent, setAboutContent] = useState([]);
 
    const getApiData = async (url) => {
       try{
@@ -32,15 +37,26 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const endPoint = "https://gora1234.webd.pro/wp-json/acf/v3/posts?categories"
-         const sponsorsUrl = `${endPoint}=2`;
-         const slidersUrl = `${endPoint}=3`;
-         const postsUrl = `${endPoint}=4`;
-         const galleryUrl = `${endPoint}=6`;
+         const endPoint = "https://gora1234.webd.pro/wp-json/acf/v3"
+         const sponsorsUrl = `${endPoint}/posts?categories=2`;
+         const slidersUrl = `${endPoint}/posts?categories=3`;
+         const postsUrl = `${endPoint}/posts?categories=4`;
+         const eventsUrl = `${endPoint}/posts?categories=5`;
+         const galleryUrl = `${endPoint}/posts?categories=6`;
+         const aboutContentUrl = `${endPoint}/posts?categories=7`;
+         const sponsorsContentUrl = `${endPoint}/pages/246`;
+         const becomeSponsorContentUrl = `${endPoint}/pages/293`;
+         const becomeVolunteerContentUrl = `${endPoint}/pages/254`;
+
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(postsUrl).then(data => setPosts(data));
+         getApiData(eventsUrl).then(data => setEvents(data));
          getApiData(galleryUrl).then(data => setGallery(data));
+         getApiData(aboutContentUrl).then(data => setAboutContent(data));
+         getApiData(sponsorsContentUrl).then(data => setSponsorsContent(data));
+         getApiData(becomeSponsorContentUrl).then(data => setBecomeSponsorContent(data));
+         getApiData(becomeVolunteerContentUrl).then(data => setBecomeVolunteerContent(data));
       }, []
    )
 
@@ -64,23 +80,23 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/onas">
-               <About />
+               <About content={aboutContent}/>
             </Route>
 
             <Route path="/sponsorzy">
-               <Sponsors sponsors={sponsors}/>
+               <Sponsors sponsors={sponsors} content={sponsorsContent}/>
             </Route>
 
             <Route path="/wydarzenia">
-               <Events sponsors={sponsors}/>
+               <Events sponsors={sponsors} events={events}/>
             </Route>
 
             <Route path="/zostan-wolontariuszem">
-               <Volunteer sponsors={sponsors}/>
+               <Volunteer sponsors={sponsors} content={becomeVolunteerContent}/>
             </Route>
 
             <Route path="/zostan-sponsorem">
-               <BecomSponsor sponsors={sponsors}/>
+               <BecomSponsor sponsors={sponsors} content={becomeSponsorContent}/>
             </Route>
          </Switch>
       </div>

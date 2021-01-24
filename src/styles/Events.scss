@@ -1,0 +1,23 @@
+.eventsWrapper{
+   width: 70%;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   column-gap: 7%;
+   row-gap: 10vh;
+}
+
+@media(max-width: 1350px){
+   .eventsWrapper{
+      width: 100%;
+      column-gap: 4%;
+   }
+}
+
+@media(max-width: 1350px){
+   .eventsWrapper{
+      width: 100%;
+      grid-template-columns: 100%;
+      row-gap: 7vh;
+   }
+}

@@ -1,42 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
-import MonthSection from "../components/MonthSection";
+import EventShortcut from "../components/EventShortcut";
 
 import '../styles/Events.scss'
 
 
-const eventsArr = [
-   {
-      id: 1,
-      date: '11.12.2020',
-      time: '19:00',
-      title: 'Gramy dla Janka',
-      thumbnail: 'https://picsum.photos/id/131/400/300',
-   },
-   {
-      id: 2,
-      date: '31.12.2020',
-      time: '17:00',
-      title: 'Gramy dla Pauliny',
-      thumbnail: 'https://picsum.photos/id/584/400/300',
-   },
-];
+const Events = ({sponsors, events}) => {
 
-const eventsSecond = [
-   {
-      id: 1,
-      date: '11.01.2021',
-      time: '19:00',
-      title: 'Gramy dla Anny',
-      thumbnail: 'https://picsum.photos/id/102/400/300',
-   },
-];
-
-
-
-
-const Events = ({sponsors}) => {
+   const [eventsArr, setEventsArr] = useState([]);
 
    useEffect(
       () => {
@@ -45,11 +17,60 @@ const Events = ({sponsors}) => {
       []
    )
 
+   useEffect(
+      () => {
+         let sortedEvents = events.sort((a, b) => {
+
+            let arrA = a.acf.date.split('-');
+            let arrB = b.acf.date.split('-');
+
+            let yearA = arrA[2];
+            let yearB = arrB[2];
+
+            let monthA = arrA[1];
+            let monthB = arrB[1];
+
+            let dayA = arrA[0];
+            let dayB = arrB[0];
+
+            if(yearA - yearB === 0){
+               if(monthA - monthB === 0){
+                  if(dayA - dayB < 0){
+                     return 1;
+                  }else if(dayA - dayB > 0){
+                     return -1
+                  }else{
+                     return 1
+                  }
+               }else if(monthA - monthB > 0){
+                  return 1;
+               }else if(monthA - monthB < 0){
+                  return -1;
+               }
+            }else if(yearA - yearB < 0){
+               return -1;
+            }else {
+               return 1;
+            }
+         })
+
+         let year = new Date().getFullYear();
+         let month = new Date().getMonth() + 1;
+         setEventsArr(sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month ))
+
+         
+      },
+      [events]
+   )
+
+   let eventsShortcutList = eventsArr.length !== 0 ? eventsArr.map(event => <EventShortcut key ={event.id} event={event}/>) : null ;
+
    return(
       <>
          <PhotoCarousel items={sponsors} />
-         <MonthSection events={eventsArr} month={'Grudzień'} year={'2020'} />
-         <MonthSection events={eventsSecond} month={'Styczeń'} year={'2021'} />
+         <div className="eventsWrapper">
+            {eventsShortcutList}
+         </div>
       </>
    );
 };

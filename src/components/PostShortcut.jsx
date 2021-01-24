@@ -7,19 +7,34 @@ const defaultPost = {
       tytul : '',
       zajawka : '',
       datadodania : '',
-      zdjecie : '',
+      zdjecie1 : '',
+      zdjecie2 : '',
    },
    id: '0000000'
 }
 
 const PostShortcut = ({post = defaultPost, click}) => {
 
-   const {tytul, zajawka, datadodania, zdjecie} = post.acf;
+   const handleThumbnail = (url, size) => {
+
+      let text = url.slice(0, -4);
+      let extend = url.slice(-4, url.length);
+      let dot = url.slice(-4, -3);
+      let addDot = '';
+
+      dot === '.' ? addDot = '' : addDot = '.';
+      
+      return(
+         `${text}-${size}${addDot}${extend}`
+      )
+   }
+
+   const {tytul, zajawka, datadodania, zdjecie1} = post.acf;
 
    return(
       <div id={`post${post.id}`} className="postShortcut" onClick={() => click(post.id)}>
          <img
-            src={zdjecie}
+            src={handleThumbnail(zdjecie1, '300x200')}
             alt="Miniatura posta"
             className="postShortcut__photo"
          />

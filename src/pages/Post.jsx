@@ -47,16 +47,23 @@ const Post = ({posts}) => {
 
    const {acf} = post;
 
+   const zdj2 = acf?.zdjecie2 ? <img src={acf?.zdjecie2} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
+   const zdj3 = acf?.zdjecie3 ? <img src={acf?.zdjecie3} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
+   const text2 = acf?.tresc2 ? <p className="post__content content--second">{acf?.tresc2}</p> : null;
+   const text3 = acf?.tresc3 ? <p className="post__content content--second">{acf?.tresc3}</p> : null;
+
    return (
       <>
       <div className="post">
          <div className="post__date">{acf?.datadodania}</div>
          <h2 className="post__title">{acf?.tytul}</h2>
-         <img src={acf?.zdjecie} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
-         <p className="post__content content--first">{acf?.tresc}</p>
+         <img src={acf?.zdjecie1} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
+         <p className="post__content content--first">{acf?.tresc1}</p>
          <ClosestEvent />
-         <img src={acf?.zdjecie} alt="Zdjęcie z posta 1" className="post__photo photo--second"/>
-         <p className="post__content content--second">{acf?.tresc}</p>
+         {zdj2}
+         {text2}
+         {zdj3}
+         {text3}
          <BecomeVolunteer />
          <button className="button button--back" onClick={handleBackClick}>Wróć do aktualności</button>
       </div>

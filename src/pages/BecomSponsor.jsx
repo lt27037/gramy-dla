@@ -4,7 +4,7 @@ import PhotoCarousel from '../components/PhotoCarousel';
 
 import '../styles/BecomeSponsor.scss'
 
-const BecomSponsor = ({sponsors}) => {
+const BecomSponsor = ({sponsors, content}) => {
 
    useEffect(
       () => {

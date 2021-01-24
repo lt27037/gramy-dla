@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState} from 'react'
 
 import '../styles/About.scss'
 import AboutSection from '../components/AboutSection';
@@ -15,7 +15,9 @@ const photo3 = 'https://picsum.photos/id/145/750/500.webp';
 const photo4 = 'https://picsum.photos/id/866/750/500.webp';
 const photo5 = 'https://picsum.photos/id/1005/750/500.webp';
 
-const About = () => {
+const About = ({content}) => {
+
+   const [sectionList, setSectionList] = useState(null);
 
    useEffect(
       () => {
@@ -24,13 +26,20 @@ const About = () => {
       []
    )
 
+   useEffect(
+      () => {
+         setSectionList(content?.map(section => (
+            <AboutSection photo={section?.acf.zdjecie} text={section?.acf.poletekstowe} key={section?.id}/>
+         )))
+      },
+      [content]
+   )
+
+
+
    return(
       <div className="aboutWrapper">
-         <AboutSection photo={photo1} text={text1} />
-         <AboutSection photo={photo2} text={text2} />
-         <AboutSection photo={photo3} text={text3} />
-         <AboutSection photo={photo4} text={text4} />
-         <AboutSection photo={photo5} text={text5} />
+         {sectionList ? sectionList : null}
       </div>
    );
 };
