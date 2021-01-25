@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
-import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import BecomeVolunteer from '../components/BecomeVolunteer';
 
@@ -23,6 +23,7 @@ const Event = ({events}) => {
          let event = events?.filter(event => Number(event.id) === Number(params.id));
          setEvent(...event);
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [events]
    )
 
