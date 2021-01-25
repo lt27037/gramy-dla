@@ -2,7 +2,7 @@ import React from 'react'
 
 import {ReactComponent as Svg} from '../images/server-error.svg';
 
-import '../styles/Error404.scss';
+import '../styles/Error.scss';
 
 const ServerError = () => {
    return(

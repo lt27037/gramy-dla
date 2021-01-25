@@ -64,6 +64,7 @@ const ContentContainer = () => {
          getApiData(sponsorsContentUrl).then(data => setSponsorsContent(data));
          getApiData(becomeSponsorContentUrl).then(data => setBecomeSponsorContent(data));
          getApiData(becomeVolunteerContentUrl).then(data => setBecomeVolunteerContent(data));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []
    )
 

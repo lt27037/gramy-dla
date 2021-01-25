@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import {ReactComponent as Svg} from '../images/error404.svg';
 
-import '../styles/Error404.scss';
+import '../styles/Error.scss';
 
 const Error404 = () => {
    return(
