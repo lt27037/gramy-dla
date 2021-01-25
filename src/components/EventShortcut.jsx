@@ -44,13 +44,28 @@ const EventShortcut = ({event}) => {
       history.push(obj);
    }
 
+   const handleThumbnail = (url, size) => {
+
+      let text = url.slice(0, -4);
+      let extend = url.slice(-4, url.length);
+      let dot = url.slice(-4, -3);
+      let addDot = '';
+
+      dot === '.' ? addDot = '' : addDot = '.';
+      console.log(`${text}-${size}${addDot}${extend}`);
+      
+      return(
+         `${text}-${size}${addDot}${extend}`
+      )
+   }
+
 
 
    return(
       <div className="event">
          <div className="event__info">{`${date}, ${time}`}</div>
          <div className="event__title">{title}</div>
-         <img src={photo} alt="miniatura wydarzenia" className="event__photo"/>
+         <img src={photo ? handleThumbnail(photo, '300x200') : photo} alt="miniatura wydarzenia" className="event__photo"/>
          <button className="button" onClick={handleLinkClick}>Zobacz szczegóły</button>
       </div>
    );

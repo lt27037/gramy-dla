@@ -6,7 +6,7 @@ import BecomeVolunteer from '../components/BecomeVolunteer';
 
 import '../styles/Event.scss';
 
-const Event = ({events}) => {
+const Event = ({events, volunteer}) => {
 
    const [event, setEvent] = useState(null);
    const params = useParams();
@@ -44,7 +44,7 @@ const Event = ({events}) => {
             {text3}
          </div>
          <div className="event__volunteerWrapper">
-            <BecomeVolunteer />
+         <BecomeVolunteer photo={volunteer}/>
          </div>
       </>
    );

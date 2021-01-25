@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import '../styles/BecomeVolunteer.scss';
 
-const BecomeVolunteer = () => {
+const BecomeVolunteer = ({photo}) => {
 
    const history = useHistory();
 
@@ -14,7 +14,7 @@ const BecomeVolunteer = () => {
    return(
       <div className="becomeVolunteer">
          <h3 className="becomeVolunteer__title">Zostań wolontariuszem!</h3>
-         <img src="https://picsum.photos/300/200" alt="Zdjęcie banera zostań wolontariuszem" className="becomeVolunteer__photo"/>
+         <img src={photo} alt="Zdjęcie banera zostań wolontariuszem" className="becomeVolunteer__photo"/>
          <button className="button" onClick={handleClick}>Dołącz do nas!</button>
       </div>
    );

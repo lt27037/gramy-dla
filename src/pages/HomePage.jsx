@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ const defaultPost = {
     }
 };
 
-const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
+const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer}) => {
 
    const history = useHistory();
    const [event, setEvent] = useState([]);
@@ -106,7 +107,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
             {event ? <ClosestEvent event={event} /> : null}
-            <BecomeVolunteer />
+            <BecomeVolunteer photo={volunteer}/>
             <div className="someOvject">
                *Tu będzie kalendarz lub coś innego*
             </div>

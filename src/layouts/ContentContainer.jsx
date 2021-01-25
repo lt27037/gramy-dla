@@ -28,6 +28,7 @@ const ContentContainer = () => {
    const [becomeSponsorContent, setBecomeSponsorContent] = useState([]);
    const [becomeVolunteerContent, setBecomeVolunteerContent] = useState([]);
    const [aboutContent, setAboutContent] = useState([]);
+   const [volunteerWidget, setVolunteerWidget] = useState(null);
 
    const getApiData = async (url) => {
       try{
@@ -44,13 +45,13 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const endPoint = "https://gora1234.webd.pro/wp-json/acf/v3"
-         const sponsorsUrl = `${endPoint}/posts?categories=2`;
-         const slidersUrl = `${endPoint}/posts?categories=3`;
-         const postsUrl = `${endPoint}/posts?categories=4`;
-         const eventsUrl = `${endPoint}/posts?categories=5`;
-         const galleryUrl = `${endPoint}/posts?categories=6`;
-         const aboutContentUrl = `${endPoint}/posts?categories=7`;
+         const endPoint = "https://gramydla.pl/admin/wp-json/acf/v3"
+         const sponsorsUrl = `${endPoint}/posts?categories=6`;
+         const slidersUrl = `${endPoint}/posts?categories=5`;
+         const postsUrl = `${endPoint}/posts?categories=2`;
+         const eventsUrl = `${endPoint}/posts?categories=7`;
+         const galleryUrl = `${endPoint}/posts?categories=3`;
+         const aboutContentUrl = `${endPoint}/posts?categories=4`;
          const sponsorsContentUrl = `${endPoint}/pages/246`;
          const becomeSponsorContentUrl = `${endPoint}/pages/293`;
          const becomeVolunteerContentUrl = `${endPoint}/pages/254`;
@@ -68,14 +69,25 @@ const ContentContainer = () => {
       }, []
    )
 
+   useEffect(
+      () => {
+
+         // @ts-ignore
+         let photo = becomeVolunteerContent ? becomeVolunteerContent?.acf?.photowidget : null;
+         setVolunteerWidget(photo)
+      },
+      [becomeVolunteerContent]
+   )
+
    return(
       <div className="container">
          <Switch>
             <Route path="/server-error" >
                <ServerError />
             </Route>
+
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events} volunteer={volunteerWidget}/>
             </Route>
 
             <Route path="/aktualnosci" exact>
@@ -83,7 +95,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/aktualnosci/post/:id">
-               <Post posts={posts} events={events}/>
+               <Post posts={posts} events={events} volunteer={volunteerWidget}/>
             </Route>
 
             <Route path="/galeria">
@@ -103,7 +115,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/wydarzenia/:id">
-               <Event events={events}/>
+               <Event events={events} volunteer={volunteerWidget}/>
             </Route>
 
             <Route path="/zostan-wolontariuszem">

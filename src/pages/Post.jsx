@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { useParams, useLocation, useHistory } from 'react-router-dom';
@@ -7,7 +8,7 @@ import ClosestEvent from '../components/ClosestEvent';
 
 import '../styles/Post.scss';
 
-const Post = ({posts, events}) => {
+const Post = ({posts, events, volunteer}) => {
 
    const [post, setPost] = useState({acf: undefined});
    const [event, setEvent] = useState({acf: undefined});
@@ -112,7 +113,7 @@ const Post = ({posts, events}) => {
          {text2}
          {zdj3}
          {text3}
-         <BecomeVolunteer />
+         <BecomeVolunteer photo={volunteer}/>
          <button className="button button--back" onClick={handleBackClick}>Wróć do aktualności</button>
       </div>
       </>

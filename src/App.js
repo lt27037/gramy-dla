@@ -23,7 +23,7 @@ const App = () => {
 
  useEffect(
   () => {
-     const endPoint = "https://gora1234.webd.pro/wp-json/acf/v3"
+     const endPoint = " https://gramydla.pl/admin/wp-json/acf/v3"
      const footerUrl = `${endPoint}/pages/233`;
      getApiData(footerUrl).then(data => setFooterContent(data));
 
