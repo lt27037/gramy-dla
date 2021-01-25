@@ -19,7 +19,14 @@ const PhotoGallery = ({photos}) => {
 
    const handlePhotoClick = e => {
       if(e.target.nodeName === 'IMG'){
-         setPhotoOpened(e.target.src);
+
+         let photoData = {
+            photo: e.target.src,
+            caption: e.target.getAttribute('date'),
+            subcaption: e.target.alt,
+         }
+         
+         setPhotoOpened(photoData);
          setGalleryOpened(!galleryOpened);
       }
    }
@@ -40,7 +47,7 @@ const PhotoGallery = ({photos}) => {
    useEffect(
       () => {
          const photosList = photos?.map(photo => (
-            <img src={photo.acf.zdjecie} alt={photo.acf.opis} key={photo.id} className="galleryWrapper__column__photo"/>
+            <img src={photo.acf.zdjecie} alt={photo.acf.opis} key={photo.id} date={photo.acf.data} className="galleryWrapper__column__photo"/>
          ));
          setPhotoElements(photosList);
       },
@@ -58,6 +65,7 @@ const PhotoGallery = ({photos}) => {
             window.removeEventListener('resize', handleReload);
          }
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       []
    )
 

@@ -34,7 +34,7 @@ const PostShortcut = ({post = defaultPost, click}) => {
    return(
       <div id={`post${post.id}`} className="postShortcut" onClick={() => click(post.id)}>
          <img
-            src={handleThumbnail(zdjecie1, '300x200')}
+            src={zdjecie1 ? handleThumbnail(zdjecie1, '300x200') : zdjecie1}
             alt="Miniatura posta"
             className="postShortcut__photo"
          />
