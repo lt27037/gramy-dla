@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 import About from '../pages/About';
 import BecomSponsor from '../pages/BecomSponsor';
@@ -10,6 +10,7 @@ import Gallery from '../pages/Gallery';
 import HomePage from '../pages/HomePage';
 import News from '../pages/News';
 import Post from '../pages/Post';
+import ServerError from '../pages/ServerError';
 import Sponsors from '../pages/Sponsors';
 import Volunteer from '../pages/Volunteer';
 
@@ -17,6 +18,7 @@ import '../styles/ContentContainer.scss'
 
 const ContentContainer = () => {
 
+   const history = useHistory();
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
    const [gallery, setGallery] = useState([]);
@@ -34,6 +36,9 @@ const ContentContainer = () => {
          return data;
       }catch(err){
          console.error('Błąd łączenia z serwerem! ' + err);
+         history.push({
+            pathname: '/server-error',
+         });
       }
    }
 
@@ -65,6 +70,9 @@ const ContentContainer = () => {
    return(
       <div className="container">
          <Switch>
+            <Route path="/server-error" >
+               <ServerError />
+            </Route>
             <Route path="/" exact >
                <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events}/>
             </Route>

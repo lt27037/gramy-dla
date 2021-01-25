@@ -8,13 +8,54 @@
    &__first{
       font-size: 25rem;
       font-weight: 300;
+      text-align: center;
    }
    &__second{
       font-size: 4.5rem;
       font-weight: 300;
+      text-align: center;
+   }
+   &__third{
+      font-size: 3.5rem;
+      font-weight: 500;
+      padding-top: 2rem;
+      text-align: center;
    }
    a{
       padding: 2rem 0;
       font-size: 2.5rem;
+   }
+   .svgimage{
+      width: 30vw;
+      height: auto;
+      margin-bottom: 5rem;
+   }
+}
+
+@media(max-width: 786px){
+   .error404{
+      height: 70vh;
+      &__first{
+         font-size: 10rem;
+         letter-spacing: -0.5rem;
+         font-weight: 300;
+      }
+      &__second{
+         font-size: 3rem;
+         font-weight: 300;
+      }
+      &__third{
+         font-size: 2.5rem;
+         font-weight: 500;
+         padding-top: 2rem;
+      }
+      a{
+         padding: 2rem 0;
+         display: block;
+         button{
+            font-size: 2.3rem;
+            padding:1.5rem 2rem;
+         }
+      }
    }
 }

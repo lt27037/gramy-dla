@@ -1,7 +1,7 @@
 # Page for charity association "Gramy dla..."
 
 ## Online Demo
-Try my app at gh-pages: [lt27037.github.io/gramy-dla](https://lt27037.github.io/gramy-dla/#/)
+[lt27037.github.io/gramy-dla](https://lt27037.github.io/gramy-dla/#/)
 ## Discription
 
 This app is my first big project in React.js.\
@@ -19,5 +19,3 @@ All of data from CMS are getting through REST API.
 [react-bnb-gallery](https://github.com/peterpalau/react-bnb-gallery)\
 [react-masonry-css](https://github.com/paulcollett/react-masonry-css)\
 [node-sass](https://github.com/sass/node-sass)
-
-
