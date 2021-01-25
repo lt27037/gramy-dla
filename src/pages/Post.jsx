@@ -7,9 +7,10 @@ import ClosestEvent from '../components/ClosestEvent';
 
 import '../styles/Post.scss';
 
-const Post = ({posts}) => {
+const Post = ({posts, events}) => {
 
    const [post, setPost] = useState({acf: undefined});
+   const [event, setEvent] = useState({acf: undefined});
    const location = useLocation();
    const history = useHistory();
 
@@ -40,6 +41,53 @@ const Post = ({posts}) => {
 
    useEffect(
       () => {
+         let sortedEvents = events.sort((a, b) => {
+
+            let arrA = a.acf.date.split('-');
+            let arrB = b.acf.date.split('-');
+
+            let yearA = arrA[2];
+            let yearB = arrB[2];
+
+            let monthA = arrA[1];
+            let monthB = arrB[1];
+
+            let dayA = arrA[0];
+            let dayB = arrB[0];
+
+            if(yearA - yearB === 0){
+               if(monthA - monthB === 0){
+                  if(dayA - dayB < 0){
+                     return 1;
+                  }else if(dayA - dayB > 0){
+                     return -1
+                  }else{
+                     return 1
+                  }
+               }else if(monthA - monthB > 0){
+                  return 1;
+               }else if(monthA - monthB < 0){
+                  return -1;
+               }
+            }else if(yearA - yearB < 0){
+               return -1;
+            }else {
+               return 1;
+            }
+         })
+
+         let year = new Date().getFullYear();
+         let month = new Date().getMonth() + 1;
+         let sorted = sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month );
+
+         setEvent(sorted.length > 0 ? sorted[0] : null);
+
+      },
+      [events]
+   )
+
+   useEffect(
+      () => {
          window.scrollTo(0, 0);
       },
       []
@@ -59,7 +107,7 @@ const Post = ({posts}) => {
          <h2 className="post__title">{acf?.tytul}</h2>
          <img src={acf?.zdjecie1} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
          <p className="post__content content--first">{acf?.tresc1}</p>
-         <ClosestEvent />
+         {event ? <ClosestEvent event={event} /> : null}
          {zdj2}
          {text2}
          {zdj3}

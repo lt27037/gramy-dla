@@ -14,7 +14,7 @@ const EventShortcut = ({event}) => {
 
    useEffect(
       () => {
-         if(event){
+         if(event.acf){
             const {acf} = event;
 
             const {title, date, time, photo1 } = acf;
@@ -25,6 +25,7 @@ const EventShortcut = ({event}) => {
 
             let newDate = `${dateArr[0]} ${months[monthNumber]} ${dateArr[2]}`
 
+            // @ts-ignore
             setDate(newDate);
             setTitle(title);
             setTime(time);

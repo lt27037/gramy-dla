@@ -24,7 +24,7 @@ const defaultPost = {
 const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
 
    const history = useHistory();
-   const [eventsArr, setEventsArr] = useState([]);
+   const [event, setEvent] = useState([]);
 
    const handlePostClick = (id) => {
       let obj = {
@@ -91,7 +91,9 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
 
          let year = new Date().getFullYear();
          let month = new Date().getMonth() + 1;
-         setEventsArr(sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month ))
+         let sorted = sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month );
+
+         setEvent(sorted.length > 0 ? sorted[0] : null);
 
          
       },
@@ -103,7 +105,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events }) => {
          <PhotoSlider items={sliders}/>
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
-            <ClosestEvent event={eventsArr[0]}/>
+            {event ? <ClosestEvent event={event} /> : null}
             <BecomeVolunteer />
             <div className="someOvject">
                *Tu będzie kalendarz lub coś innego*

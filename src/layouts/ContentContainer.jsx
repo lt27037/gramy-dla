@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import About from '../pages/About';
 import BecomSponsor from '../pages/BecomSponsor';
+import Error404 from '../pages/Error404';
 import Event from '../pages/Event';
 import Events from '../pages/Events';
 import Gallery from '../pages/Gallery';
@@ -73,7 +74,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/aktualnosci/post/:id">
-               <Post posts={posts}/>
+               <Post posts={posts} events={events}/>
             </Route>
 
             <Route path="/galeria">
@@ -102,6 +103,9 @@ const ContentContainer = () => {
 
             <Route path="/zostan-sponsorem">
                <BecomSponsor sponsors={sponsors} content={becomeSponsorContent}/>
+            </Route>
+            <Route path="*" >
+               <Error404 />
             </Route>
          </Switch>
       </div>
