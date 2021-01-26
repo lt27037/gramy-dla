@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import PhotoCarousel from '../components/PhotoCarousel';
 import PhotoSlider from '../components/PhotoSlider';
 import ClosestEvent from '../components/ClosestEvent';
+import GalleryWidget from '../components/GalleryWidget';
 import BecomeVolunteer from '../components/BecomeVolunteer';
 import PostShortcut from '../components/PostShortcut';
 
@@ -22,7 +23,7 @@ const defaultPost = {
     }
 };
 
-const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer}) => {
+const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, gallery}) => {
 
    const history = useHistory();
    const [event, setEvent] = useState([]);
@@ -55,6 +56,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer})
       []
    )
 
+   // sort method for events array
    useEffect(
       () => {
          let sortedEvents = events.sort((a, b) => {
@@ -110,9 +112,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer})
          <div className="homeBox">
             {event ? <ClosestEvent event={event} /> : null}
             <BecomeVolunteer photo={volunteer}/>
-            <div className="someOvject">
-               *Tu będzie kalendarz lub coś innego*
-            </div>
+            {gallery ? <GalleryWidget photo={gallery} /> : null}
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>
                {lastPosts ? lastPosts : null}

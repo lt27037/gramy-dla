@@ -87,7 +87,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events} volunteer={volunteerWidget}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events} volunteer={volunteerWidget} gallery={gallery.length > 0 ? gallery[0] : null}/>
             </Route>
 
             <Route path="/aktualnosci" exact>
