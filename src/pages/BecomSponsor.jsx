@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
+import ContactForm from '../components/ContactForm';
 
 import '../styles/BecomeSponsor.scss'
 
@@ -26,8 +27,7 @@ const BecomSponsor = ({sponsors, content}) => {
             <div className="become__wrapper__rightBar">
                <h2 className="become__wrapper__rightBar__title">{content?.acf?.subtitle2}</h2>
                <div className="become__wrapper__rightBar__data">
-                  
-                  <span className="data__info">* DO DOKOŃCZENIA I KONSULTACJI *</span>
+                  <ContactForm subject={'Chęć wsparcia stowarzyszenia'}/>
                </div>
             </div>
          </div>

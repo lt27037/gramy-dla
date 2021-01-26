@@ -16,6 +16,10 @@
       padding: 5rem 0;
    }
 }
+.formWrapper{
+   width: 40%;
+   margin-bottom: 10rem;
+}
 
 @media(max-width: 786px){
    .volunteer{
@@ -31,6 +35,10 @@
       &__photo{
          width: 100%;
       }
+   }
+   .formWrapper{
+      width: 100%;
+      margin-bottom: 15rem;
    }
    
 }

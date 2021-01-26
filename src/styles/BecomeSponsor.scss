@@ -34,7 +34,6 @@
          margin-top: 10rem;
          padding-bottom: 10rem;
          justify-content: flex-start;
-         background-color: $headerBgc;
          &__title{
             width: 100%;
             background-color: $mainColor;
@@ -43,6 +42,7 @@
          }
          &__data{
             height: 100%;
+            width: 100%;
             @include flexCenter(column);
             .data__text{
                padding: 5rem 0 0 0;
@@ -84,6 +84,9 @@
          }
          &__rightBar{
             margin: 0;
+            &__data{
+               min-height: 60vh;
+            }
             &__title{
                padding: 3rem 0;
                font-size: 3.5rem;

@@ -60,6 +60,7 @@ const News = ({sponsors, posts}) => {
       },
       [prevPost]
    )
+   
 
    let displayPosts = postElements?.filter(post => postElements.indexOf(post) < postsCounter);
    

@@ -52,7 +52,6 @@ const EventShortcut = ({event}) => {
       let addDot = '';
 
       dot === '.' ? addDot = '' : addDot = '.';
-      console.log(`${text}-${size}${addDot}${extend}`);
       
       return(
          `${text}-${size}${addDot}${extend}`
