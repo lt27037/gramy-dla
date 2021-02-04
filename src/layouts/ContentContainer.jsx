@@ -46,10 +46,11 @@ const ContentContainer = () => {
    useEffect(
       () => {
          const endPoint = "https://gramydla.pl/admin/wp-json/acf/v3";
+
          const endPoint2 = "http://192.168.8.11:1337";
          const sponsorsUrl = `${endPoint2}/sponsors`;
          const slidersUrl = `${endPoint2}/sliders`;
-         const postsUrl = `${endPoint}/posts/?categories=2&per_page=100`;
+         const postsUrl = `${endPoint2}/posts`;
          const eventsUrl = `${endPoint}/posts/?categories=7&per_page=100`;
          const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;
          const aboutContentUrl = `${endPoint}/posts/?categories=4&per_page=100`;

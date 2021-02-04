@@ -45,6 +45,8 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
 
    // @ts-ignore
    const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post} click={handlePostClick}/>);
+
+
    const lastPosts = postsArr.filter(post => postsArr.indexOf(post) < 5);
 
    useEffect(
