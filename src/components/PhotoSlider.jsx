@@ -5,36 +5,36 @@ import '../styles/PhotoSlider.scss';
 
 const handleDragStart = (e) => e.preventDefault();
 
-const defaultPost = {
-   acf:{
-      tytul : '',
-      zajawka : '',
-      datadodania : '',
-      zdjecie : '',
-   },
-   id: '0000000'
-}
+// const defaultPost = {
+//    acf:{
+//       tytul : '',
+//       zajawka : '',
+//       datadodania : '',
+//       zdjecie : '',
+//    },
+//    id: '0000000'
+// }
 
-const PhotoCarousel = ({items = [defaultPost]}) => {
+const PhotoSlider = ({items}) => {
 
    const [screenWidth, setScreenWidth] = useState(1900);
 
-   const photoList = items.map(({id, acf}) => {
+   console.log(items);
 
-      
+   const photoList = items.map(({id, title, discription, backgroundPhoto}) => {
+
 
       return(
-         <div className="photoSlider__item">
+      <div className="photoSlider__item" key={id}>
          <img
-            alt={acf.title}
+            alt={discription}
             className='photoSlider__img'
-            key={id}
             onDragStart={handleDragStart}
-            src={screenWidth >= 786 ? acf.zdjecie : acf.zdjeciemini}
+            src={screenWidth > 786 ? `http://192.168.8.11:1337${backgroundPhoto.url}` : `http://192.168.8.11:1337${backgroundPhoto.formats.medium.url}` }
          />
          <div className="photoSlider__content">
-            <h3 className="photoSlider__content__discription">{acf.content}</h3>
-            <h2 className="photoSlider__content__title">{acf.title}</h2>
+            <h3 className="photoSlider__content__discription">{discription}</h3>
+            <h2 className="photoSlider__content__title">{title}</h2>
          </div>
       </div>
       )
@@ -74,4 +74,4 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
    );
 }
 
- export default PhotoCarousel;
+ export default PhotoSlider;

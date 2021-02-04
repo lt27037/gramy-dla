@@ -28,8 +28,6 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
    const history = useHistory();
    const [event, setEvent] = useState([]);
 
-   console.log(posts);
-
    const handlePostClick = (id) => {
       let obj = {
          pathname: `/aktualnosci/post/${id}`,
@@ -105,9 +103,10 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
       [events]
    )
 
+
    return(
       <>
-         <PhotoSlider items={sliders}/>
+         {sliders ? <PhotoSlider items={sliders}/> : null}
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
             {event ? <ClosestEvent event={event} /> : null}

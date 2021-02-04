@@ -47,7 +47,8 @@ const ContentContainer = () => {
       () => {
          const endPoint = "https://gramydla.pl/admin/wp-json/acf/v3"
          const sponsorsUrl = `${endPoint}/posts/?categories=6&per_page=100`;
-         const slidersUrl = `${endPoint}/posts/?categories=5&per_page=100`;
+         // const slidersUrl = `${endPoint}/posts/?categories=5&per_page=100`;
+         const slidersUrl = `http://192.168.8.11:1337/sliders`;
          const postsUrl = `${endPoint}/posts/?categories=2&per_page=100`;
          const eventsUrl = `${endPoint}/posts/?categories=7&per_page=100`;
          const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;

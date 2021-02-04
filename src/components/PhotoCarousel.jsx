@@ -19,9 +19,9 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
 
    const handleThumbnail = (url, size) => {
 
-      let text = url.slice(0, -4);
-      let extend = url.slice(-4, url.length);
-      let dot = url.slice(-4, -3);
+      let text = url?.slice(0, -4);
+      let extend = url?.slice(-4, url.length);
+      let dot = url?.slice(-4, -3);
       let addDot = '';
 
       dot === '.' ? addDot = '' : addDot = '.';
@@ -30,16 +30,14 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
          `${text}-${size}${addDot}${extend}`
       )
    }
-
-
    const photoList = items?.map(item => (
       <div className="photoCarousel__item">
          <img
-            alt={item.acf.name}
+            alt={item?.acf?.name}
             className='photoCarousel__img'
-            key={item.id}
+            key={item?.id}
             onDragStart={handleDragStart}
-            src={handleThumbnail(item.acf.url, '300x200')}
+            src={handleThumbnail(item?.acf?.url, '300x200')}
          />
       </div>
    ))
