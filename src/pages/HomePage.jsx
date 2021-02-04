@@ -27,6 +27,9 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
 
    const history = useHistory();
    const [event, setEvent] = useState([]);
+   const [postShortcuts, setPostShortcuts] = useState([]);
+
+
 
    const handlePostClick = (id) => {
       let obj = {
@@ -42,12 +45,14 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
       history.push(obj);
    }
 
-
-   // @ts-ignore
-   const postsArr = posts.map((post) => <PostShortcut key={post.id} post={post} click={handlePostClick}/>);
-
-
-   const lastPosts = postsArr.filter(post => postsArr.indexOf(post) < 5);
+   useEffect(
+      () => {
+         let postsArr = posts.map((post) => <PostShortcut key={post.id} post={post} click={handlePostClick}/>);
+         // @ts-ignore
+         setPostShortcuts(postsArr.filter(post => postsArr.indexOf(post) < 5))
+      },
+      [posts]
+   )
 
    useEffect(
       () => {
@@ -116,7 +121,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
             {gallery ? <GalleryWidget photo={gallery} /> : null}
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>
-               {lastPosts ? lastPosts : null}
+               {postShortcuts ? postShortcuts : null}
                <button className="button" onClick={handleNewsLinkClick}>Zobacz więcej</button>
             </div>
          </div>
