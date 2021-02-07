@@ -24,10 +24,8 @@ const ContentContainer = () => {
    const [gallery, setGallery] = useState([]);
    const [posts, setPosts] = useState([]);
    const [events, setEvents] = useState([]);
-   const [sponsorsContent, setSponsorsContent] = useState([]);
    const [becomeSponsorContent, setBecomeSponsorContent] = useState([]);
    const [becomeVolunteerContent, setBecomeVolunteerContent] = useState([]);
-   const [aboutContent, setAboutContent] = useState([]);
    const [volunteerWidget, setVolunteerWidget] = useState(null);
 
    const getApiData = async (url) => {
@@ -53,8 +51,6 @@ const ContentContainer = () => {
          const postsUrl = `${endPoint2}/posts?_limit=5&_sort=published_at:DESC`;
          const eventsUrl = `${endPoint2}/events?_sort=data:DESC`;
          const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;
-         const aboutContentUrl = `${endPoint}/posts/?categories=4&per_page=100`;
-         const sponsorsContentUrl = `${endPoint}/pages/246`;
          const becomeSponsorContentUrl = `${endPoint}/pages/293`;
          const becomeVolunteerContentUrl = `${endPoint}/pages/254`;
 
@@ -63,8 +59,6 @@ const ContentContainer = () => {
          getApiData(postsUrl).then(data => setPosts(data));
          getApiData(eventsUrl).then(data => setEvents(data));
          getApiData(galleryUrl).then(data => setGallery(data));
-         getApiData(aboutContentUrl).then(data => setAboutContent(data));
-         getApiData(sponsorsContentUrl).then(data => setSponsorsContent(data));
          getApiData(becomeSponsorContentUrl).then(data => setBecomeSponsorContent(data));
          getApiData(becomeVolunteerContentUrl).then(data => setBecomeVolunteerContent(data));
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,7 +99,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/onas">
-               <About content={aboutContent}/>
+               <About />
             </Route>
 
             <Route path="/sponsorzy">
