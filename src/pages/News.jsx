@@ -9,8 +9,10 @@ import '../styles/News.scss'
 const News = ({sponsors, posts}) => {
 
    const [postElements, setPostElement] = useState([]);
+   const [allPosts, setAllPosts] = useState([]);
    const [postsCounter, setPostsCounter] = useState(5);
    const [prevPost, setPrevPost] = useState(null);
+   const [maxPostQuan, setMaxPostQuan] = useState(5);
    const history = useHistory();
 
 
@@ -28,15 +30,43 @@ const News = ({sponsors, posts}) => {
    }
 
    const handleCounterIncremence = () => {
-      setPostsCounter(postsCounter + 5);
+      if(allPosts.length !== maxPostQuan){
+         setPostsCounter(postsCounter + 5);
+      }
+   }
+
+   const getPosts = async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error(err);
+      }
    }
 
    useEffect(
       () => {
-         
-         const postsArr = posts[0]?.acf !== undefined ? posts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ) : null ;
-         setPostElement(postsArr) ;
+         if(postsCounter){
+            let quantity = 5;
+            let url = `http://192.168.8.11:1337/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
+            // @ts-ignore
+            getPosts(url).then(data => setAllPosts([...allPosts, ...data]))
+         }
+      },
+      [postsCounter]
+   )
 
+   useEffect(
+      () => {
+         // @ts-ignore
+         setPostElement(allPosts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ));
+      },
+      [allPosts]
+   )
+
+   useEffect(
+      () => {
          // @ts-ignore
          if(history.location.prevPost && history.location.prevQuantity){
             // @ts-ignore
@@ -46,9 +76,13 @@ const News = ({sponsors, posts}) => {
          }else {
             window.scrollTo(0, 0);
          }
+
+         let postsQuantityUrl = 'http://192.168.8.11:1337/posts/count';
+         getPosts(postsQuantityUrl).then(data => setMaxPostQuan(data))
+
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [posts]
+      []
    )
 
    useEffect(
@@ -60,22 +94,21 @@ const News = ({sponsors, posts}) => {
       },
       [prevPost]
    )
-   
 
-   let displayPosts = postElements?.filter(post => postElements.indexOf(post) < postsCounter);
-   
-   const morePostsButton = displayPosts?.length === postElements?.length ? null : (
+   const moreBtn = allPosts.length < maxPostQuan ? (
       <button className="button more--btn" onClick={handleCounterIncremence}>Załaduj więcej</button>
+   ) : (
+      <p className="allPosts">To już wszystkie wpisy</p>
    );
-
+   
    return(
       <>
          <PhotoCarousel items={sponsors} /> 
          <h2 className="news__title">Aktualności</h2>
          <div className="news__postWrapper">
-            {displayPosts?.length !== 0 ? displayPosts : null}
+            {postElements}
          </div>
-         {morePostsButton}
+         {moreBtn}
       </>
    );
 };

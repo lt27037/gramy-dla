@@ -10,10 +10,12 @@ import '../styles/Post.scss';
 
 const Post = ({posts, events, volunteer}) => {
 
-   const [post, setPost] = useState({acf: undefined});
+   const [post, setPost] = useState(null);
    const [event, setEvent] = useState({acf: undefined});
    const location = useLocation();
    const history = useHistory();
+
+   let endPoint = 'http://192.168.8.11:1337';
 
    // @ts-ignore
    let {id} = useParams();
@@ -32,13 +34,6 @@ const Post = ({posts, events, volunteer}) => {
    }
 
    const postArr = posts?.filter(post => post.id === Number(id));
-
-   useEffect(
-      () => {
-         setPost(postArr.length !== 0 ? postArr[0] : {acf: undefined})
-      },
-      [postArr]
-   );
 
    useEffect(
       () => {
@@ -87,27 +82,41 @@ const Post = ({posts, events, volunteer}) => {
       [events]
    )
 
+
+
+
+   const getPosts = async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error(err);
+      }
+   }
+
    useEffect(
       () => {
          window.scrollTo(0, 0);
+
+         let url = `${endPoint}/posts/${id}`
+         getPosts(url).then(data => setPost(data));
       },
       []
    )
 
-   const {acf} = post;
-
-   const zdj2 = acf?.zdjecie2 ? <img src={acf?.zdjecie2} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
-   const zdj3 = acf?.zdjecie3 ? <img src={acf?.zdjecie3} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
-   const text2 = acf?.tresc2 ? <p className="post__content content--second">{acf?.tresc2}</p> : null;
-   const text3 = acf?.tresc3 ? <p className="post__content content--second">{acf?.tresc3}</p> : null;
+   const zdj2 = post?.photo2 ? <img src={endPoint+post.photo2.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
+   const zdj3 = post?.photo3 ? <img src={endPoint+post.photo3.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
+   const text2 = post?.drugiParagraf ? <p className="post__content content--second">{post.drugiParagraf}</p> : null;
+   const text3 = post?.trzeciParagraf ? <p className="post__content content--second">{post.trzeciParagraf}</p> : null;
 
    return (
       <>
       <div className="post">
-         <div className="post__date">{acf?.datadodania}</div>
-         <h2 className="post__title">{acf?.tytul}</h2>
-         <img src={acf?.zdjecie1} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
-         <p className="post__content content--first">{acf?.tresc1}</p>
+         <div className="post__date">{post?.published_at.slice(0, 10)}</div>
+         <h2 className="post__title">{post?.title}</h2>
+         <img src={endPoint+post?.mainPhoto.url} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
+         <p className="post__content content--first">{post?.pierwszyParagraf}</p>
          {event ? <ClosestEvent event={event} /> : null}
          {zdj2}
          {text2}

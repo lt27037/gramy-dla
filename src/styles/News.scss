@@ -1,3 +1,5 @@
+@import 'variables';
+
 .news{
    &__postWrapper{
       width: 55%;
@@ -7,6 +9,10 @@
       padding: 2rem 0;
    }
    
+}
+.allPosts{
+   padding: 2rem 0 4rem 0;
+   color: $sideColor;
 }
 
 .button.more--btn{
