@@ -26,7 +26,6 @@ const defaultPost = {
 const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, gallery}) => {
 
    const history = useHistory();
-   const [event, setEvent] = useState([]);
    const [postShortcuts, setPostShortcuts] = useState([]);
 
 
@@ -61,62 +60,12 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
       []
    )
 
-   // sort method for events array
-   useEffect(
-      () => {
-         let sortedEvents = events.sort((a, b) => {
-
-            let arrA = a.acf.date.split('-');
-            let arrB = b.acf.date.split('-');
-
-            let yearA = arrA[2];
-            let yearB = arrB[2];
-
-            let monthA = arrA[1];
-            let monthB = arrB[1];
-
-            let dayA = arrA[0];
-            let dayB = arrB[0];
-
-            if(yearA - yearB === 0){
-               if(monthA - monthB === 0){
-                  if(dayA - dayB < 0){
-                     return 1;
-                  }else if(dayA - dayB > 0){
-                     return -1
-                  }else{
-                     return 1
-                  }
-               }else if(monthA - monthB > 0){
-                  return 1;
-               }else if(monthA - monthB < 0){
-                  return -1;
-               }
-            }else if(yearA - yearB < 0){
-               return -1;
-            }else {
-               return 1;
-            }
-         })
-
-         let year = new Date().getFullYear();
-         let month = new Date().getMonth() + 1;
-         let sorted = sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month );
-
-         setEvent(sorted.length > 0 ? sorted[0] : null);
-
-         
-      },
-      [events]
-   )
-
-
    return(
       <>
          {sliders ? <PhotoSlider items={sliders}/> : null}
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
-            {event ? <ClosestEvent event={event} /> : null}
+            <ClosestEvent />
             <BecomeVolunteer photo={volunteer}/>
             {gallery ? <GalleryWidget photo={gallery} /> : null}
             <div className="homePostWrapper">

@@ -11,7 +11,6 @@ import '../styles/Post.scss';
 const Post = ({posts, events, volunteer}) => {
 
    const [post, setPost] = useState(null);
-   const [event, setEvent] = useState({acf: undefined});
    const location = useLocation();
    const history = useHistory();
 
@@ -32,58 +31,6 @@ const Post = ({posts, events, volunteer}) => {
 
       history.push(obj);
    }
-
-   const postArr = posts?.filter(post => post.id === Number(id));
-
-   useEffect(
-      () => {
-         let sortedEvents = events.sort((a, b) => {
-
-            let arrA = a.acf.date.split('-');
-            let arrB = b.acf.date.split('-');
-
-            let yearA = arrA[2];
-            let yearB = arrB[2];
-
-            let monthA = arrA[1];
-            let monthB = arrB[1];
-
-            let dayA = arrA[0];
-            let dayB = arrB[0];
-
-            if(yearA - yearB === 0){
-               if(monthA - monthB === 0){
-                  if(dayA - dayB < 0){
-                     return 1;
-                  }else if(dayA - dayB > 0){
-                     return -1
-                  }else{
-                     return 1
-                  }
-               }else if(monthA - monthB > 0){
-                  return 1;
-               }else if(monthA - monthB < 0){
-                  return -1;
-               }
-            }else if(yearA - yearB < 0){
-               return -1;
-            }else {
-               return 1;
-            }
-         })
-
-         let year = new Date().getFullYear();
-         let month = new Date().getMonth() + 1;
-         let sorted = sortedEvents.filter(event => event.acf.date.slice(-4, event.acf.date.length) >= year &&  event.acf.date.slice(-7, -5) >= month );
-
-         setEvent(sorted.length > 0 ? sorted[0] : null);
-
-      },
-      [events]
-   )
-
-
-
 
    const getPosts = async (url) => {
       try{
@@ -117,7 +64,6 @@ const Post = ({posts, events, volunteer}) => {
          <h2 className="post__title">{post?.title}</h2>
          <img src={endPoint+post?.mainPhoto.url} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
          <p className="post__content content--first">{post?.pierwszyParagraf}</p>
-         {event ? <ClosestEvent event={event} /> : null}
          {zdj2}
          {text2}
          {zdj3}

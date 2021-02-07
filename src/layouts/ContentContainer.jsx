@@ -51,7 +51,7 @@ const ContentContainer = () => {
          const sponsorsUrl = `${endPoint2}/sponsors`;
          const slidersUrl = `${endPoint2}/sliders`;
          const postsUrl = `${endPoint2}/posts?_limit=5&_sort=published_at:DESC`;
-         const eventsUrl = `${endPoint}/posts/?categories=7&per_page=100`;
+         const eventsUrl = `${endPoint2}/events?_sort=data:DESC`;
          const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;
          const aboutContentUrl = `${endPoint}/posts/?categories=4&per_page=100`;
          const sponsorsContentUrl = `${endPoint}/pages/246`;
