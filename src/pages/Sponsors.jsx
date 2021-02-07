@@ -5,20 +5,39 @@ import SponsorProfile from '../components/SponsorProfile';
 
 import '../styles/Sponsors.scss'
 
-const Sponsors = ({sponsors, content}) => {
+const Sponsors = ({sponsors}) => {
 
    const [sponsorsList, setSponsorsList] = useState();
-   const [contentElements, setSContentElements] = useState({});
+   const [contentElements, setSContentElements] = useState({naglowek: null, cytat: null, autor_cytatu: null});
+
+   let endPoint = 'http://192.168.8.11:1337';
 
    useEffect(
       () => {
-         setSponsorsList(sponsors.map(({id, acf}) => (
-            <SponsorProfile src={acf.url} alt={`Zdjęcie profilowe sponsora ${acf.name}.`} name={acf.name} key={id}  />
+         setSponsorsList(sponsors.map(sponsor => (
+            <SponsorProfile src={endPoint+sponsor.photo.url} alt={`Zdjęcie profilowe sponsora ${sponsor.name}.`} name={sponsor.name} key={sponsor.id}  />
          )))
 
-         setSContentElements(content?.acf);
       },
-      [sponsors, content]
+      [sponsors]
+   )
+
+   const getData = async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error(err);
+      }
+   }
+
+   useEffect(
+      () => {
+         let url = `${endPoint}/sponsorzy`;
+         getData(url).then(data => setSContentElements(data))
+      },
+      []
    )
 
    const history = useHistory();
@@ -32,8 +51,11 @@ const Sponsors = ({sponsors, content}) => {
 
    return(
       <div className="sponsors">
-         <h2 className="sponsors__title">{contentElements?.tytul}</h2>
-         <p className="sponsors__italic">{contentElements?.cytat}</p>
+         <h2 className="sponsors__title">{contentElements.naglowek}</h2>
+         <p className="sponsors__italic">
+            {contentElements.cytat}
+            <span className="sponsors__italic__author">{contentElements.autor_cytatu}</span>
+         </p>
          <div className="sponsors__profilesWrapper">
             {sponsorsList}
          </div>

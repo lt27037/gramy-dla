@@ -109,7 +109,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/sponsorzy">
-               <Sponsors sponsors={sponsors} content={sponsorsContent}/>
+               <Sponsors sponsors={sponsors}/>
             </Route>
 
             <Route path="/wydarzenia" exact>

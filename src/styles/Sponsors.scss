@@ -14,8 +14,9 @@
    }
    &__italic{
       font-style: italic;
+      position: relative;
       width: 100%;
-      padding: 2rem 20%;
+      padding: 2rem 20% 5rem 20%;
       margin: 2rem 0 7rem 0; 
       text-align: center;
       font-size: 2.8rem;
@@ -25,6 +26,13 @@
       &::after, 
       &::before{
          content: '"';
+      }
+      &__author{
+         position: absolute;
+         right: 20%;
+         bottom: 1.5rem;
+         font-size: 2.2rem;
+         color: rgb(26, 26, 26);
       }
    }
    &__text{
