@@ -1,3 +1,42 @@
+@import 'variables';
+
 .galleryBox{
    width: 100%;
+}
+.FoldersBox{
+   width: 100%;
+   padding: 5vh 7%;
+   display: grid;
+   column-gap: 4%;
+   row-gap: 10vh;
+   grid-template-columns: repeat(4, 22%); 
+}
+
+.galleryHeader{
+   width: 100%;
+   padding: 3rem 0;
+   margin: 2rem 0;
+   background-color: $mainColor;
+   @include flexCenter(column);
+   position: relative;
+   &__date{
+      font-size: 1.8rem;
+      font-weight: 400;
+   }
+   &__title{
+      font-size: 3rem;
+      font-weight: 700;
+   }
+   .backArrow{
+      position: absolute;
+      left: 3rem;
+      width: 2.5rem;
+      color: #000;
+      transition: color 0.1s, transform .1s;
+      cursor: pointer;
+      &:hover{
+         color: rgb(65, 65, 65);
+         transform: scale(1.15);
+      }
+   }
 }

@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // @ts-nocheck
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import ReactBnbGallery from 'react-bnb-gallery';
 import Masonry from 'react-masonry-css';
 
-import 'react-bnb-gallery/dist/style.css'
+import ReactBnbGallery from 'react-bnb-gallery';
+import 'react-bnb-gallery/dist/style.css';
 import '../styles/PhotoGallery.scss';
 
 
@@ -21,9 +22,7 @@ const PhotoGallery = ({photos}) => {
       if(e.target.nodeName === 'IMG'){
 
          let photoData = {
-            photo: e.target.src,
-            caption: e.target.getAttribute('date'),
-            subcaption: e.target.alt,
+            photo: e.target.src
          }
          
          setPhotoOpened(photoData);
@@ -46,8 +45,14 @@ const PhotoGallery = ({photos}) => {
 
    useEffect(
       () => {
+
          const photosList = photos?.map(photo => (
-            <img src={photo.acf.zdjecie} alt={photo.acf.opis} key={photo.id} date={photo.acf.data} className="galleryWrapper__column__photo"/>
+            <img 
+            src={`http://192.168.8.11:1337${photo.url}`} 
+            alt="zdjęcie z galerii" 
+            key={photo.id} 
+            className="galleryWrapper__column__photo"
+            />
          ));
          setPhotoElements(photosList);
       },
@@ -65,7 +70,6 @@ const PhotoGallery = ({photos}) => {
             window.removeEventListener('resize', handleReload);
          }
       },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       []
    )
 

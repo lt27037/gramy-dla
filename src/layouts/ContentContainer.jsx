@@ -6,6 +6,7 @@ import BecomSponsor from '../pages/BecomSponsor';
 import Error404 from '../pages/Error404';
 import Event from '../pages/Event';
 import Events from '../pages/Events';
+import Galleries from '../pages/Galleries';
 import Gallery from '../pages/Gallery';
 import HomePage from '../pages/HomePage';
 import News from '../pages/News';
@@ -94,8 +95,12 @@ const ContentContainer = () => {
                <Post posts={posts} events={events} volunteer={volunteerWidget}/>
             </Route>
 
-            <Route path="/galeria">
-               <Gallery sponsors={sponsors} photos={gallery}/>
+            <Route path="/galeria" exact>
+               <Galleries sponsors={sponsors}/>
+            </Route>
+
+            <Route path="/galeria/:id">
+               <Gallery />
             </Route>
 
             <Route path="/onas">
