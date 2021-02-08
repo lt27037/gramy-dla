@@ -17,19 +17,6 @@ const defaultPost = {
 
 const PhotoCarousel = ({items = [defaultPost]}) => {
 
-   // const handleThumbnail = (url, size) => {
-
-   //    let text = url?.slice(0, -4);
-   //    let extend = url?.slice(-4, url.length);
-   //    let dot = url?.slice(-4, -3);
-   //    let addDot = '';
-
-   //    dot === '.' ? addDot = '' : addDot = '.';
-      
-   //    return(
-   //       `${text}-${size}${addDot}${extend}`
-   //    )
-   // }
    const photoList = items?.map(({id, name, photo}) => (
       <div className="photoCarousel__item" key={id}>
          <img

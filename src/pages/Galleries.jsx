@@ -27,7 +27,7 @@ const Galleries = ({sponsors}) => {
       () => {
          window.scrollTo(0, 0);
 
-         let url = `${endPoint}/galleries`
+         let url = `${endPoint}/galleries?_sort=published_at:DESC`
          getData(url).then(data => setGalleries(data))
       },
       []

@@ -40,3 +40,12 @@
       }
    }
 }
+
+@media(max-width: 786px){
+   .FoldersBox{
+      grid-template-columns: 100%;
+   }
+   .backArrow{
+      display: none;
+   }
+}
