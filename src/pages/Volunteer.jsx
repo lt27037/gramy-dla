@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import PhotoCarousel from '../components/PhotoCarousel'; 
 import ContactForm from '../components/ContactForm';
 
+import axios from 'axios';
+
 import '../styles/Volunteer.scss'
 
 const Volunteer = ({sponsors}) => {
@@ -26,26 +28,28 @@ const Volunteer = ({sponsors}) => {
       () => {
          window.scrollTo(0, 0);
 
+         let dataJson = {
+            "subject": "kurwa działa :O",
+            "body": "eluwina"
+           }
+
          let url = `${endPoint}/wolontariusz-strona`
          getData(url).then(data => setContent(data))
 
+         putData(`${endPoint}/formularzs/custom`, dataJson)
+            .then(response => console.log(response))
 
       },
       []
    )
 
    const putData = async (url, data) => {
-      try{
-         const message = await fetch(url, {
-            method: 'POST',
-            cache: 'no-cache',
-            data: JSON.stringify(data)
-
-         })
-      }
+      await axios({
+         method: 'POST',
+         url,
+         data,
+      })
    }
-
-   console.log(content);
 
 
    return(
