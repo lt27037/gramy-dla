@@ -61,7 +61,7 @@ const Volunteer = ({sponsors}) => {
          <p className="volunteer__text">{content?.text2}</p>
          <h2 className="volunteer__title">Skontaktuj się z nami!</h2>
          <div className="formWrapper">
-            <ContactForm subject={'Chęć przyłączenia się do wolontariatu'}/>
+            <ContactForm subject={'Chcę przyłączyć się do wolontariatu!'}/>
          </div>
       </>
    );

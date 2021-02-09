@@ -120,11 +120,11 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/zostan-wolontariuszem">
-               <Volunteer sponsors={sponsors} content={becomeVolunteerContent}/>
+               <Volunteer sponsors={sponsors}/>
             </Route>
 
             <Route path="/zostan-sponsorem">
-               <BecomSponsor sponsors={sponsors} content={becomeSponsorContent}/>
+               <BecomSponsor sponsors={sponsors}/>
             </Route>
             <Route path="*" >
                <Error404 />
