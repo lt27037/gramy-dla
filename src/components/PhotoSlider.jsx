@@ -30,7 +30,7 @@ const PhotoSlider = ({items}) => {
             alt={discription}
             className='photoSlider__img'
             onDragStart={handleDragStart}
-            src={screenWidth > 786 ? `http://192.168.8.11:1337${backgroundPhoto.url}` : `http://192.168.8.11:1337${backgroundPhoto.formats.medium.url}` }
+            src={screenWidth > 786 ? `${backgroundPhoto.url}` : `${backgroundPhoto.formats.medium.url}` }
          />
          <div className="photoSlider__content">
             <h3 className="photoSlider__content__discription">{discription}</h3>

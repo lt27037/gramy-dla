@@ -11,7 +11,7 @@ const Galleries = ({sponsors}) => {
    const [galleries, setGalleries] = useState([])
    const [folders, setFolders] = useState([]);
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getData = async (url) => {
       try{
@@ -35,7 +35,7 @@ const Galleries = ({sponsors}) => {
 
    useEffect(
       () => {
-         if(galleries){
+         if(galleries.length){
             const folders = galleries.map(gallery => <GalleryFolder gallery={gallery} key={gallery.id}/>);
             setFolders(folders);
          }

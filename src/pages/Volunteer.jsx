@@ -12,7 +12,7 @@ const Volunteer = ({sponsors}) => {
    const [content, setContent] = useState(null);
 
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getData = async (url) => {
       try{
@@ -57,7 +57,7 @@ const Volunteer = ({sponsors}) => {
          <PhotoCarousel items={sponsors} />
          <h2 className="volunteer__title">{content?.title}</h2>
          <p className="volunteer__text">{content?.text1}</p>
-         <img src={endPoint+content?.photo.url} alt="Zdjęcie wolontariuszy stowarzyszenia" className="volunteer__photo"/>
+         <img src={content?.photo.url} alt="Zdjęcie wolontariuszy stowarzyszenia" className="volunteer__photo"/>
          <p className="volunteer__text">{content?.text2}</p>
          <h2 className="volunteer__title">Skontaktuj się z nami!</h2>
          <div className="formWrapper">

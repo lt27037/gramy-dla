@@ -16,7 +16,7 @@ const Gallery = () => {
 
    const [gallery, setGallery] = useState();
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getData = async (url) => {
       try{

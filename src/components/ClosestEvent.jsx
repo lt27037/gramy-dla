@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 
 import EventShortcut from './EventShortcut';
@@ -8,7 +9,7 @@ const ClosestEvent = () => {
 
    const [event, setEvent] = useState([null]);
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getEvent = async (url) => {
       try{

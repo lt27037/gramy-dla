@@ -66,7 +66,7 @@ const HomePage = ({sponsors, sliders, posts = [defaultPost], events, volunteer, 
          <PhotoCarousel items={sponsors}/>
          <div className="homeBox">
             <ClosestEvent />
-            <BecomeVolunteer photo={volunteer}/>
+            <BecomeVolunteer/>
             {gallery ? <GalleryWidget photo={gallery} /> : null}
             <div className="homePostWrapper">
                <h3 className="homePostWrapper__title">Aktualności</h3>

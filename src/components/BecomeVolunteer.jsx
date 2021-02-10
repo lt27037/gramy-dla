@@ -13,7 +13,7 @@ const BecomeVolunteer = () => {
       history.push({pathname: '/zostan-wolontariuszem'});
    }
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getData = async (url) => {
       try{
@@ -37,7 +37,7 @@ const BecomeVolunteer = () => {
    return(
       <div className="becomeVolunteer">
          <h3 className="becomeVolunteer__title">{content?.title}</h3>
-         <img src={endPoint+content?.photo?.formats.small.url} alt="Zdjęcie banera zostań wolontariuszem" className="becomeVolunteer__photo"/>
+         <img src={content?.photo?.formats.small.url} alt="Zdjęcie banera zostań wolontariuszem" className="becomeVolunteer__photo"/>
          <button className="button" onClick={handleClick}>Dołącz do nas!</button>
       </div>
    );

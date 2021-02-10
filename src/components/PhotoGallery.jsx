@@ -48,7 +48,7 @@ const PhotoGallery = ({photos}) => {
 
          const photosList = photos?.map(photo => (
             <img 
-            src={`http://192.168.8.11:1337${photo.url}`} 
+            src={photo.url} 
             alt="zdjęcie z galerii" 
             key={photo.id} 
             className="galleryWrapper__column__photo"

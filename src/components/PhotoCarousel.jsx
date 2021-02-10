@@ -23,7 +23,7 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
             alt={name}
             className='photoCarousel__img'
             onDragStart={handleDragStart}
-            src={`http://192.168.8.11:1337${photo.formats.thumbnail.url}`}
+            src={`${photo.formats.thumbnail.url}`}
          />
       </div>
    ))

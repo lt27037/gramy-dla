@@ -18,7 +18,7 @@ const GalleryFolder = ({gallery}) => {
    return(
       <div className="folder" onClick={handleClick}>
          <img 
-            src={`http://192.168.8.11:1337${gallery.okladka.formats.small.url}`} 
+            src={gallery.okladka.formats.small.url} 
             alt="miniatura folderu w galerii" 
             className="folder__image"
          />

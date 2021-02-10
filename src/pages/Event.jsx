@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Event = ({events, volunteer}) => {
    const params = useParams();
    const [event, setEvent] = useState();
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getEvent = async (url) => {
       try{
@@ -34,7 +35,7 @@ const Event = ({events, volunteer}) => {
       []
    )
 
-   const zdj2 = event?.zdjecie2 ? <img src={endPoint + event?.zdjecie2.url} alt="Zdjęcie z Wydarzenia" className="event__wrapper__photo"/> : null;
+   const zdj2 = event?.zdjecie2 ? <img src={event?.zdjecie2.url} alt="Zdjęcie z Wydarzenia" className="event__wrapper__photo"/> : null;
    const text2 = event?.opis2 ? <p className="event__wrapper__text">{event?.opis2}</p> : null;
 
    return (
@@ -44,7 +45,7 @@ const Event = ({events, volunteer}) => {
          <h2 className="event__title title--big">{event?.nazwa_wydarzenia}</h2>
          <div className="event__wrapper">
             <p className="event__wrapper__text">{event?.opis1}</p>
-            <img src={endPoint + event?.zdjecie1.url} alt="Zdjęcie w wydarzeniu" className="event__wrapper__photo"/>
+            <img src={event?.zdjecie1.url} alt="Zdjęcie w wydarzeniu" className="event__wrapper__photo"/>
             {text2}
             {zdj2}
          </div>

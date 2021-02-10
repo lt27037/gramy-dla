@@ -9,7 +9,7 @@ const About = () => {
    const [sectionList, setSectionList] = useState(null);
    const [content, setContent] = useState(null);
 
-   let endPoint = 'http://192.168.8.11:1337';
+   let endPoint = 'https://gramy-dla.herokuapp.com';
 
    const getData = async (url) => {
       try{
@@ -33,11 +33,11 @@ const About = () => {
 
    return(
       <div className="aboutWrapper">
-         <AboutSection photo={endPoint+content?.photo1.url} text={content?.text1}/>
-         <AboutSection photo={endPoint+content?.photo2.url} text={content?.text2}/>
-         <AboutSection photo={endPoint+content?.photo3.url} text={content?.text3}/>
-         <AboutSection photo={endPoint+content?.photo4.url} text={content?.text4}/>
-         <AboutSection photo={endPoint+content?.photo5.url} text={content?.text5}/>
+         <AboutSection photo={content?.photo1.url} text={content?.text1}/>
+         <AboutSection photo={content?.photo2.url} text={content?.text2}/>
+         <AboutSection photo={content?.photo3.url} text={content?.text3}/>
+         <AboutSection photo={content?.photo4.url} text={content?.text4}/>
+         <AboutSection photo={content?.photo5.url} text={content?.text5}/>
          
       </div>
    );

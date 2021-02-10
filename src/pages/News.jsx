@@ -49,7 +49,7 @@ const News = ({sponsors, posts}) => {
       () => {
          if(postsCounter){
             let quantity = 5;
-            let url = `http://192.168.8.11:1337/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
+            let url = `https://gramy-dla.herokuapp.com/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
             // @ts-ignore
             getPosts(url).then(data => setAllPosts([...allPosts, ...data]))
          }
@@ -77,7 +77,7 @@ const News = ({sponsors, posts}) => {
             window.scrollTo(0, 0);
          }
 
-         let postsQuantityUrl = 'http://192.168.8.11:1337/posts/count';
+         let postsQuantityUrl = 'https://gramy-dla.herokuapp.com/posts/count';
          getPosts(postsQuantityUrl).then(data => setMaxPostQuan(data))
 
       },

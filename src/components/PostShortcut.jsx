@@ -9,7 +9,7 @@ const PostShortcut = ({post, click}) => {
    return(
       <div id={`post${post.id}`} className="postShortcut" onClick={() => click(post.id)}>
          <img
-            src={`http://192.168.8.11:1337${post.mainPhoto.formats.small?.url}`}
+            src={post?.mainPhoto?.formats.small?.url}
             alt="Miniatura posta"
             className="postShortcut__photo"
          />
