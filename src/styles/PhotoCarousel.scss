@@ -8,10 +8,13 @@
       @include flexCenter(row);
    }
    &__img{
-      max-width: 190px;
+      width: 150px;
+      height: 150px;
       padding: 0 auto;
       justify-self: center;
       align-self: center;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
    }
    .alice-carousel{
       margin: 10px 0;
@@ -42,6 +45,8 @@
          padding: 0 auto;
          justify-self: center;
          align-self: center;
+         object-fit: cover;
+         aspect-ratio: 1 / 1;
       }
    }
 }

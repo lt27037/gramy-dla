@@ -3,6 +3,7 @@
 .news{
    &__postWrapper{
       width: 55%;
+      min-height: 120vh;  
    }
    &__title{
       font-size: 3.5rem;

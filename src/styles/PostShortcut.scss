@@ -9,9 +9,11 @@
    cursor: pointer;
    margin: 3rem 0;
    &__photo{
-      min-height: 200px;
       width: 300px;
+      height: auto;
       object-fit: cover;
+      object-position: center;
+      aspect-ratio: 2 / 1;
    }
    &__content{
       padding: 0 0 0 2rem;
@@ -31,7 +33,7 @@
       text-indent: 1rem;
    }
    &__date{
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       color: $sideColor;
       text-align: right;
       width: 100%;
