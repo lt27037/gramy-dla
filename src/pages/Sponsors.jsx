@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 
@@ -34,6 +35,8 @@ const Sponsors = ({sponsors}) => {
 
    useEffect(
       () => {
+         window.scrollTo(0, 0);
+
          let url = `${endPoint}/sponsorzy`;
          getData(url).then(data => setSContentElements(data))
       },

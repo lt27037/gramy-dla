@@ -54,7 +54,7 @@ const Event = () => {
    return (
       <>
          <div className="event__date">{event && handleDate(event.data)}</div>
-         <div className="event__time">{event && event?.godzina.slice(0, 5)}</div>
+         <div className="event__time">{event && event.godzina.slice(0, 5)}</div>
          <div className="event__place">{event?.miejsce}</div>
          <h2 className="event__title title--big">{event?.nazwa_wydarzenia}</h2>
          {isLoading ? <Loading /> : null}

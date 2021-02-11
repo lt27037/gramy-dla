@@ -11,7 +11,7 @@ const EventShortcut = ({event}) => {
 
    const handleLinkClick = () => {
       let obj = {
-         pathname: `wydarzenia/${event?.id}`
+         pathname: `/wydarzenia/${event?.id}`
       }
       history.push(obj);
    }

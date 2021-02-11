@@ -9,8 +9,6 @@ const PhotoSlider = ({items}) => {
 
    const [screenWidth, setScreenWidth] = useState(1900);
 
-   console.log(items);
-
    const photoList = items.map(({id, title, discription, backgroundPhoto}) => (
       <div className="photoSlider__item" key={id}>
          <img
