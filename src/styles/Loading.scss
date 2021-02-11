@@ -2,7 +2,7 @@
 
 .loading{
    @include flexCenter(row);
-   width: 20%;
+   width: 30%;
    margin: 0 auto;
    &__text{
       display: block;
@@ -24,5 +24,17 @@
    }
    100%{
       transform: rotate(720deg);
+   }
+}
+
+@media(max-width: 786px){
+   .loading{
+      width: 100%;
+   }
+}
+
+@media(max-width: 1550px){
+   .loading{
+      width: 50%;
    }
 }
