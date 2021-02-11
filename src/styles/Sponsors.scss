@@ -54,6 +54,14 @@
    }
 }
 
+@media(max-width:1550px){
+   .sponsors{
+      &__profilesWrapper{
+         width: 85%;
+      }
+   }
+}
+
 @media(max-width: 786px){
    .sponsors{
       margin: 0;
