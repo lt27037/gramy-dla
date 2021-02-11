@@ -30,8 +30,6 @@ const ClosestEvent = () => {
       []
    )
 
-   console.log(event);
-
    return(
       <div className="closestEvent">
          <h3 className="closestEvent__title">Najbliższe wydażenie</h3>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
@@ -8,7 +9,7 @@ import ClosestEvent from '../components/ClosestEvent';
 
 import '../styles/Post.scss';
 
-const Post = ({posts, events, volunteer}) => {
+const Post = () => {
 
    const [post, setPost] = useState(null);
    const location = useLocation();
@@ -24,8 +25,6 @@ const Post = ({posts, events, volunteer}) => {
 
       const obj = {
          pathname: '/aktualnosci',
-         prevPost: postId,
-         prevQuantity: postsQuantity,
       }
 
       history.push(obj);
@@ -67,7 +66,8 @@ const Post = ({posts, events, volunteer}) => {
          {text2}
          {zdj3}
          {text3}
-         <BecomeVolunteer photo={volunteer}/>
+         <ClosestEvent />
+         <BecomeVolunteer />
          <button className="button button--back" onClick={handleBackClick}>Wróć do aktualności</button>
       </div>
       </>

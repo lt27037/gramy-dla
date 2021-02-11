@@ -48,6 +48,7 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
 
    return (
       <div className="photoCarousel">
+         <h3 className="photoCarousel__title">Nasi sponsorzy</h3>
          <AliceCarousel 
             mouseTracking 
             items={photoList} 

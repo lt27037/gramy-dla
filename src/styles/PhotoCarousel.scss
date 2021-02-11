@@ -17,8 +17,16 @@
       aspect-ratio: 1 / 1;
    }
    .alice-carousel{
-      margin: 10px 0;
+      margin: 0;
       z-index: 0;
+   }
+   &__title{
+      text-align: center;
+      width: 100%;
+      font-weight: 400;
+      font-size: 1.8rem;
+      margin: 5px 0;
+      letter-spacing: 1px;
    }
 }
 

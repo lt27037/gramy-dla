@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import PostShortcut from '../components/PostShortcut';
+import Loading from '../components/Loading';
 
 import '../styles/News.scss'
 
@@ -11,8 +12,8 @@ const News = ({sponsors, posts}) => {
    const [postElements, setPostElement] = useState([]);
    const [allPosts, setAllPosts] = useState([]);
    const [postsCounter, setPostsCounter] = useState(5);
-   const [prevPost, setPrevPost] = useState(null);
    const [maxPostQuan, setMaxPostQuan] = useState(5);
+   const [isLoading, setIsLoading] = useState(true);
    const history = useHistory();
 
 
@@ -32,6 +33,7 @@ const News = ({sponsors, posts}) => {
    const handleCounterIncremence = () => {
       if(allPosts.length !== maxPostQuan){
          setPostsCounter(postsCounter + 5);
+         setIsLoading(true);
       }
    }
 
@@ -51,7 +53,7 @@ const News = ({sponsors, posts}) => {
             let quantity = 5;
             let url = `https://gramy-dla.herokuapp.com/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
             // @ts-ignore
-            getPosts(url).then(data => setAllPosts([...allPosts, ...data]))
+            getPosts(url).then(data => {setAllPosts([...allPosts, ...data]); setIsLoading(false)})
          }
       },
       [postsCounter]
@@ -67,36 +69,18 @@ const News = ({sponsors, posts}) => {
 
    useEffect(
       () => {
-         // @ts-ignore
-         if(history.location.prevPost && history.location.prevQuantity){
-            // @ts-ignore
-            setPostsCounter(history.location.prevQuantity);
-            // @ts-ignore
-            setPrevPost(history.location.prevPost);
-         }else {
-            window.scrollTo(0, 0);
-         }
+         window.scrollTo(0, 0);
 
          let postsQuantityUrl = 'https://gramy-dla.herokuapp.com/posts/count';
-         getPosts(postsQuantityUrl).then(data => setMaxPostQuan(data))
+         getPosts(postsQuantityUrl).then(data => {setMaxPostQuan(data);})
 
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       []
    )
 
-   useEffect(
-      () => {
-         if(prevPost){
-            // @ts-ignore
-            document.getElementById(`post${prevPost}`)?.scrollIntoView();
-         }
-      },
-      [prevPost]
-   )
-
    const moreBtn = allPosts.length < maxPostQuan ? (
-      <button className="button more--btn" onClick={handleCounterIncremence}>Załaduj więcej</button>
+      <button className="button more--btn" onClick={handleCounterIncremence}>{isLoading ? 'Pobieranie...' : 'Załaduj więcej'}</button>
    ) : (
       <p className="allPosts">To już wszystkie wpisy</p>
    );
@@ -105,6 +89,7 @@ const News = ({sponsors, posts}) => {
       <>
          <PhotoCarousel items={sponsors} /> 
          <h2 className="news__title">Aktualności</h2>
+         {isLoading ? <Loading /> : null}
          <div className="news__postWrapper">
             {postElements}
          </div>

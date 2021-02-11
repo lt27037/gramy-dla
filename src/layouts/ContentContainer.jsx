@@ -22,12 +22,8 @@ const ContentContainer = () => {
    const history = useHistory();
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
-   const [gallery, setGallery] = useState([]);
    const [posts, setPosts] = useState([]);
    const [events, setEvents] = useState([]);
-   const [becomeSponsorContent, setBecomeSponsorContent] = useState([]);
-   const [becomeVolunteerContent, setBecomeVolunteerContent] = useState([]);
-   const [volunteerWidget, setVolunteerWidget] = useState(null);
 
    const getApiData = async (url) => {
       try{
@@ -44,36 +40,18 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const endPoint = "https://gramydla.pl/admin/wp-json/acf/v3";
-         const endPoint2 = "https://gramy-dla.herokuapp.com";
-
-         const sponsorsUrl = `${endPoint2}/sponsors`;
-         const slidersUrl = `${endPoint2}/sliders`;
-         const postsUrl = `${endPoint2}/posts?_limit=5&_sort=published_at:DESC`;
-         const eventsUrl = `${endPoint2}/events?_sort=data:DESC`;
-         const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;
-         const becomeSponsorContentUrl = `${endPoint}/pages/293`;
-         const becomeVolunteerContentUrl = `${endPoint}/pages/254`;
+         const endPoint = "https://gramy-dla.herokuapp.com";
+         const sponsorsUrl = `${endPoint}/sponsors`;
+         const slidersUrl = `${endPoint}/sliders`;
+         const postsUrl = `${endPoint}/posts?_limit=5&_sort=published_at:DESC`;
+         const eventsUrl = `${endPoint}/events?_sort=data:DESC`;
 
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(postsUrl).then(data => setPosts(data));
          getApiData(eventsUrl).then(data => setEvents(data));
-         getApiData(galleryUrl).then(data => setGallery(data));
-         getApiData(becomeSponsorContentUrl).then(data => setBecomeSponsorContent(data));
-         getApiData(becomeVolunteerContentUrl).then(data => setBecomeVolunteerContent(data));
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []
-   )
-
-   useEffect(
-      () => {
-
-         // @ts-ignore
-         let photo = becomeVolunteerContent ? becomeVolunteerContent?.acf?.photowidget : null;
-         setVolunteerWidget(photo)
-      },
-      [becomeVolunteerContent]
    )
 
    return(
@@ -84,7 +62,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events} volunteer={volunteerWidget} gallery={gallery.length > 0 ? gallery[0] : null}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
             </Route>
 
             <Route path="/aktualnosci" exact>
@@ -92,7 +70,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/aktualnosci/post/:id">
-               <Post posts={posts} events={events} volunteer={volunteerWidget}/>
+               <Post />
             </Route>
 
             <Route path="/galeria" exact>
@@ -116,7 +94,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/wydarzenia/:id">
-               <Event events={events} volunteer={volunteerWidget}/>
+               <Event />
             </Route>
 
             <Route path="/zostan-wolontariuszem">

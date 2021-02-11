@@ -3,10 +3,11 @@ import React, { useEffect, useState} from 'react'
 
 import '../styles/About.scss'
 import AboutSection from '../components/AboutSection';
+import Loading from '../components/Loading';
 
 const About = () => {
 
-   const [sectionList, setSectionList] = useState(null);
+   const [isLoading, setIsLoading] = useState(true);
    const [content, setContent] = useState(null);
 
    let endPoint = 'https://gramy-dla.herokuapp.com';
@@ -26,19 +27,22 @@ const About = () => {
          window.scrollTo(0, 0);
 
          let url = `${endPoint}/o-nas`;
-         getData(url).then(data => setContent(data))
+         getData(url).then(data => {setContent(data); setIsLoading(false)})
       },
       []
    )
 
+   const sections = [
+      <AboutSection photo={content?.photo1.url} text={content?.text1}/>,
+      <AboutSection photo={content?.photo2.url} text={content?.text2}/>,
+      <AboutSection photo={content?.photo3.url} text={content?.text3}/>,
+      <AboutSection photo={content?.photo4.url} text={content?.text4}/>,
+      <AboutSection photo={content?.photo5.url} text={content?.text5}/>
+   ]
+
    return(
       <div className="aboutWrapper">
-         <AboutSection photo={content?.photo1.url} text={content?.text1}/>
-         <AboutSection photo={content?.photo2.url} text={content?.text2}/>
-         <AboutSection photo={content?.photo3.url} text={content?.text3}/>
-         <AboutSection photo={content?.photo4.url} text={content?.text4}/>
-         <AboutSection photo={content?.photo5.url} text={content?.text5}/>
-         
+         {isLoading ? <Loading marginTop="30vh"/> : sections}
       </div>
    );
 };

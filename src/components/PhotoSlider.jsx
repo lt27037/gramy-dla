@@ -5,26 +5,13 @@ import '../styles/PhotoSlider.scss';
 
 const handleDragStart = (e) => e.preventDefault();
 
-// const defaultPost = {
-//    acf:{
-//       tytul : '',
-//       zajawka : '',
-//       datadodania : '',
-//       zdjecie : '',
-//    },
-//    id: '0000000'
-// }
-
 const PhotoSlider = ({items}) => {
 
    const [screenWidth, setScreenWidth] = useState(1900);
 
    console.log(items);
 
-   const photoList = items.map(({id, title, discription, backgroundPhoto}) => {
-
-
-      return(
+   const photoList = items.map(({id, title, discription, backgroundPhoto}) => (
       <div className="photoSlider__item" key={id}>
          <img
             alt={discription}
@@ -38,7 +25,7 @@ const PhotoSlider = ({items}) => {
          </div>
       </div>
       )
-   })
+   )
 
    const resizeCheck = () => {
       setScreenWidth(Number(window.innerWidth));

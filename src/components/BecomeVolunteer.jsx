@@ -30,6 +30,7 @@ const BecomeVolunteer = () => {
          let url = `${endPoint}/zostan-wolontariuszem`;
          getData(url).then(data => setContent(data))
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       []
    )
 

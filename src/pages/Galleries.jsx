@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import GalleryFolder from '../components/GalleryFolder';
+import Loading from '../components/Loading';
 
 import '../styles/Gallery.scss'
 
@@ -10,6 +11,7 @@ const Galleries = ({sponsors}) => {
 
    const [galleries, setGalleries] = useState([])
    const [folders, setFolders] = useState([]);
+   const [isLoading, setIsLoading] = useState(true);
 
    let endPoint = 'https://gramy-dla.herokuapp.com';
 
@@ -28,7 +30,7 @@ const Galleries = ({sponsors}) => {
          window.scrollTo(0, 0);
 
          let url = `${endPoint}/galleries?_sort=published_at:DESC`
-         getData(url).then(data => setGalleries(data))
+         getData(url).then(data => {setGalleries(data); setIsLoading(false)})
       },
       []
    )
@@ -46,9 +48,7 @@ const Galleries = ({sponsors}) => {
    return(
       <>
          <PhotoCarousel items={sponsors} />
-         <div className="FoldersBox">
-            {folders}
-         </div>
+         {isLoading ? <Loading marginTop="30vh"/> : <div className="FoldersBox">{folders}</div>}
       </>
    );
 };
