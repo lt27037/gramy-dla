@@ -1,7 +1,7 @@
 # Page for charity association "Gramy dla..."
 
 ## Online Demo
-[lt27037.github.io/gramy-dla](https://lt27037.github.io/gramy-dla/#/)
+[gramydla.pl](https://gramydla.pl/)
 ## Discription
 
 This app is my first big project in React.js.\
@@ -10,7 +10,7 @@ This app is my first big project in React.js.\
 
 ## CMS communication 
 
-All of data from CMS are getting through REST API.
+All of data are from Strapi Headless CMS through REST API.
 
 
 ## Used repositories
