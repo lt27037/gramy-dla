@@ -6,6 +6,7 @@ import BecomSponsor from '../pages/BecomSponsor';
 import Error404 from '../pages/Error404';
 import Event from '../pages/Event';
 import Events from '../pages/Events';
+import Galleries from '../pages/Galleries';
 import Gallery from '../pages/Gallery';
 import HomePage from '../pages/HomePage';
 import News from '../pages/News';
@@ -21,14 +22,8 @@ const ContentContainer = () => {
    const history = useHistory();
    const [sponsors, setSponsors] = useState([]);
    const [sliders, setSliders] = useState([]);
-   const [gallery, setGallery] = useState([]);
    const [posts, setPosts] = useState([]);
    const [events, setEvents] = useState([]);
-   const [sponsorsContent, setSponsorsContent] = useState([]);
-   const [becomeSponsorContent, setBecomeSponsorContent] = useState([]);
-   const [becomeVolunteerContent, setBecomeVolunteerContent] = useState([]);
-   const [aboutContent, setAboutContent] = useState([]);
-   const [volunteerWidget, setVolunteerWidget] = useState(null);
 
    const getApiData = async (url) => {
       try{
@@ -45,38 +40,18 @@ const ContentContainer = () => {
 
    useEffect(
       () => {
-         const endPoint = "https://gramydla.pl/admin/wp-json/acf/v3"
-         const sponsorsUrl = `${endPoint}/posts/?categories=6&per_page=100`;
-         const slidersUrl = `${endPoint}/posts/?categories=5&per_page=100`;
-         const postsUrl = `${endPoint}/posts/?categories=2&per_page=100`;
-         const eventsUrl = `${endPoint}/posts/?categories=7&per_page=100`;
-         const galleryUrl = `${endPoint}/posts/?categories=3&per_page=100`;
-         const aboutContentUrl = `${endPoint}/posts/?categories=4&per_page=100`;
-         const sponsorsContentUrl = `${endPoint}/pages/246`;
-         const becomeSponsorContentUrl = `${endPoint}/pages/293`;
-         const becomeVolunteerContentUrl = `${endPoint}/pages/254`;
+         const endPoint = "https://gramy-dla.herokuapp.com";
+         const sponsorsUrl = `${endPoint}/sponsors`;
+         const slidersUrl = `${endPoint}/sliders`;
+         const postsUrl = `${endPoint}/posts?_limit=5&_sort=published_at:DESC`;
+         const eventsUrl = `${endPoint}/events?_sort=data:DESC`;
 
          getApiData(sponsorsUrl).then(data => setSponsors(data));
          getApiData(slidersUrl).then(data => setSliders(data));
          getApiData(postsUrl).then(data => setPosts(data));
          getApiData(eventsUrl).then(data => setEvents(data));
-         getApiData(galleryUrl).then(data => setGallery(data));
-         getApiData(aboutContentUrl).then(data => setAboutContent(data));
-         getApiData(sponsorsContentUrl).then(data => setSponsorsContent(data));
-         getApiData(becomeSponsorContentUrl).then(data => setBecomeSponsorContent(data));
-         getApiData(becomeVolunteerContentUrl).then(data => setBecomeVolunteerContent(data));
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []
-   )
-
-   useEffect(
-      () => {
-
-         // @ts-ignore
-         let photo = becomeVolunteerContent ? becomeVolunteerContent?.acf?.photowidget : null;
-         setVolunteerWidget(photo)
-      },
-      [becomeVolunteerContent]
    )
 
    return(
@@ -87,7 +62,7 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts} events={events} volunteer={volunteerWidget} gallery={gallery.length > 0 ? gallery[0] : null}/>
+               <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
             </Route>
 
             <Route path="/aktualnosci" exact>
@@ -95,19 +70,23 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/aktualnosci/post/:id">
-               <Post posts={posts} events={events} volunteer={volunteerWidget}/>
+               <Post />
             </Route>
 
-            <Route path="/galeria">
-               <Gallery sponsors={sponsors} photos={gallery}/>
+            <Route path="/galeria" exact>
+               <Galleries sponsors={sponsors}/>
+            </Route>
+
+            <Route path="/galeria/:id">
+               <Gallery />
             </Route>
 
             <Route path="/onas">
-               <About content={aboutContent}/>
+               <About />
             </Route>
 
             <Route path="/sponsorzy">
-               <Sponsors sponsors={sponsors} content={sponsorsContent}/>
+               <Sponsors sponsors={sponsors}/>
             </Route>
 
             <Route path="/wydarzenia" exact>
@@ -115,15 +94,15 @@ const ContentContainer = () => {
             </Route>
 
             <Route path="/wydarzenia/:id">
-               <Event events={events} volunteer={volunteerWidget}/>
+               <Event />
             </Route>
 
             <Route path="/zostan-wolontariuszem">
-               <Volunteer sponsors={sponsors} content={becomeVolunteerContent}/>
+               <Volunteer sponsors={sponsors}/>
             </Route>
 
             <Route path="/zostan-sponsorem">
-               <BecomSponsor sponsors={sponsors} content={becomeSponsorContent}/>
+               <BecomSponsor sponsors={sponsors}/>
             </Route>
             <Route path="*" >
                <Error404 />

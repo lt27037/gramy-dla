@@ -1,6 +1,9 @@
+@import 'variables';
+
 .news{
    &__postWrapper{
       width: 55%;
+      min-height: 20vh;  
    }
    &__title{
       font-size: 3.5rem;
@@ -8,10 +11,15 @@
    }
    
 }
+.allPosts{
+   padding: 2rem 0 4rem 0;
+   color: $sideColor;
+}
 
 .button.more--btn{
    font-size:  1.7rem;
    margin-bottom: 5rem;
+   height: 2rem;
 }
 
 @media(max-width: 1600px){

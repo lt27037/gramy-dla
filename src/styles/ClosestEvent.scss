@@ -15,12 +15,19 @@
       font-weight: 600;
    }
 }
+@media(max-width: 1550px){
+   .closestEvent{
+      &__title{
+         width: 100%;
+         font-size: 2.7rem;
+      }
+   }
+}
 
 @media(max-width: 1350px){
    .closestEvent{
       &__title{
-         width: 100%;
-         font-size: 2.8rem;
+         font-size: 2.5rem;
       }
    }
 }
@@ -29,7 +36,6 @@
    .closestEvent{
       &__title{
          font-size: 3rem;
-         width: 100%;
       }
    }
 }

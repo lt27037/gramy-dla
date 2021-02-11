@@ -3,14 +3,17 @@ import { useHistory } from 'react-router-dom';
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import PostShortcut from '../components/PostShortcut';
+import Loading from '../components/Loading';
 
 import '../styles/News.scss'
 
 const News = ({sponsors, posts}) => {
 
    const [postElements, setPostElement] = useState([]);
+   const [allPosts, setAllPosts] = useState([]);
    const [postsCounter, setPostsCounter] = useState(5);
-   const [prevPost, setPrevPost] = useState(null);
+   const [maxPostQuan, setMaxPostQuan] = useState(5);
+   const [isLoading, setIsLoading] = useState(true);
    const history = useHistory();
 
 
@@ -28,54 +31,69 @@ const News = ({sponsors, posts}) => {
    }
 
    const handleCounterIncremence = () => {
-      setPostsCounter(postsCounter + 5);
+      if(allPosts.length !== maxPostQuan){
+         setPostsCounter(postsCounter + 5);
+         setIsLoading(true);
+      }
+   }
+
+   const getPosts = async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error(err);
+      }
    }
 
    useEffect(
       () => {
-         
-         const postsArr = posts[0]?.acf !== undefined ? posts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ) : null ;
-         setPostElement(postsArr) ;
-
-         // @ts-ignore
-         if(history.location.prevPost && history.location.prevQuantity){
+         if(postsCounter){
+            let quantity = 5;
+            let url = `https://gramy-dla.herokuapp.com/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
             // @ts-ignore
-            setPostsCounter(history.location.prevQuantity);
-            // @ts-ignore
-            setPrevPost(history.location.prevPost);
-         }else {
-            window.scrollTo(0, 0);
+            getPosts(url).then(data => {setAllPosts([...allPosts, ...data]); setIsLoading(false)})
          }
       },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [posts]
+      [postsCounter]
    )
 
    useEffect(
       () => {
-         if(prevPost){
-            // @ts-ignore
-            document.getElementById(`post${prevPost}`)?.scrollIntoView();
-         }
+         // @ts-ignore
+         setPostElement(allPosts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ));
       },
-      [prevPost]
+      [allPosts]
    )
-   
 
-   let displayPosts = postElements?.filter(post => postElements.indexOf(post) < postsCounter);
-   
-   const morePostsButton = displayPosts?.length === postElements?.length ? null : (
-      <button className="button more--btn" onClick={handleCounterIncremence}>Załaduj więcej</button>
+   useEffect(
+      () => {
+         window.scrollTo(0, 0);
+
+         let postsQuantityUrl = 'https://gramy-dla.herokuapp.com/posts/count';
+         getPosts(postsQuantityUrl).then(data => {setMaxPostQuan(data);})
+
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+   )
+
+   const moreBtn = allPosts.length < maxPostQuan ? (
+      <button className="button more--btn" onClick={handleCounterIncremence}>{isLoading ? 'Pobieranie...' : 'Załaduj więcej'}</button>
+   ) : (
+      <p className="allPosts">To już wszystkie wpisy</p>
    );
-
+   
    return(
       <>
          <PhotoCarousel items={sponsors} /> 
          <h2 className="news__title">Aktualności</h2>
+         {isLoading ? <Loading /> : null}
          <div className="news__postWrapper">
-            {displayPosts?.length !== 0 ? displayPosts : null}
+            {postElements}
          </div>
-         {morePostsButton}
+         {moreBtn}
       </>
    );
 };

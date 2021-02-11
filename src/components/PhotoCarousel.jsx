@@ -17,29 +17,13 @@ const defaultPost = {
 
 const PhotoCarousel = ({items = [defaultPost]}) => {
 
-   const handleThumbnail = (url, size) => {
-
-      let text = url.slice(0, -4);
-      let extend = url.slice(-4, url.length);
-      let dot = url.slice(-4, -3);
-      let addDot = '';
-
-      dot === '.' ? addDot = '' : addDot = '.';
-      
-      return(
-         `${text}-${size}${addDot}${extend}`
-      )
-   }
-
-
-   const photoList = items?.map(item => (
-      <div className="photoCarousel__item">
+   const photoList = items?.map(({id, name, photo}) => (
+      <div className="photoCarousel__item" key={id}>
          <img
-            alt={item.acf.name}
+            alt={name}
             className='photoCarousel__img'
-            key={item.id}
             onDragStart={handleDragStart}
-            src={handleThumbnail(item.acf.url, '300x200')}
+            src={`${photo.formats.thumbnail.url}`}
          />
       </div>
    ))
@@ -64,7 +48,11 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
 
    return (
       <div className="photoCarousel">
+<<<<<<< HEAD
          <h3 className="photoCarousel__title">Nasi Sponsorzy</h3>
+=======
+         <h3 className="photoCarousel__title">Nasi sponsorzy</h3>
+>>>>>>> new-api
          <AliceCarousel 
             mouseTracking 
             items={photoList} 

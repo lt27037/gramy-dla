@@ -13,8 +13,10 @@
    }
    &__photo{
       grid-column: 1;
-      width: 80%;
+      width: 90%;
       margin: 3rem auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
    }
    &__title{
       grid-column: 1;
