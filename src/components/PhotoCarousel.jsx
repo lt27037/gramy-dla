@@ -48,11 +48,7 @@ const PhotoCarousel = ({items = [defaultPost]}) => {
 
    return (
       <div className="photoCarousel">
-<<<<<<< HEAD
          <h3 className="photoCarousel__title">Nasi Sponsorzy</h3>
-=======
-         <h3 className="photoCarousel__title">Nasi sponsorzy</h3>
->>>>>>> new-api
          <AliceCarousel 
             mouseTracking 
             items={photoList} 
