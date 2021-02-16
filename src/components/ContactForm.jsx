@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import axios from 'axios';
+
 import '../styles/ContactForm.scss';
 
 const ContactForm = ({subject}) => {
@@ -7,18 +9,60 @@ const ContactForm = ({subject}) => {
    const [emailInput, setEmailInput] = useState('');
    const [subjectInput, setSubjectInput] = useState(subject);
    const [textInput, setTextInput] = useState('');
+   const [nameInput, setNameInput] = useState('');
+   const [isSend, setIsSend] = useState(false);
+   const [sending, setSending] = useState(false);
 
    const handleEmailInput = e => setEmailInput(e.target.value);
    const handleSubjectInput = e => setSubjectInput(e.target.value);
    const handleTextInput = e => setTextInput(e.target.value);
+   const handleNameInput = e => setNameInput(e.target.value);
 
-   const handleSubmitForm = e => {
-      e.preventDefault()
+   const handleClear = () => {
+      setEmailInput('');
+      setSubjectInput('');
+      setTextInput('');
+      setNameInput('');
+   }
+
+   const putData = async (url, data) => {
+      await axios({
+         method: 'POST',
+         url,
+         data,
+      }).then(({status}) => {
+         if(Number(status) === 200) {
+            setIsSend(true)
+            handleClear();
+         };
+         setSending(false)
+      })
+      .catch(err => console.log(err))
+   }
+
+   const handleSendMessage = () => {
+
+      let data = {
+         email: emailInput,
+         imie_lub_nazwa: nameInput,
+         temat: subjectInput,
+         tresc: textInput
+      }
+
+      putData(`http://192.168.8.11:1337/formularzs/custom`, data)
    }
 
 
+
+   const handleSubmitForm = e => {
+      setSending(true);
+      e.preventDefault()
+      handleSendMessage();
+   }
+
    return(
       <form className="contactForm" onSubmit={handleSubmitForm}>
+         {isSend ? <span className="contactForm__message">Wiadomość wysłana!</span> : null}
          <label
             htmlFor="email"
             className="contactForm__label">
@@ -29,6 +73,17 @@ const ContactForm = ({subject}) => {
                onChange={handleEmailInput} 
                className="contactForm__input"/>
             <span className="contactForm__inputName">Twój e-mail</span>
+         </label>
+         <label
+            htmlFor="name"
+            className="contactForm__label">
+            <input 
+               name="name"
+               type="text" 
+               value={nameInput} 
+               onChange={handleNameInput} 
+               className="contactForm__input"/>
+            <span className="contactForm__inputName">Imię i nazwisko / Nazwa</span>
          </label>
          <label 
             htmlFor="subject" 
@@ -49,7 +104,7 @@ const ContactForm = ({subject}) => {
             </textarea>
             <span className="contactForm__inputName">Treść wiadomości</span>
          </label>
-         <button className="button">Wyślij wiadomość</button>
+         <button className="button">{sending ? 'wysyłanie...' : 'Wyślij wiadomość'}</button>
       </form>
    );
 };

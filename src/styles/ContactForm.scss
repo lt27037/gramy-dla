@@ -13,7 +13,7 @@
    }
    &__text{
       height: 20rem;
-      padding: 1.2rem 0.7rem;
+      padding: 1.2rem 1rem;
       width: 100%;
       resize: none;
       font-size: 1.6rem;
@@ -26,10 +26,36 @@
    &__inputName{
       position: absolute;
       top: -0.8rem;
-      left: 0.5rem;
+      left: 1rem;
       font-size: 1.4rem;
       font-weight: 500;
       color: $sideColor;
       background: linear-gradient(to bottom, #f5f5f5, #fff)
+   }
+   &__message{
+      width: 100%;
+      height: 120px;
+      padding: 13px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      font-size: 2.4rem;
+      color: rgb(0, 0, 0);
+      background-color: rgba(144, 238, 144, 0.850);
+      @include flexCenter(row);
+      align-items: flex-end;
+      transition: opacity .5s;
+      opacity: 1;
+   }
+   .sentMess{
+      opacity: 0;
+
+   }
+}
+@media(max-width: 1550px){
+   .contactForm{
+      width: 100%;
    }
 }
