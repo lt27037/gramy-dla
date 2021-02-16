@@ -16,15 +16,28 @@ const defaultObj = {
    ulica: null,
 }
 
-const Footer = ({content}) => {
+const Footer = () => {
 
    const [info, setInfo] = useState(defaultObj);
 
+   let endPoint = 'https://gramy-dla.herokuapp.com';
+
+   const getData= async (url) => {
+      try{
+         const response = await fetch(url);
+         const data = await response.json();
+         return data;
+      }catch(err){
+         console.error(err);
+      }
+   }
+
    useEffect(
       () => {
-         setInfo(content?.acf);
+         let url = `${endPoint}/stopka`;
+         getData(url).then(data => setInfo(data))
       },
-      [content]
+      []
    )
 
    return(
@@ -32,20 +45,20 @@ const Footer = ({content}) => {
          <div className="footer__socialmedia">
             <div className="footer__socialElement">
                <Instagram className="socialIcon"/>
-               <span className="footer__socialElement__text">{info?.instagram}</span>
+               <span className="footer__socialElement__text">{info?.instagram_nazwa}</span>
             </div>
             <div className="footer__socialElement">
                <Facebook className="socialIcon"/>
-               <span className="footer__socialElement__text">{info?.facebook}</span>
+               <span className="footer__socialElement__text">{info?.facebook_nazwa}</span>
             </div>
          </div>
          <div className="footer__addres">
             <span className="footer__addres__street">{info?.ulica}</span>
-            <span className="footer__addres__town">{`${info?.kodpocztowy} ${info?.miejscowosc}`}</span>
+            <span className="footer__addres__town">{info?.kod_miasto}</span>
             <span className="footer__addres__phone">tel: {info?.telefon}</span>
             <span className="footer__addres__email">{info?.email}</span>
          </div>
-         <div className="footer__copyright">Gramy dla {info?.copyright}&copy;</div>
+         <div className="footer__copyright">Gramy dla {info?.copyright}</div>
       </footer>
    );
 };

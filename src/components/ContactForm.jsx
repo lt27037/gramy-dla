@@ -12,6 +12,7 @@ const ContactForm = ({subject}) => {
    const [nameInput, setNameInput] = useState('');
    const [isSend, setIsSend] = useState(false);
    const [sending, setSending] = useState(false);
+   const [validated, setValidated] = useState(true);
 
    const handleEmailInput = e => setEmailInput(e.target.value);
    const handleSubjectInput = e => setSubjectInput(e.target.value);
@@ -49,15 +50,27 @@ const ContactForm = ({subject}) => {
          tresc: textInput
       }
 
-      putData(`http://192.168.8.11:1337/formularzs/custom`, data)
+      putData(`https://gramy-dla.herokuapp.com/formularzs/custom`, data)
    }
 
-
+   const handleValidate = () => {
+      if(emailInput === '' || subjectInput === '' || textInput === '' || nameInput === ''){
+         setValidated(false)
+         return false;
+      }else {
+         setValidated(true)
+         return true;
+      }
+   }
 
    const handleSubmitForm = e => {
-      setSending(true);
       e.preventDefault()
-      handleSendMessage();
+      setIsSend(false);
+
+      if(handleValidate()){
+         setSending(true);
+         handleSendMessage();
+      }
    }
 
    return(
@@ -104,6 +117,7 @@ const ContactForm = ({subject}) => {
             </textarea>
             <span className="contactForm__inputName">Treść wiadomości</span>
          </label>
+         {validated ? null : <span className="errorSpan">Uwaga! Żadne pole nie może być puste!</span>}
          <button className="button">{sending ? 'wysyłanie...' : 'Wyślij wiadomość'}</button>
       </form>
    );

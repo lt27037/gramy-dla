@@ -53,6 +53,15 @@
       opacity: 0;
 
    }
+   .errorSpan{
+      width: 100%;
+      font-size: 1.8rem;
+      color: rgb(0, 0, 0);
+      background-color: rgba(255, 145, 145, 0.575);
+      @include flexCenter(row);
+      padding: 0.5rem 1rem;
+      margin: 0 auto 1rem auto;
+   }
 }
 @media(max-width: 1550px){
    .contactForm{
