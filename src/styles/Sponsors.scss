@@ -71,9 +71,15 @@
       }
       &__italic{
          width: 100%;
-         padding: 2rem 5%;
+         padding: 5rem 5%;
          font-size: 2.3rem;
          line-height: 3.5rem;
+         &__author{
+            right: 5%;
+            bottom: 0;
+            font-size: 2rem;
+            // transform: translateX(50%);
+         }
       }
       &__profilesWrapper{
          width: 100%;
