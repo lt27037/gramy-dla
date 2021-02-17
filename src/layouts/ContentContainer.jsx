@@ -29,6 +29,7 @@ const ContentContainer = () => {
    const [galleryStore, setGalleryStore] = useState({});
    const [newsStore, setNewsStore] = useState([]);
    const [aboutContent, setAboutContent] = useState(null);
+   const [sponsorsContent, setSponsorsContent] = useState(null)
 
    const getApiData = async (url) => {
       try{
@@ -96,7 +97,7 @@ const ContentContainer = () => {
                </Route>
 
                <Route path="/sponsorzy">
-                  <Sponsors sponsors={sponsors}/>
+                  <Sponsors sponsors={sponsors} sponsorsContent={sponsorsContent} setSponsorsContent={setSponsorsContent} />
                </Route>
 
                <Route path="/wydarzenia" exact>

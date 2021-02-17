@@ -6,10 +6,9 @@ import SponsorProfile from '../components/SponsorProfile';
 
 import '../styles/Sponsors.scss'
 
-const Sponsors = ({sponsors}) => {
+const Sponsors = ({sponsors, sponsorsContent, setSponsorsContent}) => {
 
    const [sponsorsList, setSponsorsList] = useState();
-   const [contentElements, setSContentElements] = useState({naglowek: null, cytat: null, autor_cytatu: null});
 
    let endPoint = 'https://gramy-dla.herokuapp.com';
 
@@ -37,8 +36,11 @@ const Sponsors = ({sponsors}) => {
       () => {
          window.scrollTo(0, 0);
 
-         let url = `${endPoint}/sponsorzy`;
-         getData(url).then(data => setSContentElements(data))
+         if(!sponsorsContent){
+            let url = `${endPoint}/sponsorzy`;
+            getData(url).then(data => setSponsorsContent(data))
+         }
+         
       },
       []
    )
@@ -55,12 +57,12 @@ const Sponsors = ({sponsors}) => {
    return(
       <div className="sponsors">
          <h2 className="sponsors__title">
-            {contentElements?.naglowek}
+            {sponsorsContent?.naglowek}
          </h2>
          <p className="sponsors__italic">
-            {contentElements.cytat ? '"'+contentElements.cytat+'"' : null}
+            {sponsorsContent ? '"'+sponsorsContent.cytat+'"' : null}
             <span className="sponsors__italic__author">
-               {contentElements?.autor_cytatu}
+               {sponsorsContent?.autor_cytatu}
             </span>
          </p>
          <div className="sponsors__profilesWrapper">
