@@ -58,7 +58,7 @@ const Footer = () => {
             <span className="footer__addres__phone">tel: {info?.telefon}</span>
             <span className="footer__addres__email">{info?.email}</span>
          </div>
-         <div className="footer__copyright">Gramy dla {info?.copyright}</div>
+         <div className="footer__copyright">{info?.copyright}&copy;</div>
       </footer>
    );
 };

@@ -54,10 +54,14 @@ const Sponsors = ({sponsors}) => {
 
    return(
       <div className="sponsors">
-         <h2 className="sponsors__title">{contentElements?.naglowek}</h2>
+         <h2 className="sponsors__title">
+            {contentElements?.naglowek}
+         </h2>
          <p className="sponsors__italic">
-            {contentElements.cytat}
-            <span className="sponsors__italic__author">{contentElements?.autor_cytatu}</span>
+            {contentElements.cytat ? '"'+contentElements.cytat+'"' : null}
+            <span className="sponsors__italic__author">
+               {contentElements?.autor_cytatu}
+            </span>
          </p>
          <div className="sponsors__profilesWrapper">
             {sponsorsList}

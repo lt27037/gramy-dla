@@ -9,7 +9,7 @@ import ClosestEvent from '../components/ClosestEvent';
 
 import '../styles/Post.scss';
 
-const Post = () => {
+const Post = ({newsStore}) => {
 
    const [post, setPost] = useState(null);
    const location = useLocation();
@@ -25,6 +25,7 @@ const Post = () => {
 
       const obj = {
          pathname: '/aktualnosci',
+         postid: id,
       }
 
       history.push(obj);
@@ -44,8 +45,15 @@ const Post = () => {
       () => {
          window.scrollTo(0, 0);
 
-         let url = `${endPoint}/posts/${id}`
-         getPosts(url).then(data => setPost(data));
+         if(newsStore?.length !== 0){
+            let post = newsStore.filter(post => Number(post.id) === Number(id));
+            setPost(...post);
+            console.log('post ze stora');
+         }else {
+            let url = `${endPoint}/posts/${id}`
+            getPosts(url).then(data => setPost(data));
+            console.log('post z api');
+         }
       },
       []
    )

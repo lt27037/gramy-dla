@@ -42,7 +42,7 @@ const Galleries = ({sponsors}) => {
 
          if(Object.keys(galleryStore).length === 0){
             let url = `${endPoint}/galleries?_sort=published_at:DESC`
-            getData(url).then(data => {setIsLoading(false); console.log(data); setGalleryStore(data)})
+            getData(url).then(data => {setIsLoading(false); setGalleryStore(data)})
          }else{
             setGalleries(galleryStore);
             setIsLoading(false);

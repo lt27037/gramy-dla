@@ -15,6 +15,7 @@ import ServerError from '../pages/ServerError';
 import Sponsors from '../pages/Sponsors';
 import Volunteer from '../pages/Volunteer'; 
 import { GalleryContext } from '../GalleryContext';
+import { NewsContext } from '../NewsContext';
 
 import '../styles/ContentContainer.scss'
 
@@ -26,6 +27,7 @@ const ContentContainer = () => {
    const [posts, setPosts] = useState([]);
    const [events, setEvents] = useState([]);
    const [galleryStore, setGalleryStore] = useState({});
+   const [newsStore, setNewsStore] = useState([]);
 
    const getApiData = async (url) => {
       try{
@@ -69,11 +71,15 @@ const ContentContainer = () => {
                </Route>
 
                <Route path="/aktualnosci" exact>
-                  <News sponsors={sponsors} posts={posts}/>
+                  <News 
+                     sponsors={sponsors} 
+                     newsStore={newsStore} 
+                     setNewsStore={setNewsStore}
+                  />
                </Route>
 
                <Route path="/aktualnosci/post/:id">
-                  <Post />
+                  <Post newsStore={newsStore} />
                </Route>
 
                <Route path="/galeria" exact>

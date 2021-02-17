@@ -7,13 +7,15 @@ import Loading from '../components/Loading';
 
 import '../styles/News.scss'
 
-const News = ({sponsors, posts}) => {
+// @ts-ignore
+const News = ({sponsors, newsStore, setNewsStore}) => {
 
    const [postElements, setPostElement] = useState([]);
-   const [allPosts, setAllPosts] = useState([]);
-   const [postsCounter, setPostsCounter] = useState(5);
+   const [allPosts, setAllPosts] = useState(newsStore);
+   const [postsCounter, setPostsCounter] = useState(allPosts.length);
    const [maxPostQuan, setMaxPostQuan] = useState(5);
    const [isLoading, setIsLoading] = useState(true);
+   const [wasScrolled, setWasScrolled] = useState(true);
    const history = useHistory();
 
 
@@ -49,9 +51,10 @@ const News = ({sponsors, posts}) => {
 
    useEffect(
       () => {
-         if(postsCounter){
+         if(postsCounter !== allPosts.length){
             let quantity = 5;
-            let url = `https://gramy-dla.herokuapp.com/posts?_start=${postsCounter-5}&_limit=${quantity}&_sort=published_at:DESC`
+            let start = allPosts.length;
+            let url = `https://gramy-dla.herokuapp.com/posts?_start=${start}&_limit=${quantity}&_sort=published_at:DESC`
             // @ts-ignore
             getPosts(url).then(data => {setAllPosts([...allPosts, ...data]); setIsLoading(false)})
          }
@@ -63,16 +66,41 @@ const News = ({sponsors, posts}) => {
       () => {
          // @ts-ignore
          setPostElement(allPosts.map(post => <PostShortcut key={post.id} post={post} click={handlePostClick}/> ));
+         setNewsStore(allPosts);
       },
       [allPosts]
    )
 
    useEffect(
       () => {
+         // @ts-ignore
+         const {postid} = history.location;
+         if(postid){
+            if(wasScrolled){
+               let post = document.querySelector(`#post${postid}`);
+               post?.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
+               
+               if(post) setWasScrolled(false);
+            }
+         }
+      },
+      [postElements]
+   )
+
+   useEffect(
+      () => {
+
          window.scrollTo(0, 0);
 
          let postsQuantityUrl = 'https://gramy-dla.herokuapp.com/posts/count';
          getPosts(postsQuantityUrl).then(data => {setMaxPostQuan(data);})
+
+         if(allPosts.length !== 0){
+            setIsLoading(false);
+            setPostsCounter(allPosts.length);
+         }else{
+            setPostsCounter(5);
+         }
 
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps

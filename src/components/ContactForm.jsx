@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios';
 
@@ -75,6 +75,21 @@ const ContactForm = ({subject}) => {
          handleSendMessage();
       }
    }
+
+   useEffect(
+      () => {
+         let timeout;
+
+         if(isSend){
+            timeout = setTimeout(() => setIsSend(false), 5000);
+         }
+
+         return () => {
+            clearTimeout(timeout);
+         }
+      },
+      [isSend]
+   )
 
    return(
       <form className="contactForm" onSubmit={handleSubmitForm}>

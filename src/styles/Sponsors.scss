@@ -23,10 +23,6 @@
       font-weight: 400;
       background-color: $mainColor;
       color: #000000;
-      &::after, 
-      &::before{
-         content: '"';
-      }
       &__author{
          position: absolute;
          right: 20%;
