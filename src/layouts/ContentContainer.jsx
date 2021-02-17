@@ -15,7 +15,7 @@ import ServerError from '../pages/ServerError';
 import Sponsors from '../pages/Sponsors';
 import Volunteer from '../pages/Volunteer'; 
 import { GalleryContext } from '../GalleryContext';
-import { NewsContext } from '../NewsContext';
+
 
 import '../styles/ContentContainer.scss'
 
@@ -28,6 +28,7 @@ const ContentContainer = () => {
    const [events, setEvents] = useState([]);
    const [galleryStore, setGalleryStore] = useState({});
    const [newsStore, setNewsStore] = useState([]);
+   const [aboutContent, setAboutContent] = useState(null);
 
    const getApiData = async (url) => {
       try{
@@ -91,7 +92,7 @@ const ContentContainer = () => {
                </Route>
          
                <Route path="/onas">
-                  <About />
+                  <About aboutContent={aboutContent} setAboutContent={setAboutContent} />
                </Route>
 
                <Route path="/sponsorzy">
