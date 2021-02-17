@@ -13,7 +13,8 @@ import News from '../pages/News';
 import Post from '../pages/Post';
 import ServerError from '../pages/ServerError';
 import Sponsors from '../pages/Sponsors';
-import Volunteer from '../pages/Volunteer';
+import Volunteer from '../pages/Volunteer'; 
+import { GalleryContext } from '../GalleryContext';
 
 import '../styles/ContentContainer.scss'
 
@@ -24,6 +25,7 @@ const ContentContainer = () => {
    const [sliders, setSliders] = useState([]);
    const [posts, setPosts] = useState([]);
    const [events, setEvents] = useState([]);
+   const [galleryStore, setGalleryStore] = useState({});
 
    const getApiData = async (url) => {
       try{
@@ -56,58 +58,61 @@ const ContentContainer = () => {
 
    return(
       <div className="container">
-         <Switch>
-            <Route path="/server-error" >
-               <ServerError />
-            </Route>
+         <GalleryContext.Provider value={{galleryStore, setGalleryStore}}>
+            <Switch>
+               <Route path="/server-error" >
+                  <ServerError />
+               </Route>
 
-            <Route path="/" exact >
-               <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
-            </Route>
+               <Route path="/" exact >
+                  <HomePage sponsors={sponsors} sliders={sliders} posts={posts}/>
+               </Route>
 
-            <Route path="/aktualnosci" exact>
-               <News sponsors={sponsors} posts={posts}/>
-            </Route>
+               <Route path="/aktualnosci" exact>
+                  <News sponsors={sponsors} posts={posts}/>
+               </Route>
 
-            <Route path="/aktualnosci/post/:id">
-               <Post />
-            </Route>
+               <Route path="/aktualnosci/post/:id">
+                  <Post />
+               </Route>
 
-            <Route path="/galeria" exact>
-               <Galleries sponsors={sponsors}/>
-            </Route>
+               <Route path="/galeria" exact>
+                  <Galleries sponsors={sponsors}/>
+               </Route>
 
-            <Route path="/galeria/:id">
-               <Gallery />
-            </Route>
+               <Route path="/galeria/:id">
+                  <Gallery />
+               </Route>
+         
+               <Route path="/onas">
+                  <About />
+               </Route>
 
-            <Route path="/onas">
-               <About />
-            </Route>
+               <Route path="/sponsorzy">
+                  <Sponsors sponsors={sponsors}/>
+               </Route>
 
-            <Route path="/sponsorzy">
-               <Sponsors sponsors={sponsors}/>
-            </Route>
+               <Route path="/wydarzenia" exact>
+                  <Events sponsors={sponsors} events={events}/>
+               </Route>
 
-            <Route path="/wydarzenia" exact>
-               <Events sponsors={sponsors} events={events}/>
-            </Route>
+               <Route path="/wydarzenia/:id">
+                  <Event />
+               </Route>
 
-            <Route path="/wydarzenia/:id">
-               <Event />
-            </Route>
+               <Route path="/zostan-wolontariuszem">
+                  <Volunteer sponsors={sponsors}/>
+               </Route>
 
-            <Route path="/zostan-wolontariuszem">
-               <Volunteer sponsors={sponsors}/>
-            </Route>
+               <Route path="/zostan-sponsorem">
+                  <BecomSponsor sponsors={sponsors}/>
+               </Route>
+               <Route path="*" >
+                  <Error404 />
+               </Route>
 
-            <Route path="/zostan-sponsorem">
-               <BecomSponsor sponsors={sponsors}/>
-            </Route>
-            <Route path="*" >
-               <Error404 />
-            </Route>
-         </Switch>
+            </Switch>
+         </GalleryContext.Provider>
       </div>
    );
 };

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 
 import EventShortcut from './EventShortcut';
+import Loading from '../components/Loading';
 
 import '../styles/ClosestEvent.scss';
 
@@ -33,8 +34,7 @@ const ClosestEvent = () => {
    return(
       <div className="closestEvent">
          <h3 className="closestEvent__title">Najbliższe wydażenie</h3>
-         {event ? <EventShortcut event={event[0]}/> : null}
-
+         {event[0] ? <EventShortcut event={event[0]}/> : <Loading marginTop={100}/>}
       </div>
    );
 };

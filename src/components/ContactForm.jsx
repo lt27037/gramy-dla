@@ -35,7 +35,10 @@ const ContactForm = ({subject}) => {
          if(Number(status) === 200) {
             setIsSend(true)
             handleClear();
-         };
+         }else{
+            setIsSend(true)
+            console.log(status);
+         }
          setSending(false)
       })
       .catch(err => console.log(err))

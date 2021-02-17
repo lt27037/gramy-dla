@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // @ts-nocheck
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom';
 
 import PhotoGallery from '../components/PhotoGallery';
@@ -8,9 +8,13 @@ import PhotoGallery from '../components/PhotoGallery';
 import { ReactComponent as BackArrow } from '../images/back-arrow.svg';
 import Loading from '../components/Loading';
 
+import {GalleryContext} from '../GalleryContext';
+
 import '../styles/Gallery.scss'
 
-const Gallery = () => { 
+const Gallery = () => {
+
+   const {galleryStore} = useContext(GalleryContext);
 
    const params = useParams();
    const history = useHistory();
@@ -34,8 +38,15 @@ const Gallery = () => {
       () => {
          window.scrollTo(0, 0);
 
-         let url = `${endPoint}/galleries/${params.id}`
-         getData(url).then(data => {setGallery(data); setIsLoading(false)})
+         if(Object.keys(galleryStore).length === 0){
+            let url = `${endPoint}/galleries/${params.id}`
+            getData(url).then(data => {setGallery(data); setIsLoading(false)})
+
+         }else{
+            let data = galleryStore.filter(gallery => Number(gallery.id) === Number(params.id))
+            setGallery(...data);
+            setIsLoading(false);
+         }
       },
       []
    )
