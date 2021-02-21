@@ -1,3 +1,5 @@
+# WARNING! The website is currently waiting for content.
+
 # Page for charity association "Gramy dla..."
 
 ## Online Demo
