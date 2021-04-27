@@ -36,11 +36,11 @@ const About = ({aboutContent, setAboutContent}) => {
    )
 
    const sections = [
-      <AboutSection photo={aboutContent?.photo1.url} text={aboutContent?.text1}/>,
-      <AboutSection photo={aboutContent?.photo2.url} text={aboutContent?.text2}/>,
-      <AboutSection photo={aboutContent?.photo3.url} text={aboutContent?.text3}/>,
-      <AboutSection photo={aboutContent?.photo4.url} text={aboutContent?.text4}/>,
-      <AboutSection photo={aboutContent?.photo5.url} text={aboutContent?.text5}/>
+      <AboutSection photo={aboutContent?.photo1?.url} text={aboutContent?.text1} />,
+      <AboutSection photo={aboutContent?.photo2?.url} text={aboutContent?.text2} />,
+      <AboutSection photo={aboutContent?.photo3?.url} text={aboutContent?.text3} />,
+      <AboutSection photo={aboutContent?.photo4?.url} text={aboutContent?.text4} />,
+      <AboutSection photo={aboutContent?.photo5?.url} text={aboutContent?.text5} />
    ]
 
    return(
