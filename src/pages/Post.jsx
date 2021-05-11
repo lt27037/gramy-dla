@@ -2,7 +2,7 @@
 /* eslint-disable array-callback-return */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
-import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import BecomeVolunteer from '../components/BecomeVolunteer';
 import ClosestEvent from '../components/ClosestEvent';
@@ -12,7 +12,6 @@ import '../styles/Post.scss';
 const Post = ({newsStore}) => {
 
    const [post, setPost] = useState(null);
-   const location = useLocation();
    const history = useHistory();
    let endPoint = 'https://gramy-dla.herokuapp.com';
 
@@ -20,9 +19,6 @@ const Post = ({newsStore}) => {
    let {id} = useParams();
 
    const handleBackClick = () => {
-      let postsQuantity = location.postsCounter;
-      let postId = id;
-
       const obj = {
          pathname: '/aktualnosci',
          postid: id,
@@ -39,6 +35,28 @@ const Post = ({newsStore}) => {
       }catch(err){
          console.error(err);
       }
+   }
+
+   const handleFindLink = (text) => {
+      const sentences = text?.split('\n');
+      const allText = sentences?.join(' ');
+      const words = allText?.split(' ');
+      const allWords = words?.map(word => {
+         if (word.substr(0, 4) === 'http'){
+            return(
+               <a 
+                  href={word} 
+                  target="_blank" 
+                  key={word}  
+                  rel="noreferrer"
+               >
+               {word}
+               </a>
+            )
+         }
+         return word + ' ';
+      });
+      return allWords;
    }
 
    useEffect(
@@ -58,10 +76,18 @@ const Post = ({newsStore}) => {
       []
    )
 
-   const zdj2 = post?.photo2 ? <img src={post.photo2.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
-   const zdj3 = post?.photo3 ? <img src={post.photo3.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> : null;
-   const text2 = post?.drugiParagraf ? <p className="post__content content--second">{post.drugiParagraf}</p> : null;
-   const text3 = post?.trzeciParagraf ? <p className="post__content content--second">{post.trzeciParagraf}</p> : null;
+   const zdj2 = post?.photo2 
+      ? <img src={post.photo2.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> 
+      : null;
+   const zdj3 = post?.photo3 
+      ? <img src={post.photo3.url} alt="Zdjęcie z posta 1" className="post__photo photo--second"/> 
+      : null;
+   const text2 = post?.drugiParagraf 
+      ? <p className="post__content content--second">{handleFindLink(post.drugiParagraf || null)}</p> 
+      : null;
+   const text3 = post?.trzeciParagraf 
+      ? <p className="post__content content--second">{handleFindLink(post.trzeciParagraf || null)}</p> 
+      : null;
 
    return (
       <>
@@ -69,7 +95,7 @@ const Post = ({newsStore}) => {
          <div className="post__date">{post?.published_at.slice(0, 10)}</div>
          <h2 className="post__title">{post?.title}</h2>
          <img src={post?.mainPhoto.url} alt="Zdjęcie z posta 1" className="post__photo photo--first"/>
-         <p className="post__content content--first">{post?.pierwszyParagraf}</p>
+         <p className="post__content content--first">{handleFindLink(post?.pierwszyParagraf || null)}</p>
          {zdj2}
          {text2}
          {zdj3}
