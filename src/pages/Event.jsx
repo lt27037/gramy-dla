@@ -11,33 +11,9 @@ import '../styles/Event.scss';
 let months = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'wrzesnia', 'pazdziernika', 'listopada', 'grudnia'];
 
 const Event = () => {
-
    const params = useParams();
    const [event, setEvent] = useState();
    const [isLoading, setIsLoading] = useState(true);
-
-   let endPoint = 'https://gramy-dla.herokuapp.com';
-
-   const getEvent = async (url) => {
-      try{
-         const response = await fetch(url);
-         const data = await response.json();
-         return data;
-      }catch(err){
-         console.error(err);
-      }
-   }
-
-   useEffect(
-      () => {
-         window.scrollTo(0, 0);
-
-         let url = `${endPoint}/events/${params.id}`
-         getEvent(url).then(data => {setEvent(data); setIsLoading(false)})
-
-      },
-      []
-   )
 
    const handleDate = (input) => {
       let year = input.slice(0, 4);

@@ -33,7 +33,7 @@ const ClosestEvent = () => {
 
    return(
       <div className="closestEvent">
-         <h3 className="closestEvent__title">Najbliższe wydażenie</h3>
+         <h3 className="closestEvent__title">Najbliższe wydarzenie</h3>
          {event[0] ? <EventShortcut event={event[0]}/> : <Loading marginTop={100}/>}
       </div>
    );

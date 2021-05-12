@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 
 import PhotoCarousel from '../components/PhotoCarousel';
 import EventShortcut from "../components/EventShortcut";
 
-import '../styles/Events.scss'
-
+import '../styles/Events.scss';
 
 const Events = ({sponsors, events}) => {
-
    useEffect(
       () => {
          window.scrollTo(0, 0);
@@ -15,7 +13,7 @@ const Events = ({sponsors, events}) => {
       []
    )
 
-   let eventsShortcutList =  events?.map(event => <EventShortcut key ={event.id} event={event}/>);
+   const eventsShortcutList =  events?.map(event => <EventShortcut key ={event.id} event={event}/>);
 
    return(
       <>
