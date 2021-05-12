@@ -3,6 +3,7 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom';
+import handleFindLink from '../links';
 
 import BecomeVolunteer from '../components/BecomeVolunteer';
 import ClosestEvent from '../components/ClosestEvent';
@@ -13,10 +14,10 @@ const Post = ({newsStore}) => {
 
    const [post, setPost] = useState(null);
    const history = useHistory();
-   let endPoint = 'https://gramy-dla.herokuapp.com';
+   const endPoint = 'https://gramy-dla.herokuapp.com';
 
    // @ts-ignore
-   let {id} = useParams();
+   const {id} = useParams();
 
    const handleBackClick = () => {
       const obj = {
@@ -35,28 +36,6 @@ const Post = ({newsStore}) => {
       }catch(err){
          console.error(err);
       }
-   }
-
-   const handleFindLink = (text) => {
-      const sentences = text?.split('\n');
-      const allText = sentences?.join(' ');
-      const words = allText?.split(' ');
-      const allWords = words?.map(word => {
-         if (word.substr(0, 4) === 'http'){
-            return(
-               <a 
-                  href={word} 
-                  target="_blank" 
-                  key={word}  
-                  rel="noreferrer"
-               >
-               {word}
-               </a>
-            )
-         }
-         return word + ' ';
-      });
-      return allWords;
    }
 
    useEffect(
