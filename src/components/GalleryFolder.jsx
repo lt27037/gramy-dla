@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/GalleryFolder.scss';
+import thumbnail from '../images/thumbnail-placeholder.png';
 
 const GalleryFolder = ({gallery}) => {
 
@@ -18,7 +19,7 @@ const GalleryFolder = ({gallery}) => {
    return(
       <div className="folder" onClick={handleClick}>
          <img 
-            src={gallery?.okladka.formats.small?.url} 
+            src={gallery?.okladka.formats.small?.url || thumbnail}
             alt="miniatura folderu w galerii" 
             className="folder__image"
          />
