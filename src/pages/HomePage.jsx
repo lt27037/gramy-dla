@@ -40,7 +40,6 @@ const HomePage = ({sponsors, sliders, posts}) => {
       {sliders && <PhotoSlider items={sliders}/>}
       <PhotoCarousel items={sponsors}/>
       <div className="homeBox">
-        <ClosestEvent/>
         <BecomeVolunteer/>
         <div className="homePostWrapper">
           <h3 className="homePostWrapper__title">Aktualności</h3>
