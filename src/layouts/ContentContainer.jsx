@@ -58,7 +58,6 @@ const ContentContainer = () => {
       getApiData(slidersUrl).then(data => setSliders(data));
       getApiData(postsUrl).then(data => setPosts(data));
       getApiData(eventsUrl).then(data => setEvents(data));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []
   )
 
