@@ -1,5 +1,6 @@
 import React from 'react'
 import handleFindLink from '../links';
+import thumbnail from '../images/thumbnail-placeholder.png';
 
 import '../styles/PostShortcut.scss';
 
@@ -8,7 +9,7 @@ const PostShortcut = ({post, click}) => {
    return(
       <div id={`post${post.id}`} className="postShortcut" onClick={() => click(post.id)}>
          <img
-            src={post?.mainPhoto?.formats.small?.url}
+            src={post?.mainPhoto?.formats.small?.url || thumbnail}
             alt="Miniatura posta"
             className="postShortcut__photo"
          />
