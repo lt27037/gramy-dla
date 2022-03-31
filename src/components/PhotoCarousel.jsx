@@ -17,13 +17,17 @@ const defaultPost = {
 
 const PhotoCarousel = ({items = [defaultPost]}) => {
 
+  if (items.length === 0) {
+    return null;
+  }
+
    const photoList = items?.map(({id, name, photo}) => (
       <div className="photoCarousel__item" key={id}>
          <img
             alt={name}
             className='photoCarousel__img'
             onDragStart={handleDragStart}
-            src={`${photo.formats.thumbnail.url}`}
+            src={`${photo.formats?.thumbnail?.url}`}
          />
       </div>
    ))
