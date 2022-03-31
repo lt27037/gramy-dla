@@ -19,7 +19,11 @@ const Events = ({sponsors, events}) => {
       <>
          <PhotoCarousel items={sponsors} />
          <div className="eventsWrapper">
-            {eventsShortcutList}
+           {eventsShortcutList.length ? (
+             eventsShortcutList
+           ) : (
+             <p className={'empty'}>Aktualnie brak wydarzeń.</p>
+           )}
          </div>
       </>
    );
